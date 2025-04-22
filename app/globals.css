@@ -38,5 +38,9 @@ main p {
 }
 
 .project-card {
-  @apply p-4 pb-2 border-2;
+  @apply p-4 pb-2 border-2 mb-4;
+}
+
+.project-card-header {
+  @apply flex justify-between items-start mb-2;
 }
