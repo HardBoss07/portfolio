@@ -9,6 +9,14 @@ body {
   font-style: normal;
 }
 
+header {
+  @apply p-4 flex items-center justify-between border-b-2 mb-8;
+}
+
+header div {
+  @apply flex items-center gap-x-4;
+}
+
 header a {
   @apply text-3xl border-2 border-current px-6 py-0 rounded-full hover:bg-[#F207A8] hover:text-black transition-colors min-w-[14rem];
 }
