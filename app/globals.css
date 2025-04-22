@@ -9,14 +9,34 @@ body {
   font-style: normal;
 }
 
+header a {
+  @apply text-3xl border-2 border-current px-6 py-0 rounded-full hover:bg-[#F207A8] hover:text-black transition-colors min-w-[14rem];
+}
+
+.a-inverted {
+  @apply text-right text-3xl border-2 border-current px-6 py-0 rounded-full transition-colors min-w-[14rem] bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
+}
+
 main {
-  @apply m-16 mt-10 pl-8 pr-8;
+  @apply m-16 mt-12 pl-8 pr-8;
 }
 
 main h1 {
   @apply text-8xl pb-4 border-b-2 mb-6;
 }
 
+main h2 {
+  @apply text-6xl pb-4;
+}
+
+main h3 {
+  @apply text-xl pb-4;
+}
+
 main p {
   @apply text-3xl pb-4 block;
+}
+
+.project-card {
+  @apply p-4 pb-2 border-2;
 }
