@@ -5,8 +5,8 @@ export default function Header() {
                 <a href="/">Home</a>
                 <a href="/projects">Projects</a>
                 <a href="/contact">Contact</a>
+                <a href="https://github.com/HardBoss07" target="_blank">GitHub</a>
             </div>
-            <a href="https://github.com/HardBoss07" target="_blank" className="a-inverted">GitHub</a>
         </header>
     );
 }

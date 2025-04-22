@@ -11,7 +11,7 @@ export default function ProjectCard({title, description, lang, link}: ProjectCar
             <a href={link}>
                 <div className="project-card-header">
                     <h2>{title}</h2>
-                    <h3 className="text-sm text-right mt-[2px]">
+                    <h3>
                         {Array.isArray(lang) ? "Languages" : "Language"}: {Array.isArray(lang) ? lang.join(", ") : lang}
                     </h3>
                 </div>
