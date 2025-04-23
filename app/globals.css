@@ -1,164 +1,164 @@
 @import "tailwindcss";
 
 body {
-  background: #000000;
-  color: #F207A8;
-  font-family: "Roboto Slab", serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
+    background: #000000;
+    color: #F207A8;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
 header {
-  @apply p-4 flex items-center justify-between border-b-2 mb-8;
+    @apply p-4 flex items-center justify-between border-b-2 mb-8;
 }
 
 header div {
-  @apply flex items-center gap-x-4 grow;
+    @apply flex items-center gap-x-4 grow;
 }
 
 header a {
-  @apply text-2xl border-2 border-current px-6 py-0 rounded-full hover:bg-[#F207A8] hover:text-black transition-colors w-[12rem] md:w-[10rem];
+    @apply text-2xl border-2 border-current px-6 py-0 rounded-full hover:bg-[#F207A8] hover:text-black transition-colors w-[12rem] md:w-[10rem];
 }
 
 header div a:last-child {
-  @apply ml-auto text-right transition-colors w-[12rem] md:w-[10rem] bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
+    @apply ml-auto text-right transition-colors w-[12rem] md:w-[10rem] bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
 }
 
 main {
-  @apply m-16 mt-12 pl-8 pr-8;
+    @apply m-16 mt-12 pl-8 pr-8;
 }
 
 main h1 {
-  @apply text-7xl pb-4 border-b-2 mb-6;
+    @apply text-7xl pb-4 border-b-2 mb-6;
 }
 
 main h2 {
-  @apply text-5xl pb-4;
+    @apply text-5xl pb-4;
 }
 
 main h3 {
-  @apply text-lg pb-4;
+    @apply text-lg pb-4;
 }
 
 main p {
-  @apply text-2xl pb-4 block;
+    @apply text-2xl pb-4 block;
 }
 
 .project-card {
-  @apply p-4 pb-2 border-2 mb-4;
+    @apply p-4 pb-2 border-2 mb-4;
 }
 
 .project-card h3 {
-  @apply text-right mt-[2px];
+    @apply text-right mt-[2px];
 }
 
 .project-card-header {
-  @apply flex justify-between items-start mb-2;
+    @apply flex justify-between items-start mb-2;
 }
 
 .video-wrapper {
-  @apply relative w-full pt-[56.25%] mb-4 border-2;
+    @apply relative w-full pt-[56.25%] mb-4 border-2;
 }
 
 iframe {
-  @apply absolute w-full h-full top-0 left-0;
+    @apply absolute w-full h-full top-0 left-0;
 }
 
 .result {
-  @apply p-4 pb-2 border-2 mb-4;
+    @apply p-4 pb-2 border-2 mb-4;
 }
 
 .code-wrapper {
-  @apply text-[1rem];
+    @apply text-[1rem];
 }
 
 @media (max-width: 800px) {
-  main h1 {
-    @apply text-6xl pb-4 border-b-2 mb-6;
-  }
+    main h1 {
+        @apply text-6xl pb-4 border-b-2 mb-6;
+    }
 
-  main h2 {
-    @apply text-4xl pb-2;
-  }
+    main h2 {
+        @apply text-4xl pb-2;
+    }
 
-  main h3 {
-    @apply text-sm pb-4;
-  }
+    main h3 {
+        @apply text-sm pb-4;
+    }
 
-  main p {
-    @apply text-xl pb-4 block;
-  }
+    main p {
+        @apply text-xl pb-4 block;
+    }
 
-  main {
-    @apply m-auto;
-  }
+    main {
+        @apply m-auto;
+    }
 
-  header {
-    @apply flex-1/2;
-  }
+    header {
+        @apply flex-1/2;
+    }
 
-  header div {
-    @apply grid gap-4 m-0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+    header div {
+        @apply grid gap-4 m-0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-  header div a:last-child {
-    @apply text-left w-full;
-  }
+    header div a:last-child {
+        @apply text-left w-full;
+    }
 
-  header a {
-    @apply w-full text-xl;
-  }
+    header a {
+        @apply w-full text-xl;
+    }
 
-  .code-wrapper {
-    @apply text-[0.9rem];
-  }
+    .code-wrapper {
+        @apply text-[0.9rem];
+    }
 }
 
 @media (max-width: 480px) {
-  .project-card-header{
-    @apply block;
-  }
+    .project-card-header {
+        @apply block;
+    }
 
-  .project-card h3 {
-    @apply text-left pb-1;
-  }
+    .project-card h3 {
+        @apply text-left pb-1;
+    }
 
-  header div {
-    @apply grid gap-2 m-0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+    header div {
+        @apply grid gap-2 m-0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-  header a {
-    @apply text-base;
-  }
+    header a {
+        @apply text-base;
+    }
 
-  main h1 {
-    @apply text-5xl pb-4 border-b-2 mb-6;
-  }
+    main h1 {
+        @apply text-5xl pb-4 border-b-2 mb-6;
+    }
 
-  main h2 {
-    @apply text-3xl pb-1;
-  }
+    main h2 {
+        @apply text-3xl pb-1;
+    }
 
-  main h3 {
-    @apply text-xs pb-4;
-  }
+    main h3 {
+        @apply text-xs pb-4;
+    }
 
-  main p {
-    @apply text-sm pb-4 block;
-  }
+    main p {
+        @apply text-sm pb-4 block;
+    }
 
-  footer p{
-    @apply text-base pb-0;
-  }
+    footer p {
+        @apply text-base pb-0;
+    }
 
-  .result div {
-    @apply m-0 p-0;
-  }
+    .result div {
+        @apply m-0 p-0;
+    }
 
-  .code-wrapper {
-    @apply text-[0.75rem];
-  }
+    .code-wrapper {
+        @apply text-[0.75rem];
+    }
 }

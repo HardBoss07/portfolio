@@ -12,19 +12,13 @@ export default function RustSnake() {
             <main>
                 <h1>Snake</h1>
                 <p>
-                    I created this project in order to learn the modern programming language Rust. For this, I recreated
-                    the iconic game Snake. I was able to make myself familiar with the principles of Rust and its
-                    syntax. I use a minimal graphics library to get a graphics interface, instead of just a console
-                    application.
+                    I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.
                 </p>
                 <div className="result">
                     <h2>Game Struct</h2>
                     <div>
                         <p>
-                            Hier habe ich ein Game Struct mit einer new() Funktion erstellt. Dieses Struct ist das
-                            primäre Objekt wo die gesamte Logik des Spiels beinhaltet. Mit der new() Funktion kann man
-                            ein neues Spiel-Fenster starten, wird jedoch nur bei der erstmaligen Initialisierung
-                            verwendet:
+                            Here I created a Game struct with a new() function. This struct is the primary object that contains all the game logic. The new() function can be used to start a new game window, but it is only used during the initial setup.
                         </p>
                         <Code language="rust" children={snakeGame}/>
                     </div>
@@ -33,7 +27,7 @@ export default function RustSnake() {
                     <h2>Game::run() Function</h2>
                     <div>
                         <p>
-                            Hier ist die Funktion run(). Diese Funktion kümmert sich um den gesamten Spielverlauf. Zunächst überprüft die Funktion ob der Spieler die Leertaste drückt währen das Spiel noch nicht gestartet hat. Wenn dies passiert wird das Spiel initialisiert und geht nun zum nächsten If-Statement weiter. In diesem If-Statement wird zunächst mal die Eingaben vom Spieler ausgewertet, danach die nächste Position berechnet, danach wird überprüft ob man einen Cookie eingesammelt hat zum Wachsen, und zu Ende wird der Buffer geupdated um die nächste Position darzustellen. Wenn man das Spiel verliert indem man in eine Wand oder in sich selber hineingeht wird eine neue Snake mit Snake::new() erstellt. Man kann das Spiel jederzeit mit der Escape Taste beenden:
+                            This is the run() function. This function handles the entire game loop. First, it checks whether the player is pressing the spacebar while the game hasn’t started yet. If this happens, the game is initialized and proceeds to the next if statement. In this next block, the player’s input is processed, then the next position is calculated, then it checks whether a cookie has been collected (to grow the snake), and finally, the buffer is updated to render the next position. If the player loses by running into a wall or into themselves, a new snake is created using Snake::new(). You can exit the game at any time using the Escape key.
                         </p>
                         <Code language="rust" children={snakeRun}/>
                     </div>
@@ -42,7 +36,7 @@ export default function RustSnake() {
                     <h2>Snake Struct</h2>
                     <div>
                         <p>
-                            Hier habe ich ein komplexen Datentyp, ein Struct, erstellt, der die Daten bezüglich der Snake speichert. Dazu habe ich eine Funktion new() erstellt, die man aufrufen kann, um eine neue Snake zu erstellen, ähnlich wie ein Constructor in einem Java-Programm:
+                            Here I created a complex data type, a struct, that stores the data related to the snake. I also created a new() function that can be called to create a new snake, similar to a constructor in a Java program.
                         </p>
                         <Code language="rust" children={snakeStruct}/>
                     </div>

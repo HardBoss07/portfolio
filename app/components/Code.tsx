@@ -1,5 +1,5 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { rainbow as style} from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {rainbow as style} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 interface CodeProps {
     children: string;
