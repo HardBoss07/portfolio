@@ -1,5 +1,5 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { obsidian } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { rainbow as style} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 interface CodeProps {
     children: string;
@@ -11,15 +11,17 @@ export default function Code({
                                  language = 'tsx',
                              }: CodeProps) {
     return (
-        <div className="my-4 rounded-lg overflow-hidden border border-gray-700">
+        <div className="code-wrapper my-4 overflow-hidden border rounded-lg border-gray-500">
             <SyntaxHighlighter
                 language={language}
-                style={obsidian}
+                style={style}
                 showLineNumbers={true}
                 customStyle={{
                     margin: 0,
-                    padding: '1rem',
-                    fontSize: '1rem',
+                    background: "#1E1F22",
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    overflowX: 'auto'
                 }}
             >
                 {children.trim()}

@@ -58,11 +58,19 @@ main p {
 }
 
 .video-wrapper {
-  @apply relative w-full pt-[56.25%];
+  @apply relative w-full pt-[56.25%] mb-4 border-2;
 }
 
 iframe {
   @apply absolute w-full h-full top-0 left-0;
+}
+
+.result {
+  @apply p-4 pb-2 border-2 mb-4;
+}
+
+.code-wrapper {
+  @apply text-[1rem];
 }
 
 @media (max-width: 800px) {
@@ -102,10 +110,14 @@ iframe {
   header a {
     @apply w-full text-xl;
   }
+
+  .code-wrapper {
+    @apply text-[0.9rem];
+  }
 }
 
 @media (max-width: 480px) {
-  .project-card-header {
+  .project-card-header{
     @apply block;
   }
 
@@ -139,6 +151,14 @@ iframe {
   }
 
   footer p{
-    @apply text-base;
+    @apply text-base pb-0;
+  }
+
+  .result div {
+    @apply m-0 p-0;
+  }
+
+  .code-wrapper {
+    @apply text-[0.75rem];
   }
 }
