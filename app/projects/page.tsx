@@ -15,19 +15,19 @@ export default function Projects() {
             title: "Snake",
             description: "This is a small project, where I remade the iconic game Snake completely in Rust using a minimal GUI library.",
             lang: "Rust",
-            link: "/rust-snake"
+            link: "rust-snake"
         },
         {
             title: "Tic Tac Toe",
             description: "In this project, I played around a little with Assembly. My goal was to make the fairly simple game Tic Tac Toe completely written in Assembly.",
             lang: "Assembly",
-            link: "/asm-tic-tac-toe"
+            link: "asm-tic-tac-toe"
         },
         {
             title: "To Do List",
             description: "This project is a simple To Do List application written in Java for Desktop. It includes the whole life cycle of an application.",
             lang: ["Java", "CSS"],
-            link: "/java-to-do-list"
+            link: "java-to-do-list"
         }
     ]
 

@@ -57,6 +57,14 @@ main p {
   @apply flex justify-between items-start mb-2;
 }
 
+.video-wrapper {
+  @apply relative w-full pt-[56.25%];
+}
+
+iframe {
+  @apply absolute w-full h-full top-0 left-0;
+}
+
 @media (max-width: 800px) {
   main h1 {
     @apply text-6xl pb-4 border-b-2 mb-6;
