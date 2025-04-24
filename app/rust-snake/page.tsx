@@ -3,6 +3,7 @@ import Footer from "@/app/components/Footer";
 import SnakeVideo from "@/app/rust-snake/SnakeVideo";
 import Code from "@/app/components/Code";
 import {snakeStruct, snakeRun, snakeGame} from "@/app/components/CodeSnippets";
+import RepositoryButton from "@/app/components/RepositoryButton";
 
 export default function RustSnake() {
     return (
@@ -12,6 +13,7 @@ export default function RustSnake() {
             <main>
                 <div className="result-header">
                     <h1>Snake</h1>
+                    <RepositoryButton link="https://github.com"/>
                 </div>
                 <p>
                     I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.

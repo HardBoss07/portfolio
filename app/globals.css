@@ -50,7 +50,7 @@ main > p:first-of-type {
 }
 
 .result-header {
-    @apply border-b-2;
+    @apply flex justify-between items-start border-b-2;
 }
 
 .result-header h1 {
@@ -106,7 +106,7 @@ iframe {
         @apply m-auto;
     }
 
-    header {
+    header, .result-header {
         @apply flex-1/2;
     }
 
@@ -125,6 +125,10 @@ iframe {
 
     .code-wrapper {
         @apply text-[0.9rem];
+    }
+
+    .result-header a {
+        @apply text-xl;
     }
 }
 
@@ -172,5 +176,21 @@ iframe {
 
     .code-wrapper {
         @apply text-[0.75rem];
+    }
+
+    .result-header {
+        @apply flex-col;
+    }
+
+    .result-header h1 {
+        @apply pb-2;
+    }
+
+    .result-header a {
+        @apply text-base w-[10rem] text-left ml-0 mb-4;
+    }
+
+    main > p:first-of-type {
+        @apply mt-4;
     }
 }
