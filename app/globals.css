@@ -30,7 +30,7 @@ main {
 }
 
 main h1 {
-    @apply text-7xl pb-4 border-b-2 mb-6;
+    @apply text-7xl pb-4 border-b-2;
 }
 
 main h2 {
@@ -43,6 +43,18 @@ main h3 {
 
 main p {
     @apply text-2xl pb-4 block;
+}
+
+main > p:first-of-type {
+    @apply mt-6;
+}
+
+.result-header {
+    @apply border-b-2;
+}
+
+.result-header h1 {
+    @apply border-0;
 }
 
 .project-card {
@@ -75,7 +87,7 @@ iframe {
 
 @media (max-width: 800px) {
     main h1 {
-        @apply text-6xl pb-4 border-b-2 mb-6;
+        @apply text-6xl pb-4 border-b-2;
     }
 
     main h2 {
@@ -135,7 +147,7 @@ iframe {
     }
 
     main h1 {
-        @apply text-5xl pb-4 border-b-2 mb-6;
+        @apply text-5xl pb-4 border-b-2;
     }
 
     main h2 {

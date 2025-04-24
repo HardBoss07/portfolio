@@ -10,7 +10,9 @@ export default function RustSnake() {
             <Header/>
 
             <main>
-                <h1>Snake</h1>
+                <div className="result-header">
+                    <h1>Snake</h1>
+                </div>
                 <p>
                     I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.
                 </p>

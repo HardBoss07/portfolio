@@ -37,9 +37,11 @@ export default function Projects() {
 
             <main>
                 <h1>My Projects</h1>
-                {personalProjects.map((props: ProjectCardProps, index: number) => (
-                    <ProjectCard key={index} {...props} />
-                ))}
+                <div className="mt-6">
+                    {personalProjects.map((props: ProjectCardProps, index: number) => (
+                        <ProjectCard key={index} {...props} />
+                    ))}
+                </div>
             </main>
 
             <Footer/>
