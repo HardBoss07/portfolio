@@ -13,7 +13,7 @@ export const personalProjects: ProjectCardProps[] = [
         link: "rust-snake"
     },
     {
-        title: "Barcode Reader and Generator",
+        title: "1D & 2D Barcodes",
         description: "In this project I created a simple 1D and 2D barcode generator and reader. I made it as a web app using the NextJS framework.",
         lang: "TypeScript",
         link: "ts-barcode"

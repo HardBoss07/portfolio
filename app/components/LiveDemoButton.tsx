@@ -1,15 +1,15 @@
-interface RepositoryButtonProps {
+interface LiveDemoButtonProps {
     link: string;
 }
 
-export default function RepositoryButton({link}: RepositoryButtonProps) {
+export default function LiveDemoButton({link}: LiveDemoButtonProps) {
     return (
         <a
-            href={`https://github.com/HardBoss07/${link}`}
+            href={`https://hardboss07.github.io/${link}`}
             target="_blank"
             className="ml-auto flex items-center justify-center gap-2 rounded-full border-2 border-current bg-[#F207A8] px-6 py-0 text-2xl text-left text-black transition-colors hover:bg-black hover:text-[#F207A8] w-[13rem]"
         >
-            <span>Repository</span>
+            <span>Live Demo</span>
             <svg
                 className="w-5 h-5"
                 viewBox="0 0 24 24"

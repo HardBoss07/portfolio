@@ -45,7 +45,7 @@ export default function RustSnake() {
                         <Code language="rust" children={snakeStruct}/>
                     </div>
                 </div>
-                <h2>Video Demonstration</h2>
+                <h1>Video Demonstration</h1>
                 <SnakeVideo/>
             </main>
 

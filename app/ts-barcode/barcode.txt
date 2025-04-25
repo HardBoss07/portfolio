@@ -1,0 +1,41 @@
+interface BarCodeProps {
+    chosenOption: string;
+    value: string;
+    onRendered?: (canvas: HTMLCanvasElement) => void;
+}
+
+export default function BarCode({chosenOption, value, onRendered}: BarCodeProps) {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        setError(null);
+        if (!canvasRef.current) return;
+
+        try {
+            bwipjs.toCanvas(canvasRef.current, {
+                bcid: chosenOption,
+                text: value,
+                scale: 3,
+                includetext: true,
+                textxalign: 'center',
+            });
+            if (onRendered) {
+                onRendered(canvasRef.current);
+            }
+        } catch (e: any) {
+            console.error("Barcode generation error:", e);
+            setError(e.message || 'Failed to generate barcode.');
+        }
+    }, [value, chosenOption, onRendered])
+
+    return (
+        <div className="w-full h-auto border rounded-lg p-4 bg-white flex items-center justify-center">
+            {error ? (
+                <p className="text-red-500 text-center text-sm font-medium">{error}</p>
+            ) : (
+                <canvas ref={canvasRef} className="w-full h-auto" />
+            )}
+        </div>
+    );
+}

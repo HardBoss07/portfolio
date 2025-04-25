@@ -70,7 +70,7 @@ main > p:first-of-type {
 }
 
 .video-wrapper {
-    @apply relative w-full pt-[56.25%] mb-4 border-2;
+    @apply relative w-full pt-[56.25%] mb-4 border-2 border-t-0;
 }
 
 iframe {
