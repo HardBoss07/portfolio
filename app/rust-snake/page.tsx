@@ -2,7 +2,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import SnakeVideo from "@/app/rust-snake/SnakeVideo";
 import Code from "@/app/components/Code";
-import {snakeStruct, snakeRun, snakeGame} from "@/app/components/CodeSnippets";
+import {snakeStruct, snakeRun, snakeGame} from "@/app/rust-snake/CodeSnippets";
 import RepositoryButton from "@/app/components/RepositoryButton";
 
 export default function RustSnake() {
