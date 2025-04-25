@@ -85,6 +85,10 @@ iframe {
     @apply text-[1rem];
 }
 
+.contact {
+    @apply text-xl flex flex-col mb-4;
+}
+
 @media (max-width: 800px) {
     main h1 {
         @apply text-6xl pb-4 border-b-2;
@@ -150,6 +154,10 @@ iframe {
         @apply text-base;
     }
 
+    main {
+        @apply mb-6;
+    }
+
     main h1 {
         @apply text-5xl pb-4 border-b-2;
     }
@@ -192,5 +200,9 @@ iframe {
 
     main > p:first-of-type {
         @apply mt-4;
+    }
+
+    .contact {
+        @apply text-base mb-2;
     }
 }
