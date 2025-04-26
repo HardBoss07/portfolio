@@ -1,12 +1,26 @@
+"use client";
+
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import RepositoryButton from "@/app/components/RepositoryButton";
 import Code from "@/app/components/Code";
-import {barcode, camera} from "@/app/ts-barcode/CodeSnippets";
 import LiveDemoButton from "@/app/components/LiveDemoButton";
 import BarcodeVideo from "@/app/ts-barcode/BarcodeVideo";
+import {useEffect, useState} from "react";
 
 export default function () {
+    const [barcode, setBarcode] = useState<string>("");
+    const [camera, setCamera] = useState<string>("");
+
+    useEffect(() => {
+        fetch("/ts-barcode/barcode.txt")
+            .then((res) => res.text())
+            .then((text) => setBarcode(text));
+        fetch("/ts-barcode/camera.txt")
+            .then((res) => res.text())
+            .then((text) => setCamera(text));
+    })
+
     return (
         <>
             <Header/>
