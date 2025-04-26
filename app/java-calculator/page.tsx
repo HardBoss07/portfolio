@@ -4,6 +4,7 @@ import RepositoryButton from "@/app/components/RepositoryButton";
 import CalculatorVideo from "@/app/java-calculator/CalculatorVideo";
 import Code from "@/app/components/Code";
 import {hello, calculator} from "@/app/java-calculator/CodeSnippets";
+import DownloadButton from "@/app/components/DownloadButton";
 
 export default function () {
     return (
@@ -36,6 +37,13 @@ export default function () {
                         <Code language="java" children={calculator}/>
                     </div>
                 </div>
+                <div className="result-header">
+                    <h1>Try it out yourself!</h1>
+                    <DownloadButton link="Simple-Java-Calculator/blob/master/out/artifacts/Calculator_jar/Calculator%20v02.jar"/>
+                </div>
+                <p className="mt-2">
+                    If you want to try this app out for yourself, click on the download button and install Calculator v02.jar from GitHub. In order for this app to work, you will need to have Java 23 or newer installed.
+                </p>
                 <h1>Video Demonstration</h1>
                 <CalculatorVideo/>
             </main>

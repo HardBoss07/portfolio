@@ -4,6 +4,7 @@ import RepositoryButton from "@/app/components/RepositoryButton";
 import ToDoListVideo from "@/app/java-to-do-list/ToDoListVideo";
 import {hello, save, json, toDoList} from "@/app/java-to-do-list/CodeSnippets";
 import Code from "@/app/components/Code";
+import DownloadButton from "@/app/components/DownloadButton";
 
 export default function () {
     return (
@@ -54,6 +55,13 @@ export default function () {
                         <Code language="json" children={json}/>
                     </div>
                 </div>
+                <div className="result-header">
+                    <h1>Try it out yourself!</h1>
+                    <DownloadButton link="To-Do-List-Application/blob/master/out/artifacts/To_Do_List_jar/To-Do-List.jar"/>
+                </div>
+                <p className="mt-2">
+                    If you want to try this app out for yourself, click on the download button and install To-Do-List.jar from GitHub. In order for this app to work, you will need to have Java 23 or newer installed.
+                </p>
                 <h1>Video Demonstration</h1>
                 <ToDoListVideo/>
             </main>

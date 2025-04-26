@@ -138,5 +138,4 @@ export const json: string = `
     }],
     "listColor": "#457B9D"
 }]
-
 `;

@@ -4,6 +4,7 @@ import SnakeVideo from "@/app/rust-snake/SnakeVideo";
 import Code from "@/app/components/Code";
 import {snakeStruct, snakeRun, snakeGame} from "@/app/rust-snake/CodeSnippets";
 import RepositoryButton from "@/app/components/RepositoryButton";
+import DownloadButton from "@/app/components/DownloadButton";
 
 export default function RustSnake() {
     return (
@@ -45,6 +46,13 @@ export default function RustSnake() {
                         <Code language="rust" children={snakeStruct}/>
                     </div>
                 </div>
+                <div className="result-header">
+                    <h1>Try it out yourself!</h1>
+                    <DownloadButton link="rust-snake/blob/master/rust-snake.rar"/>
+                </div>
+                <p className="mt-2">
+                    If you want to try this app out for yourself, click on the download button and install rust-snake.rar from GitHub, extract the .rar file and run the rust-snake executable.
+                </p>
                 <h1>Video Demonstration</h1>
                 <SnakeVideo/>
             </main>
