@@ -1,5 +1,5 @@
 export default function Header() {
-    const isGitHubPages = typeof window !== "undefined" && window.location.hostname.includes("github.io");
+    const isGitHubPages: boolean = true; // Change this variable to false for local development
     const prefix = isGitHubPages ? "/portfolio" : "";
 
     return (
