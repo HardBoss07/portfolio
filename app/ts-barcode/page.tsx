@@ -13,10 +13,10 @@ export default function () {
     const [camera, setCamera] = useState<string>("");
 
     useEffect(() => {
-        fetch("/ts-barcode/barcode.txt")
+        fetch("/portfolio/ts-barcode/barcode.txt")
             .then((res) => res.text())
             .then((text) => setBarcode(text));
-        fetch("/ts-barcode/camera.txt")
+        fetch("/portfolio/ts-barcode/camera.txt")
             .then((res) => res.text())
             .then((text) => setCamera(text));
     })
