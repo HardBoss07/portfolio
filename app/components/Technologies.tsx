@@ -27,7 +27,7 @@ import {
     BlenderOriginal,
     UnityOriginal,
     P5jsOriginal,
-    LatexOriginal,
+    ArduinoOriginalWordmark,
     MarkdownOriginal,
     ApacheOriginal,
 } from 'devicons-react';
@@ -61,7 +61,7 @@ export default function Technologies() {
         {label: "C++", icon: CplusplusOriginal},
         {label: "Vite", icon: VitejsOriginal},
         {label: "DBeaver", icon: DbeaverOriginal},
-        {label: "LaTeX", icon: LatexOriginal},
+        {label: "Arduino", icon: ArduinoOriginalWordmark},
         {label: "Markdown", icon: MarkdownOriginal},
         {label: "Apache", icon: ApacheOriginal},
         {label: "Unity", icon: UnityOriginal},
