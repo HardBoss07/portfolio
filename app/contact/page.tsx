@@ -9,7 +9,7 @@ export default function Contact() {
             <main>
                 <h1>Contact me</h1>
                 <p>
-                    If you're interested, shoot me a message with your inquiry on one of the chosen methods below. I will try to respond as quickly as possible, my timezone is GMT+1.
+                    If you're interested, shoot me a message with your inquiry on one of the chosen methods below. I will try to respond as quickly as possible.
                 </p>
                 <h2>Social Media</h2>
                 <div className="contact">
