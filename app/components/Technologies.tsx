@@ -76,7 +76,7 @@ export default function Technologies() {
             {technologies.map(({label, icon: Icon}) => (
                 <div
                     key={label}
-                    className="flex flex-row items-center gap-4 p-3 bg-[#FFEDFB] shadow rounded-lg hover:scale-105 transform transition duration-300"
+                    className="flex flex-row items-center gap-4 p-3 bg-[#F5BDFF] shadow rounded-lg hover:scale-105 transform transition duration-300"
                 >
                     <div className="p-1 transform scale-[2]">
                         <Icon/>
