@@ -7,6 +7,12 @@ interface ProjectCardProps {
 
 export const personalProjects: ProjectCardProps[] = [
     {
+        title: "Resource Monitor",
+        description: "This is a desktop app to monitor your PC's resources made with Tauri and Next",
+        lang: ["Rust", "TypeScript"],
+        link: "tauri-resource-monitor"
+    },
+    {
         title: "Snake",
         description: "This is a small project, where I remade the iconic game Snake completely in Rust using a minimal GUI library.",
         lang: "Rust",

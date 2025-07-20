@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="changed some wording">
+    <list default="true" id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="fixed spelling error">
+      <change afterPath="$PROJECT_DIR$/app/tauri-resource-monitor/CodeSnippets.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tauri-resource-monitor/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/tauri-resource-monitor/LineGraph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Technologies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Technologies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/projects/projects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/projects/projects.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,8 +105,17 @@
       <option name="presentableId" value="Default" />
       <updated>1752692254615</updated>
       <workItem from="1752692256567" duration="15000" />
-      <workItem from="1753002947683" duration="343000" />
+      <workItem from="1753002947683" duration="3406000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed spelling error">
+      <option name="closed" value="true" />
+      <created>1753006415530</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753006415530</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,7 +127,8 @@
     <MESSAGE value="removed latex, added arduino since i barely have any experience with latex" />
     <MESSAGE value="changed some wording" />
     <MESSAGE value="changed color of Technologies.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed color of Technologies.tsx" />
+    <MESSAGE value="fixed spelling error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed spelling error" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
