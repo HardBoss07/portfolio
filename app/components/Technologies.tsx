@@ -48,6 +48,7 @@ export default function Technologies() {
         {label: "Docker", icon: DockerPlain},
         {label: "React", icon: ReactOriginal},
         {label: "Next.js", icon: NextjsOriginal},
+        {label: "Tauri", icon: TauriOriginal},
         {label: "Node.js", icon: NodejsOriginalWordmark},
         {label: "HTML5", icon: Html5Original},
         {label: "CSS3", icon: Css3Original},
@@ -67,16 +68,15 @@ export default function Technologies() {
         {label: "Unity", icon: UnityOriginal},
         {label: "Blender", icon: BlenderOriginal},
         {label: "p5.js", icon: P5jsOriginal},
-        {label: "Tauri", icon: TauriOriginal},
         {label: "C#", icon: CsharpOriginal},
     ];
 
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 p-4">
             {technologies.map(({label, icon: Icon}) => (
                 <div
                     key={label}
-                    className="flex flex-row items-center gap-4 p-3 bg-[#F5BDFF] shadow rounded-lg hover:scale-105 transform transition duration-300"
+                    className="flex flex-row items-center gap-2 p-3 bg-[#FFFFFF] shadow rounded-md"
                 >
                     <div className="p-1 transform scale-[2]">
                         <Icon/>

@@ -155,7 +155,7 @@ iframe {
     }
 
     main {
-        @apply mb-6;
+        @apply mb-6 p-6;
     }
 
     main h1 {

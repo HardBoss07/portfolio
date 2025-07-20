@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="changed some wording">
-      <change afterPath="$PROJECT_DIR$/public/java-jokemon/fullmap.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/java-jokemon/CodeSnippets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/java-jokemon/CodeSnippets.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/java-jokemon/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/java-jokemon/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Technologies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Technologies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +26,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/HardBoss07/portfolio.git&quot;,
-    &quot;accountId&quot;: &quot;44993958-e86b-4eb8-8a66-87877412a54b&quot;
+    &quot;accountId&quot;: &quot;1982742d-cfde-43e3-89eb-c94e612a94be&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -48,13 +44,15 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Code Projects/portfolio/public/java-jokemon",
+    "last_opened_file_path": "D:/Code Projects/resource-monitor",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
     "settings.editor.selected.configurable": "terminal",
-    "ts.external.directory.path": "C:\\Code Projects\\portfolio\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\Code Projects\\portfolio\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -80,7 +78,27 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="changed some wording" />
+      <created>1752692254615</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752692254615</updated>
+      <workItem from="1752692256567" duration="15000" />
+      <workItem from="1753002947683" duration="343000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -89,7 +107,8 @@
     <MESSAGE value="changed header size of about me section" />
     <MESSAGE value="removed latex, added arduino since i barely have any experience with latex" />
     <MESSAGE value="changed some wording" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed some wording" />
+    <MESSAGE value="changed color of Technologies.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed color of Technologies.tsx" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
