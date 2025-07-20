@@ -12,7 +12,7 @@ export default function () {
     const [lineGraph, setLineGraph] = useState<string>("");
 
     useEffect(() => {
-        fetch("/portfolio/tauri-resoruce-monitor/LineGraph.txt")
+        fetch("/portfolio/tauri-resource-monitor/LineGraph.txt")
             .then((res) => res.text())
             .then((text) => setLineGraph(text));
     })
