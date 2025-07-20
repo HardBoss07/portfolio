@@ -23,7 +23,7 @@ export default function () {
                     <h2>HelloApplication Java Class</h2>
                     <div>
                         <p>
-                            Here is an snippet of my HelloApplication class. This class defines the basic elements and layout of the calculator. The rest of the class is available on the GitHub repository.
+                            Here is a snippet of my HelloApplication class. This class defines the basic elements and layout of the calculator. The rest of the class is available on the GitHub repository.
                         </p>
                         <Code language="java" children={hello}/>
                     </div>
