@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="fixed spelling error">
-      <change afterPath="$PROJECT_DIR$/app/tauri-resource-monitor/CodeSnippets.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tauri-resource-monitor/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tauri-resource-monitor/LineGraph.txt" afterDir="false" />
+    <list default="true" id="8edf74b2-4bdd-471d-a3d1-98cb0ee0658a" name="Changes" comment="fixed spelling error in fetching">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/projects/projects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/projects/projects.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752692254615</updated>
       <workItem from="1752692256567" duration="15000" />
-      <workItem from="1753002947683" duration="3406000" />
+      <workItem from="1753002947683" duration="4496000" />
     </task>
     <task id="LOCAL-00001" summary="fixed spelling error">
       <option name="closed" value="true" />
@@ -115,7 +111,31 @@
       <option name="project" value="LOCAL" />
       <updated>1753006415530</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="created new entry of resource monitor project">
+      <option name="closed" value="true" />
+      <created>1753006492500</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753006492500</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added download section in resource monitor">
+      <option name="closed" value="true" />
+      <created>1753006681907</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753006681907</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed spelling error in fetching">
+      <option name="closed" value="true" />
+      <created>1753006930263</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753006930263</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +148,10 @@
     <MESSAGE value="changed some wording" />
     <MESSAGE value="changed color of Technologies.tsx" />
     <MESSAGE value="fixed spelling error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed spelling error" />
+    <MESSAGE value="created new entry of resource monitor project" />
+    <MESSAGE value="added download section in resource monitor" />
+    <MESSAGE value="fixed spelling error in fetching" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed spelling error in fetching" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
