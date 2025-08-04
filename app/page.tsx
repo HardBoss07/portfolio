@@ -25,7 +25,8 @@ export default function Home() {
                 </p>
                 <h2>About Me</h2>
                 <p>
-                    I am a self-taught software developer based out of Switzerland with 5 years of experience. I started learning how to program
+                    I am a self-taught software developer based out of Switzerland with 5 years of experience. I started
+                    learning how to program
                     in the game development sector using C# with the Unity game engine. Now I focus more on full-stack
                     development, using React frameworks for frontend development. For the backend, I use enterprise
                     technologies such as Java and Spring Boot, as well as performance-oriented technologies like Rust.

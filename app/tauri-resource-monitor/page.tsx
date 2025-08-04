@@ -69,7 +69,8 @@ export default function () {
                     <DownloadButton link="resource-monitor/releases/tag/v0.1.0"/>
                 </div>
                 <p className="mt-2">
-                    If you want to try this app out for yourself, click on the download button and install the app using the MSI or EXE installer from GitHub.
+                    If you want to try this app out for yourself, click on the download button and install the app using
+                    the MSI or EXE installer from GitHub.
                 </p>
             </main>
 
