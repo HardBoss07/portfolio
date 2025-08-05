@@ -16,13 +16,16 @@ export default function () {
                     <RepositoryButton link="a-suprise-for-you"/>
                 </div>
                 <p>
-                    I created this project to ask a person I'm interested in for a Valentine's Day date. However, it also helped me a lot to expand my CSS knowledge, especially in the area of CSS animations.
+                    I created this project to ask a person I'm interested in for a Valentine's Day date. However, it
+                    also helped me a lot to expand my CSS knowledge, especially in the area of CSS animations.
                 </p>
                 <div className="result">
                     <h2>Heart in CSS</h2>
                     <div>
                         <p>
-                            This here is a CSS class which creates a heart shape using only CSS. For this effect I use the pseudo classes :before and :after which then are applied to a empty HTML div in order to be rendered on the website.
+                            This here is a CSS class which creates a heart shape using only CSS. For this effect I use
+                            the pseudo classes :before and :after which then are applied to a empty HTML div in order to
+                            be rendered on the website.
                         </p>
                         <Code language="css" children={heart}/>
                     </div>
@@ -31,7 +34,9 @@ export default function () {
                     <h2>Animations in CSS</h2>
                     <div>
                         <p>
-                            Here I have created two simple animations in CSS. One animation is needed to shoot an arrow through the heart and the other animation is used to finally scale the heart and show a small letter.
+                            Here I have created two simple animations in CSS. One animation is needed to shoot an arrow
+                            through the heart and the other animation is used to finally scale the heart and show a
+                            small letter.
                         </p>
                         <Code language="css" children={animations}/>
                     </div>
@@ -41,7 +46,8 @@ export default function () {
                     <LiveDemoButton link="a-surprise-for-you"/>
                 </div>
                 <p className="mt-2">
-                    Here you can view the Valentine's card. In order to start the animation, you have to click on the heart.
+                    Here you can view the Valentine's card. In order to start the animation, you have to click on the
+                    heart.
                 </p>
             </main>
 

@@ -3,16 +3,16 @@ import Footer from "@/app/components/Footer";
 
 export default function () {
     return (
-      <>
-          <Header/>
+        <>
+            <Header/>
 
-          <main>
-              <div className="result-header">
-                  <h1>Hamster Simulator</h1>
-              </div>
-          </main>
+            <main>
+                <div className="result-header">
+                    <h1>Hamster Simulator</h1>
+                </div>
+            </main>
 
-          <Footer/>
-      </>
-);
+            <Footer/>
+        </>
+    );
 }

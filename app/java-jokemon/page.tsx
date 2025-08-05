@@ -82,14 +82,18 @@ export default function () {
                     <h2>50 x 50 2D Map</h2>
                     <div>
                         <p>
-                            Here I’ve included a screenshot from Map 4. Using ANSI codes and Unicode characters, I was able to design a visually appealing map. In the center, you can see the player, marked by a pink arrow. The map features enemies (Red N), wild Jokemons (Turquoise J), rivers and lakes (Blue Rectangle), impassable trees (Green T), bridges (Pink Rectangle), and various distinguishable buildings identified by the letter in the middle.
+                            Here I’ve included a screenshot from Map 4. Using ANSI codes and Unicode characters, I was
+                            able to design a visually appealing map. In the center, you can see the player, marked by a
+                            pink arrow. The map features enemies (Red N), wild Jokemons (Turquoise J), rivers and lakes
+                            (Blue Rectangle), impassable trees (Green T), bridges (Pink Rectangle), and various
+                            distinguishable buildings identified by the letter in the middle.
                         </p>
                         <Image
                             src="/portfolio/java-jokemon/fullmap.png"
                             alt="Full Map Demonstration"
                             width={1000}
                             height={2000}
-                            style={{ width: '100%', height: 'auto' }}
+                            style={{width: '100%', height: 'auto'}}
                         />
                     </div>
                 </div>
