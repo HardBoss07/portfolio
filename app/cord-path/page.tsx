@@ -2,7 +2,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import RepositoryButton from "@/app/components/RepositoryButton";
 import Code from "@/app/components/Code";
-import {nearest_neighbor} from "@/app/cord-path/CodeSnippets";
+import {nearest_neighbor, two_opt} from "@/app/cord-path/CodeSnippets";
 
 export default function cordPath() {
     return (
@@ -31,6 +31,20 @@ export default function cordPath() {
                             be further optimized.
                         </p>
                         <Code language="Rust" children={nearest_neighbor}/>
+                    </div>
+                </div>
+                <div className="result">
+                    <h2>two_opt Function</h2>
+                    <div>
+                        <p>
+                            This function applies the 2-opt local search algorithm to improve an existing TSP tour. It
+                            iteratively checks pairs of coordinates in the path and, if swapping them reduces the
+                            overall
+                            distance, reverses the segment between them. The process continues until no further
+                            improvements
+                            are possible, producing a shorter and more efficient tour compared to the initial heuristic.
+                        </p>
+                        <Code language="Rust" children={two_opt}/>
                     </div>
                 </div>
             </main>
