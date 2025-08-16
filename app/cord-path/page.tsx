@@ -2,7 +2,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import RepositoryButton from "@/app/components/RepositoryButton";
 import Code from "@/app/components/Code";
-import {nearest_neighbor, two_opt} from "@/app/cord-path/CodeSnippets";
+import {kernel, nearest_neighbor, two_opt} from "@/app/cord-path/CodeSnippets";
 
 export default function cordPath() {
     return (
@@ -20,6 +20,20 @@ export default function cordPath() {
                     points and an optional starting position, the tool returns an optimized order for the points with
                     the shortest total distance.
                 </p>
+                <div className="result">
+                    <h2>CUDA Kernel</h2>
+                    <div>
+                        <p>
+                            This CUDA kernel sets up the GPU to compute a full pairwise distance matrix between a set of
+                            2D coordinates using GPU parallelism. Each thread calculates the Euclidean distance between
+                            a pair of points, filling the matrix efficiently in parallel. The host function manages
+                            memory transfers between CPU and GPU, launches the kernel and retrieves the results,
+                            allowing for large distance matrices to be computed much faster than with a CPU-only
+                            implementation.
+                        </p>
+                        <Code language="C++" children={kernel}/>
+                    </div>
+                </div>
                 <div className="result">
                     <h2>nearest_neighbor_tsp Function</h2>
                     <div>
