@@ -7,8 +7,14 @@ interface ProjectCardProps {
 
 export const personalProjects: ProjectCardProps[] = [
     {
+        title: "Cord Path",
+        description: "This is a CLI tool that finds the optimal path over a set of 2D coordinates.",
+        lang: ["Rust", "CUDA C++"],
+        link: "cord-path"
+    },
+    {
         title: "Resource Monitor",
-        description: "This is a desktop app to monitor your PC's resources made with Tauri and Next",
+        description: "This is a desktop app to monitor your PC's resources made with Tauri and Next.",
         lang: ["Rust", "TypeScript"],
         link: "tauri-resource-monitor"
     },
