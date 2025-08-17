@@ -22,7 +22,7 @@ export default function Projects() {
                         <ProjectCard key={index} {...props} />
                     ))}
                 </div>
-                <h1>BBW Projects</h1>
+                <h1>School Projects</h1>
                 <div className="mt-6">
                     {bbwProjects.map((props: ProjectCardProps, index: number) => (
                         <ProjectCard key={index} {...props} />

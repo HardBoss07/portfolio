@@ -10,8 +10,9 @@ export default function Home() {
             <main>
                 <h1>Hello, World!</h1>
                 <p>
-                    I am Matteo Bosshard, an aspiring application developer currently attending the
-                    Informatikmittelschule since August 2024. This website serves as a digital portfolio to showcase and
+                    I am Matteo Bosshard, an aspiring application developer currently attending the WISS Schule in
+                    Zürich for my apprenticeship as a Application developer. This website serves as a digital portfolio
+                    to showcase and
                     document my growth, passion, and skills within the field of software development.
                 </p>
                 <p>
