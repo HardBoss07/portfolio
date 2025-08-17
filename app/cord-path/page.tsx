@@ -3,6 +3,7 @@ import Footer from "@/app/components/Footer";
 import RepositoryButton from "@/app/components/RepositoryButton";
 import Code from "@/app/components/Code";
 import {kernel, nearest_neighbor, two_opt} from "@/app/cord-path/CodeSnippets";
+import DownloadButton from "@/app/components/DownloadButton";
 
 export default function cordPath() {
     return (
@@ -61,6 +62,17 @@ export default function cordPath() {
                         <Code language="Rust" children={two_opt}/>
                     </div>
                 </div>
+                <div className="result-header">
+                    <h1>Try it out yourself!</h1>
+                    <DownloadButton link="cord-path/releases/tag/1.0.0"/>
+                </div>
+                <p className="mt-2">
+                    If you want to try this app out for yourself, click on the download button and download the .rar or .zip file.
+                    If you want to add this package to your own project, you can do that by running this command:
+                    <Code language="Bash">
+                        cargo add cord-path
+                    </Code>
+                </p>
             </main>
 
             <Footer/>
