@@ -64,7 +64,7 @@ export default function cordPath() {
                 </div>
                 <div className="result-header">
                     <h1>Try it out yourself!</h1>
-                    <DownloadButton link="cord-path/releases/tag/1.0.0"/>
+                    <DownloadButton link="cord-path/releases/latest"/>
                 </div>
                 <p className="mt-2">
                     If you want to try this app out for yourself, click on the download button and download the .rar or .zip file.

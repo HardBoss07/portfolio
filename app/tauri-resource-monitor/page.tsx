@@ -66,7 +66,7 @@ export default function () {
                 </div>
                 <div className="result-header">
                     <h1>Try it out yourself!</h1>
-                    <DownloadButton link="resource-monitor/releases/tag/v0.1.0"/>
+                    <DownloadButton link="resource-monitor/releases/latest"/>
                 </div>
                 <p className="mt-2">
                     If you want to try this app out for yourself, click on the download button and install the app using
