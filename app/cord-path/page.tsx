@@ -69,10 +69,10 @@ export default function cordPath() {
                 <p className="mt-2">
                     If you want to try this app out for yourself, click on the download button and download the .rar or .zip file.
                     If you want to add this package to your own project, you can do that by running this command:
-                    <Code language="Bash">
-                        cargo add cord-path
-                    </Code>
                 </p>
+                <Code language="Bash">
+                    cargo add cord-path
+                </Code>
             </main>
 
             <Footer/>

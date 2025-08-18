@@ -1,12 +1,7 @@
 @import "tailwindcss";
 
 body {
-    background: #000000;
-    color: #F207A8;
-    font-family: "Roboto Slab", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
+    @apply bg-black text-[#F207A8] font-['Roboto_Slab'] font-medium;
 }
 
 header {
@@ -18,15 +13,15 @@ header div {
 }
 
 header a {
-    @apply text-2xl border-2 border-current px-6 py-0 rounded-full hover:bg-[#F207A8] hover:text-black transition-colors w-[12rem] md:w-[10rem];
+    @apply text-2xl border-2 border-current px-6 py-0 rounded-full transition-colors w-48 md:w-40 hover:bg-[#F207A8] hover:text-black;
 }
 
 header div a:last-child {
-    @apply ml-auto text-right transition-colors w-[12rem] md:w-[10rem] bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
+    @apply ml-auto text-right transition-colors w-48 md:w-40 bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
 }
 
 main {
-    @apply m-16 mt-12 pl-8 pr-8;
+    @apply m-16 mt-12 px-8;
 }
 
 main h1 {
@@ -57,6 +52,14 @@ main > p:first-of-type {
     @apply border-0;
 }
 
+.result {
+    @apply p-4 pb-2 border-2 mb-4;
+}
+
+.result-header a {
+    @apply transition-colors;
+}
+
 .project-card {
     @apply p-4 pb-2 border-2 mb-4;
 }
@@ -77,10 +80,6 @@ iframe {
     @apply absolute w-full h-full top-0 left-0;
 }
 
-.result {
-    @apply p-4 pb-2 border-2 mb-4;
-}
-
 .code-wrapper {
     @apply text-[1rem];
 }
@@ -90,8 +89,12 @@ iframe {
 }
 
 @media (max-width: 800px) {
+    main {
+        @apply m-auto;
+    }
+
     main h1 {
-        @apply text-6xl pb-4 border-b-2;
+        @apply text-6xl;
     }
 
     main h2 {
@@ -99,24 +102,20 @@ iframe {
     }
 
     main h3 {
-        @apply text-sm pb-4;
+        @apply text-sm;
     }
 
     main p {
-        @apply text-xl pb-4 block;
+        @apply text-xl;
     }
 
-    main {
-        @apply m-auto;
-    }
-
-    header, .result-header {
-        @apply flex-1/2;
+    header,
+    .result-header {
+        @apply basis-1/2;
     }
 
     header div {
-        @apply grid gap-4 m-0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        @apply grid grid-cols-2 gap-4 m-0;
     }
 
     header div a:last-child {
@@ -137,29 +136,12 @@ iframe {
 }
 
 @media (max-width: 480px) {
-    .project-card-header {
-        @apply block;
-    }
-
-    .project-card h3 {
-        @apply text-left pb-1;
-    }
-
-    header div {
-        @apply grid gap-2 m-0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    header a {
-        @apply text-base;
-    }
-
     main {
         @apply mb-6 p-6;
     }
 
     main h1 {
-        @apply text-5xl pb-4 border-b-2;
+        @apply text-5xl;
     }
 
     main h2 {
@@ -167,11 +149,15 @@ iframe {
     }
 
     main h3 {
-        @apply text-xs pb-4;
+        @apply text-xs;
     }
 
     main p {
-        @apply text-sm pb-4 block;
+        @apply text-sm;
+    }
+
+    main > p:first-of-type {
+        @apply mt-4;
     }
 
     footer p {
@@ -195,11 +181,23 @@ iframe {
     }
 
     .result-header a {
-        @apply text-base w-[10rem] text-left ml-0 mb-4;
+        @apply text-base w-40 text-left ml-0 mb-4;
     }
 
-    main > p:first-of-type {
-        @apply mt-4;
+    .project-card-header {
+        @apply block;
+    }
+
+    .project-card h3 {
+        @apply text-left pb-1;
+    }
+
+    header div {
+        @apply grid grid-cols-2 gap-2 m-0;
+    }
+
+    header a {
+        @apply text-base;
     }
 
     .contact {
