@@ -21,14 +21,13 @@ export default function Contact() {
 
                 <h2>Personal Email</h2>
                 <div className="contact">
-                    <a href="mailto:matteo@bosshard.net">matteo@bosshard.net</a>
                     <a href="mailto:matteobosshard@gmail.com">matteobosshard@gmail.com</a>
+                    <a href="mailto:matteo@bosshard.net">matteo@bosshard.net</a>
                 </div>
 
                 <h2>School Email</h2>
                 <div className="contact">
-                    <a href="mailto:matteo.bosshard@stud.kbw.ch">matteo.bosshard@stud.kbw.ch</a>
-                    <a href="mailto:matteo.bosshard@lernende.bbw.ch">matteo.bosshard@lernende.bbw.ch</a>
+                    <a href="mailto:matteo.bosshard@wiss-edu.ch">matteo.bosshard@wiss-edu.ch</a>
                 </div>
 
             </main>
