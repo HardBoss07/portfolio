@@ -22,7 +22,6 @@ export default function Projects() {
                         <ProjectCard key={index} {...props} />
                     ))}
                 </div>
-                <h1>School Projects</h1>
             </main>
 
             <Footer/>
