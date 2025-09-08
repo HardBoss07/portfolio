@@ -1,7 +1,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import ProjectCard from "@/app/components/ProjectCard";
-import {personalProjects, bbwProjects} from "@/app/projects/projects";
+import {personalProjects} from "@/app/projects/projects";
 
 interface ProjectCardProps {
     title: string;
@@ -23,11 +23,6 @@ export default function Projects() {
                     ))}
                 </div>
                 <h1>School Projects</h1>
-                <div className="mt-6">
-                    {bbwProjects.map((props: ProjectCardProps, index: number) => (
-                        <ProjectCard key={index} {...props} />
-                    ))}
-                </div>
             </main>
 
             <Footer/>

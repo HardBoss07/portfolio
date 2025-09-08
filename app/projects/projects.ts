@@ -53,20 +53,11 @@ export const personalProjects: ProjectCardProps[] = [
         description: "This is a semi-advanced calculator written in Java and CSS for styling using the JavaFX GUI library.",
         lang: ["Java", "CSS"],
         link: "java-calculator",
-    }
-];
-
-export const bbwProjects: ProjectCardProps[] = [
+    },
     {
         title: "Jokemon",
         description: "In this project I created a 2D console based game with Java. The game is inspired by Pokémon but it's really limited regarding gameplay.",
         lang: "Java",
         link: "java-jokemon"
-    },
-    {
-        title: "Hamster Simulator",
-        description: "I had to do this project during the practical classes. With project schedules (Projektablaufplan) and structure charts (Struktogramm) i learned the fundamental structure of a programm.",
-        lang: ["Projektablaufplan", "Struktogramm"],
-        link: "hamster-simulator"
     }
 ];
