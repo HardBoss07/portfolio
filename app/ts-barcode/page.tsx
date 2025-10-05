@@ -53,7 +53,7 @@ export default function () {
                 </div>
                 <div className="result-header">
                     <h1>Live Demonstration</h1>
-                    <LiveDemoButton link="barcode-reader"/>
+                    <LiveDemoButton link="qr"/>
                 </div>
                 <p className="mt-2">
                     You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. From personal experience I noticed the web app does not always work on Android devices.

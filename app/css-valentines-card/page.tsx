@@ -43,7 +43,7 @@ export default function () {
                 </div>
                 <div className="result-header">
                     <h1>Live Demonstration</h1>
-                    <LiveDemoButton link="a-surprise-for-you"/>
+                    <LiveDemoButton link="valentines"/>
                 </div>
                 <p className="mt-2">
                     Here you can view the Valentine's card. In order to start the animation, you have to click on the
