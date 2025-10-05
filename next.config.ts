@@ -4,12 +4,13 @@ const nextConfig: NextConfig = {
     webpack(config) {
         config.module.rules.push({
             test: /\.txt$/,
-            use: 'raw-loader',
+            use: "raw-loader",
         });
-
         return config;
     },
-    output: "export"
+    output: "export",
+    basePath: "",
+    assetPrefix: "",
 };
 
 export default nextConfig;

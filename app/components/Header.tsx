@@ -1,5 +1,5 @@
 export default function Header() {
-    const isGitHubPages: boolean = true; // Change this variable to false for local development
+    const isGitHubPages: boolean = false; // Change this variable to false for local development
     const prefix = isGitHubPages ? "/portfolio" : "";
 
     return (
