@@ -14,9 +14,9 @@ export default function Contact() {
                 </p>
                 <h2>Social Media</h2>
                 <div className="contact">
-                    <a href="https://instagram.com/matteoluca07" target="_blank">Instagram - @matteoluca07</a>
                     <a href="https://github.com/HardBoss07" target="_blank">GitHub - @HardBoss07</a>
                     <a href="https://discord.com" target="_blank">Discord - @m4tt3o</a>
+                    <a href="https://steamcommunity.com/id/m4tt3o_woof/" target="_blank">Steam - @m4tt3o_woof</a>
                 </div>
 
                 <h2>Personal Email</h2>
