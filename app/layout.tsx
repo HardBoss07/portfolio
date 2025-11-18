@@ -2,6 +2,8 @@ import type {Metadata} from "next";
 import {Roboto_Slab} from "next/font/google";
 import "./globals.css";
 import CookieConsent from "@/app/components/CookieConsent";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 const robotoSlab = Roboto_Slab({
     variable: "--font-roboto-slab",
@@ -22,8 +24,10 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={`${robotoSlab.variable} antialiased`}>
+        <Header/>
         {children}
         <CookieConsent/>
+        <Footer/>
         </body>
         </html>
     );
