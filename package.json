@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "devicons-react": "^1.4.1",
-    "next": "^15.3.2",
+    "next": "^15.5.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1"
