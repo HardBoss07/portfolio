@@ -1,6 +1,21 @@
 import Technologies from "@/app/components/Technologies";
 
 export default function Home() {
+    const getYearsOfExperience = (startYear: number): number => {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const currentMonth = now.getMonth();
+
+        let years = currentYear - startYear;
+
+        if (currentMonth < 2) {
+            years--;
+        }
+        return years;
+    };
+
+    const yearsExperience = getYearsOfExperience(2020);
+
     return (
         <main>
             <h1>Hello, World!</h1>
@@ -15,7 +30,7 @@ export default function Home() {
             </p>
             <h2>About Me</h2>
             <p>
-                I am a self-taught software developer based out of Switzerland with 5 years of experience. I started learning how to program in the game development sector using C# with the Unity game engine. Now I focus more on full-stack development, using React frameworks for frontend development. For the backend, I use enterprise technologies such as Java and Spring Boot, as well as performance-oriented technologies like Rust.
+                I am a self-taught software developer based out of Switzerland with {yearsExperience} years of experience. I started learning how to program in the game development sector using C# with the Unity game engine. Now I focus more on full-stack development, using React frameworks for frontend development. For the backend, I use enterprise technologies such as Java and Spring Boot, as well as performance-oriented technologies like Rust.
             </p>
             <p>
                 I also work with MySQL on an enterprise level for managing relational databases. This includes designing efficient schemas, writing optimized queries, and ensuring data integrity in high-demand applications.
