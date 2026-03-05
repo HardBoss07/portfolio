@@ -1,22 +1,22 @@
-import ProjectCard from "@/app/components/ProjectCard";
-import {personalProjects} from "@/app/projects/projects";
+import ProjectCard from "@/components/ProjectCard";
+import { personalProjects } from "@/app/projects/projects";
 
 interface ProjectCardProps {
-    title: string;
-    description: string;
-    lang: string | string[];
-    link: string;
+  title: string;
+  description: string;
+  lang: string | string[];
+  link: string;
 }
 
 export default function Projects() {
-    return (
-        <main>
-            <h1>My Projects</h1>
-            <div className="mt-6">
-                {personalProjects.map((props: ProjectCardProps, index: number) => (
-                    <ProjectCard key={index} {...props} />
-                ))}
-            </div>
-        </main>
-    );
+  return (
+    <main>
+      <h1>My Projects</h1>
+      <div className="mt-6">
+        {personalProjects.map((props: ProjectCardProps, index: number) => (
+          <ProjectCard key={index} {...props} />
+        ))}
+      </div>
+    </main>
+  );
 }
