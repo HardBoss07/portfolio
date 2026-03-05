@@ -4,40 +4,26 @@
 portfolio/
 ├── app/
 │   ├── asm-tic-tac-toe/
-│   │   ├── CodeSnippets.ts
-│   │   ├── TicTacToeVideo.tsx
 │   │   └── page.tsx
 │   ├── contact/
 │   │   └── page.tsx
 │   ├── cord-path/
-│   │   ├── CodeSnippets.ts
 │   │   └── page.tsx
 │   ├── css-valentines-card/
-│   │   ├── CodeSnippets.ts
 │   │   └── page.tsx
 │   ├── java-calculator/
-│   │   ├── CalculatorVideo.tsx
-│   │   ├── CodeSnippets.ts
 │   │   └── page.tsx
 │   ├── java-jokemon/
-│   │   ├── CodeSnippets.ts
 │   │   └── page.tsx
 │   ├── java-to-do-list/
-│   │   ├── CodeSnippets.ts
-│   │   ├── ToDoListVideo.tsx
 │   │   └── page.tsx
 │   ├── projects/
-│   │   ├── page.tsx
-│   │   └── projects.ts
+│   │   └── page.tsx
 │   ├── rust-snake/
-│   │   ├── CodeSnippets.ts
-│   │   ├── SnakeVideo.tsx
 │   │   └── page.tsx
 │   ├── tauri-resource-monitor/
-│   │   ├── CodeSnippets.ts
 │   │   └── page.tsx
 │   ├── ts-barcode/
-│   │   ├── BarcodeVideo.tsx
 │   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
@@ -51,18 +37,27 @@ portfolio/
 │   ├── Header.tsx
 │   ├── LiveDemoButton.tsx
 │   ├── ProjectCard.tsx
+│   ├── ProjectTemplate.tsx
+│   ├── ProjectVideo.tsx
 │   ├── RepositoryButton.tsx
 │   ├── Technologies.tsx
 │   └── YoutubeWrapper.tsx
+├── data/
+│   └── projects.ts
 ├── public/
-│   ├── java-jokemon/
-│   │   └── fullmap.png
-│   ├── tauri-resource-monitor/
-│   │   └── LineGraph.txt
-│   └── ts-barcode/
-│       ├── barcode.txt
-│       └── camera.txt
+│   └── assets/
+│       ├── images/
+│       │   └── java-jokemon.png
+│       └── snippets/
+│           ├── tauri-resource-monitor/
+│           │   └── LineGraph.txt
+│           └── ts-barcode/
+│               ├── barcode.txt
+│               └── camera.txt
+├── types/
+│   └── project.ts
 ├── LICENSE
+├── Project Structure.md
 ├── README.md
 ├── next.config.ts
 ├── package-lock.json
