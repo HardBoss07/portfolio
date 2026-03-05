@@ -1,5 +1,5 @@
 import ProjectCard from "@/components/ProjectCard";
-import { personalProjects } from "@/app/projects/projects";
+import { personalProjects } from "@/data/projects";
 
 interface ProjectCardProps {
   title: string;

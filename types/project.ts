@@ -18,4 +18,5 @@ export interface Project {
   videoYoutubeId?: string;
   sections: ProjectSection[];
   techStack: string | string[];
+  hasImage?: boolean;
 }

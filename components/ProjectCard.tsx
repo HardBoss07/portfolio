@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -11,9 +13,11 @@ export default function ProjectCard({
   lang,
   link,
 }: ProjectCardProps) {
+  const absoluteLink = link.startsWith("/") ? link : `/${link}`;
+
   return (
     <div className="project-card">
-      <a href={link}>
+      <Link href={absoluteLink}>
         <div className="project-card-header">
           <h2>{title}</h2>
           <h3>
@@ -22,7 +26,7 @@ export default function ProjectCard({
           </h3>
         </div>
         <p>{description}</p>
-      </a>
+      </Link>
     </div>
   );
 }
