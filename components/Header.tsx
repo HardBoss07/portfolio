@@ -1,11 +1,17 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header>
       <div>
-        <a href="/">Home</a>
-        <a href="/projects">Projects</a>
-        <a href="/contact">Contact</a>
-        <a href="https://github.com/HardBoss07" target="_blank">
+        <Link href="/">Home</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/contact">Contact</Link>
+        <a
+          href="https://github.com/HardBoss07"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
       </div>

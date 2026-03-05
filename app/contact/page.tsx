@@ -8,13 +8,21 @@ export default function Contact() {
       </p>
       <h2>Social Media</h2>
       <div className="contact">
-        <a href="https://github.com/HardBoss07" target="_blank">
+        <a
+          href="https://github.com/HardBoss07"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub - @HardBoss07
         </a>
-        <a href="https://discord.com" target="_blank">
+        <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
           Discord - @m4tt3o
         </a>
-        <a href="https://steamcommunity.com/id/m4tt3o_woof/" target="_blank">
+        <a
+          href="https://steamcommunity.com/id/m4tt3o_woof/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Steam - @m4tt3o_woof
         </a>
       </div>

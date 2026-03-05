@@ -4,13 +4,15 @@ export const projectsData: Record<string, Project> = {
   "cord-path": {
     slug: "cord-path",
     title: "Cord Path",
-    description: "This is a CLI tool that finds the optimal path over a set of 2D coordinates. I created this project to learn more about the Rust programming language and how to use CUDA C++ for high performance computing.",
+    description:
+      "This is a CLI tool that finds the optimal path over a set of 2D coordinates. I created this project to learn more about the Rust programming language and how to use CUDA C++ for high performance computing.",
     repoLink: "cord-path",
     techStack: ["Rust", "CUDA C++"],
     sections: [
       {
         title: "Nearest Neighbor TSP",
-        description: "This is a simple implementation of the Nearest Neighbor algorithm for the Traveling Salesman Problem. It starts at a given node and always visits the nearest unvisited node.",
+        description:
+          "This is a simple implementation of the Nearest Neighbor algorithm for the Traveling Salesman Problem. It starts at a given node and always visits the nearest unvisited node.",
         language: "rust",
         code: `fn nearest_neighbor_tsp(dist_matrix: &[f32], n: usize, start: usize) -> Vec<usize> {
     let mut visited = vec![false; n];
@@ -45,7 +47,8 @@ export const projectsData: Record<string, Project> = {
       },
       {
         title: "2-opt Optimization",
-        description: "This is a local search optimization algorithm. It removes two edges and replaces them with two different edges to shorten the total path length.",
+        description:
+          "This is a local search optimization algorithm. It removes two edges and replaces them with two different edges to shorten the total path length.",
         language: "rust",
         code: `// 2-opt local optimization
 fn two_opt(dist_matrix: &[f32], n: usize, path: &mut Vec<usize>) {
@@ -74,7 +77,8 @@ fn two_opt(dist_matrix: &[f32], n: usize, path: &mut Vec<usize>) {
       },
       {
         title: "CUDA Distance Matrix Kernel",
-        description: "This is the CUDA kernel that computes the distance matrix on the GPU. This significantly improves the performance of the algorithm for a large number of coordinates.",
+        description:
+          "This is the CUDA kernel that computes the distance matrix on the GPU. This significantly improves the performance of the algorithm for a large number of coordinates.",
         language: "cpp",
         code: `#include <cuda_runtime.h>
 #include <math.h>
@@ -134,15 +138,18 @@ extern "C" void compute_distance_matrix(const int* h_xs, const int* h_ys, float*
   "tauri-resource-monitor": {
     slug: "tauri-resource-monitor",
     title: "Resource Monitor",
-    description: "In this project, I gained more experience using the modern Tauri framework. I built a resource monitoring app that tracks CPU, GPU, and RAM usage. It also displays general system information. The app is modern, lightweight, and performant, leveraging Rust and Tauri, both known for their high performance and small bundle sizes.",
+    description:
+      "In this project, I gained more experience using the modern Tauri framework. I built a resource monitoring app that tracks CPU, GPU, and RAM usage. It also displays general system information. The app is modern, lightweight, and performant, leveraging Rust and Tauri, both known for their high performance and small bundle sizes.",
     repoLink: "resource-monitor",
     techStack: ["Rust", "TypeScript"],
     downloadLink: "resource-monitor/releases/latest",
-    downloadText: "If you want to try this app out for yourself, click on the download button and install the app using the MSI or EXE installer from GitHub.",
+    downloadText:
+      "If you want to try this app out for yourself, click on the download button and install the app using the MSI or EXE installer from GitHub.",
     sections: [
       {
         title: "ResourceMonitor Rust Struct",
-        description: "This is a snippet of my ResourceMonitor Struct written in Rust. This struct helps me gather all data from the different monitors with a function to return all data at once and functions to only get certain data from each monitor.",
+        description:
+          "This is a snippet of my ResourceMonitor Struct written in Rust. This struct helps me gather all data from the different monitors with a function to return all data at once and functions to only get certain data from each monitor.",
         language: "rust",
         code: `impl ResourceMonitor {
     pub fn new() -> Result<Self, String> {
@@ -197,7 +204,8 @@ extern "C" void compute_distance_matrix(const int* h_xs, const int* h_ys, float*
       },
       {
         title: "lib.rs",
-        description: "The lib.rs file is the connection point between the NextJS frontend and Rust backend. This file exposes commands to the frontend which fetch the data gathered by the ResourceMonitor.",
+        description:
+          "The lib.rs file is the connection point between the NextJS frontend and Rust backend. This file exposes commands to the frontend which fetch the data gathered by the ResourceMonitor.",
         language: "rust",
         code: `#[tauri::command]
 fn get_all_resource_data(monitor: State<SharedResourceMonitor>) -> ResourceData {
@@ -231,25 +239,29 @@ fn get_gpu_data(monitor: State<SharedResourceMonitor>) -> GpuInfo {
       },
       {
         title: "LineGraph Component",
-        description: "This component generates a line graph on the fly to represent some historical data about the usages from each monitor. This line graph is an SVG image which get displayed below the other component data.",
+        description:
+          "This component generates a line graph on the fly to represent some historical data about the usages from each monitor. This line graph is an SVG image which get displayed below the other component data.",
         language: "typescript",
-        filePath: "/tauri-resource-monitor/LineGraph.txt",
+        filePath: "/assets/snippets/tauri-resource-monitor/LineGraph.txt",
       },
     ],
   },
   "rust-snake": {
     slug: "rust-snake",
     title: "Snake",
-    description: "I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.",
+    description:
+      "I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.",
     repoLink: "rust-snake",
     techStack: "Rust",
     downloadLink: "rust-snake/blob/master/rust-snake.rar",
-    downloadText: "If you want to try this app out for yourself, click on the download button and install rust-snake.rar from GitHub, extract the .rar file and run the rust-snake executable.",
+    downloadText:
+      "If you want to try this app out for yourself, click on the download button and install rust-snake.rar from GitHub, extract the .rar file and run the rust-snake executable.",
     videoYoutubeId: "tzuUV8q-_Yw",
     sections: [
       {
         title: "Game Struct",
-        description: "Here I created a Game struct with a new() function. This struct is the primary object that contains all the game logic. The new() function can be used to start a new game window, but it is only used during the initial setup.",
+        description:
+          "Here I created a Game struct with a new() function. This struct is the primary object that contains all the game logic. The new() function can be used to start a new game window, but it is only used during the initial setup.",
         language: "rust",
         code: `struct Game {
     window: Window,
@@ -284,7 +296,8 @@ impl Game {
       },
       {
         title: "Game::run() Function",
-        description: "This is the run() function. This function handles the entire game loop. First, it checks whether the player is pressing the spacebar while the game hasn't started yet. If this happens, the game is initialized and proceeds to the next if statement. In this next block, the player's input is processed, then the next position is calculated, then it checks whether a cookie has been collected (to grow the snake), and finally, the buffer is updated to render the next position. If the player loses by running into a wall or into themselves, a new snake is created using Snake::new(). You can exit the game at any time using the Escape key.",
+        description:
+          "This is the run() function. This function handles the entire game loop. First, it checks whether the player is pressing the spacebar while the game hasn't started yet. If this happens, the game is initialized and proceeds to the next if statement. In this next block, the player's input is processed, then the next position is calculated, then it checks whether a cookie has been collected (to grow the snake), and finally, the buffer is updated to render the next position. If the player loses by running into a wall or into themselves, a new snake is created using Snake::new(). You can exit the game at any time using the Escape key.",
         language: "rust",
         code: `fn run(&mut self) {
     while self.window.is_open() {
@@ -315,7 +328,8 @@ impl Game {
       },
       {
         title: "Snake Struct",
-        description: "Here I created a complex data type, a struct, that stores the data related to the snake. I also created a new() function that can be called to create a new snake, similar to a constructor in a Java program.",
+        description:
+          "Here I created a complex data type, a struct, that stores the data related to the snake. I also created a new() function that can be called to create a new snake, similar to a constructor in a Java program.",
         language: "rust",
         code: `struct Snake {
     color: u32,
@@ -346,45 +360,51 @@ impl Snake {
   "ts-barcode": {
     slug: "ts-barcode",
     title: "1D & 2D Barcodes",
-    description: "I created this project in order to gain more experience with the NextJS framework. With this web app you can generate different types of 1 and 2 dimensional barcodes, such as QR Codes, EAN-13 Codes, Code 128 codes or Data Matrix. This web app also allows you to to scan your previously generated codes and other codes. For the styling of the web app I chose the Tailwind CSS library for inline styling and in general shortened styling.",
+    description:
+      "I created this project in order to gain more experience with the NextJS framework. With this web app you can generate different types of 1 and 2 dimensional barcodes, such as QR Codes, EAN-13 Codes, Code 128 codes or Data Matrix. This web app also allows you to to scan your previously generated codes and other codes. For the styling of the web app I chose the Tailwind CSS library for inline styling and in general shortened styling.",
     repoLink: "barcode-reader",
     techStack: "TypeScript",
     liveDemoLink: "qr",
-    liveDemoText: "You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. From personal experience I noticed the web app does not always work on Android devices.",
+    liveDemoText:
+      "You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. From personal experience I noticed the web app does not always work on Android devices.",
     videoYoutubeId: "p57TidpYQ3Q",
     sections: [
       {
         title: "Barcode Component",
-        description: "This React component takes in props and based off of these props it generates a barcode. With the prop chosenOption you can define what type of code you want. The prop value defines the content of the barcode. To generate the barcodes I used the bwipjs library. At the end, this component returns either the successfully rendered barcode or an error message.",
+        description:
+          "This React component takes in props and based off of these props it generates a barcode. With the prop chosenOption you can define what type of code you want. The prop value defines the content of the barcode. To generate the barcodes I used the bwipjs library. At the end, this component returns either the successfully rendered barcode or an error message.",
         language: "typescript",
-        filePath: "/ts-barcode/barcode.txt",
+        filePath: "/assets/snippets/ts-barcode/barcode.txt",
       },
       {
         title: "getCameraStream()",
-        description: "This function is part of my Camera component. It creates a visual input field for the camera, captures the content of the video feed and then decodes the barcode. For the decoding of the barcode I use the popular @zxing multi code reader library. If the camera decodes successfully, it sets the value of the barcode, if not, it will return a detailed error message which also shows what kind of error.",
+        description:
+          "This function is part of my Camera component. It creates a visual input field for the camera, captures the content of the video feed and then decodes the barcode. For the decoding of the barcode I use the popular @zxing multi code reader library. If the camera decodes successfully, it sets the value of the barcode, if not, it will return a detailed error message which also shows what kind of error.",
         language: "typescript",
-        filePath: "/ts-barcode/camera.txt",
+        filePath: "/assets/snippets/ts-barcode/camera.txt",
       },
     ],
   },
   "asm-tic-tac-toe": {
     slug: "asm-tic-tac-toe",
     title: "Tic Tac Toe",
-    description: "To improve my assembly skills, I have set myself the goal of writing Tic Tac Toe in assembly. I use the emu8086 emulator to test my assembly code. This project helped me a lot to learn more about the internal structure of a CPU. I learned how to use methods and loops in assembly, how to better handle user inputs and error handling in assembly. With this project I also learned how the 32 bit addresses inside a program look like and how to assign values to them.",
+    description:
+      "To improve my assembly skills, I have set myself the goal of writing Tic Tac Toe in assembly. I use the emu8086 emulator to test my assembly code. This project helped me a lot to learn more about the internal structure of a CPU. I learned how to use methods and loops in assembly, how to better handle user inputs and error handling in assembly. With this project I also learned how the 32 bit addresses inside a program look like and how to assign values to them.",
     repoLink: "assembly-tic-tac-toe",
     techStack: "Assembly",
     videoYoutubeId: "astwYXRNOK8",
     sections: [
       {
         title: "Game initialisation",
-        description: "Here is the INIT method. This method initialises and declares all needed variables, in order to start the game without encountering any errors.",
+        description:
+          "Here is the INIT method. This method initialises and declares all needed variables, in order to start the game without encountering any errors.",
         language: "x86asm",
         code: `    INIT:         ; init all variables
     MOV PLAYER, 50
     MOV MOVES, 0
     MOV DONE, 0
     MOV DR, 0
-    
+
     MOV C1, 49
     MOV C2, 50
     MOV C3, 51
@@ -394,12 +414,13 @@ impl Snake {
     MOV C7, 55
     MOV C8, 56
     MOV C9, 57
-    
+
     JMP PLRCHANGE`,
       },
       {
         title: "Checking Rules",
-        description: "This is a section of my CHECK method. This method goes over all possible combinations and checks if a Tic Tac Toe has come along somewhere. If that happens it assigns the winner. This method runs after every turn of both players.",
+        description:
+          "This is a section of my CHECK method. This method goes over all possible combinations and checks if a Tic Tac Toe has come along somewhere. If that happens it assigns the winner. This method runs after every turn of both players.",
         language: "x86asm",
         code: `CHECK:                  ; 8 possible combinations
     CHECK1:             ; checking combo combo 1, 2, 3
@@ -420,7 +441,7 @@ impl Snake {
         MOV AL, C4
         MOV BL, C5
         MOV CL, C6
-        
+
         CMP AL, BL
         JNZ CHECK3
 
@@ -434,19 +455,20 @@ impl Snake {
         MOV AL, C4
         MOV BL, C5
         MOV CL, C6
-    
+
         CMP AL, BL
         JNZ CHECK4
-    
+
         CMP BL, CL
         JNZ CHECK4
-    
+
         MOV DONE, 1
         JMP BOARD`,
       },
       {
         title: "Handling invalid Inputs",
-        description: "This here is my TAKEN method. This method makes sure that no invalid inputs are made. If an invalid input is made, it overwrites the last input with an empty line",
+        description:
+          "This here is my TAKEN method. This method makes sure that no invalid inputs are made. If an invalid input is made, it overwrites the last input with an empty line",
         language: "x86asm",
         code: `TAKEN:
     DEC MOVES           ; set cursor
@@ -465,7 +487,7 @@ impl Snake {
         MOV DH, 16
         MOV DL, 20
         INT 10h
-    
+
     LEA DX, EMP         ; empty line to overwrite
     MOV AH, 9
     INT 21h             ; set cursor
@@ -473,7 +495,7 @@ impl Snake {
         MOV DH, 16
         MOV DL, 20
         INT 10h
-    
+
     JMP INPUT`,
       },
     ],
@@ -481,14 +503,16 @@ impl Snake {
   "java-to-do-list": {
     slug: "java-to-do-list",
     title: "To Do List",
-    description: "This project is a simple To Do List application written in Java for Desktop. It includes the whole life cycle of an application.",
+    description:
+      "This project is a simple To Do List application written in Java for Desktop. It includes the whole life cycle of an application.",
     repoLink: "java-to-do-list",
     techStack: ["Java", "CSS"],
     videoYoutubeId: "K9I_O7G8W1c",
     sections: [
       {
         title: "Main View",
-        description: "The main view of the application is where the user can see all their lists and create new ones. It uses a VBox to arrange the buttons vertically and a ScrollPane to allow the user to scroll through their lists.",
+        description:
+          "The main view of the application is where the user can see all their lists and create new ones. It uses a VBox to arrange the buttons vertically and a ScrollPane to allow the user to scroll through their lists.",
         language: "java",
         code: `/* Main View */
 @Override
@@ -536,7 +560,8 @@ public void start(Stage mainStage) {
       },
       {
         title: "Save System",
-        description: "The save system uses the org.json library to save and load the data from a JSON file. This allows the user to keep their data even after closing the application.",
+        description:
+          "The save system uses the org.json library to save and load the data from a JSON file. This allows the user to keep their data even after closing the application.",
         language: "java",
         code: `public void saveData(List<ToDoList> list) {
     // Create a JSONArray directly from the list
@@ -576,7 +601,8 @@ public List<ToDoList> loadData() {
       },
       {
         title: "ToDoList Logic",
-        description: "The ToDoList class contains all the logic for managing tasks, such as adding, deleting, and sorting tasks. It also updates the completion percentage of the list.",
+        description:
+          "The ToDoList class contains all the logic for managing tasks, such as adding, deleting, and sorting tasks. It also updates the completion percentage of the list.",
         language: "java",
         code: `public void updateCompletionPercentage() {
     completedTasks.clear();
@@ -611,13 +637,15 @@ public void deleteTask(Task task) {
   "css-valentines-card": {
     slug: "css-valentines-card",
     title: "Valentine's Card",
-    description: "This project shows a simple digital Valentine's Day card. I created this project in order to practice my CSS skills, especially CSS animations.",
+    description:
+      "This project shows a simple digital Valentine's Day card. I created this project in order to practice my CSS skills, especially CSS animations.",
     repoLink: "valentines-card",
     techStack: ["CSS", "HTML", "JavaScript"],
     sections: [
       {
         title: "Heart Styling",
-        description: "The heart is created using CSS only. It uses pseudo-elements :before and :after to create the two circles of the heart and the main div for the square part.",
+        description:
+          "The heart is created using CSS only. It uses pseudo-elements :before and :after to create the two circles of the heart and the main div for the square part.",
         language: "css",
         code: `.heart {
     height: var(--heart-size);
@@ -656,7 +684,8 @@ public void deleteTask(Task task) {
       },
       {
         title: "Animations",
-        description: "The animations are used to make the heart scale and the arrow move. This gives the card a more dynamic feel.",
+        description:
+          "The animations are used to make the heart scale and the arrow move. This gives the card a more dynamic feel.",
         language: "css",
         code: `.animate-arrow {
     animation: shoot-arrow 1s ease-out forwards;
@@ -693,14 +722,16 @@ public void deleteTask(Task task) {
   "java-calculator": {
     slug: "java-calculator",
     title: "Calculator",
-    description: "This is a semi-advanced calculator written in Java and CSS for styling using the JavaFX GUI library.",
+    description:
+      "This is a semi-advanced calculator written in Java and CSS for styling using the JavaFX GUI library.",
     repoLink: "calculator",
     techStack: ["Java", "CSS"],
     videoYoutubeId: "p_u8rE-o49E",
     sections: [
       {
         title: "Operator Actions",
-        description: "This snippet shows how the operator buttons are handled. It uses a Map to store the buttons and their corresponding operators, and then iterates through the map to set the action for each button.",
+        description:
+          "This snippet shows how the operator buttons are handled. It uses a Map to store the buttons and their corresponding operators, and then iterates through the map to set the action for each button.",
         language: "java",
         code: `//Operator Button Actions
 Map<Button, String> operatorButtons = new HashMap<>();
@@ -741,7 +772,8 @@ negateBtn.setOnAction(e -> {
       },
       {
         title: "Calculation Logic",
-        description: "The calculation logic handles the order of operations (multiplication and division first, then addition and subtraction). It splits the equation into parts and then iterates through them to perform the calculations.",
+        description:
+          "The calculation logic handles the order of operations (multiplication and division first, then addition and subtraction). It splits the equation into parts and then iterates through them to perform the calculations.",
         language: "java",
         code: `public void calculateAll() {
     if (correctNumberAndOperationAmount()) {
@@ -786,13 +818,16 @@ negateBtn.setOnAction(e -> {
   "java-jokemon": {
     slug: "java-jokemon",
     title: "Jokemon",
-    description: "In this project I created a 2D console based game with Java. The game is inspired by Pokémon but it's really limited regarding gameplay.",
+    description:
+      "In this project I created a 2D console based game with Java. The game is inspired by Pokémon but it's really limited regarding gameplay.",
     repoLink: "jokemon",
     techStack: "Java",
+    hasImage: true,
     sections: [
       {
         title: "GameState Class",
-        description: "The GameState class is used to store all the data related to the current game, such as the player's level, position, and their Jokemons. This class is serializable, which allows it to be saved and loaded from a file.",
+        description:
+          "The GameState class is used to store all the data related to the current game, such as the player's level, position, and their Jokemons. This class is serializable, which allows it to be saved and loaded from a file.",
         language: "java",
         code: `public class GameState implements Serializable {
     private int seed;
@@ -805,10 +840,10 @@ negateBtn.setOnAction(e -> {
     private List<JokemonData> playerJokemons;
     private List<JokemonData> jokemons;
     private List<WildJokemonData> wildJokemons;
-    
+
     public GameState(int seed, int playerLevel, int playerCoins, int playerTreats, int[] playerPosition,
       int playerDirection, List<JokemonData> jokemons, List<WildJokemonData> wildJokemons) {
-      
+
         this.seed = seed;
         this.playerLevel = playerLevel;
         this.playerCoins = playerCoins;
@@ -822,7 +857,8 @@ negateBtn.setOnAction(e -> {
       },
       {
         title: "Building Abstract Class",
-        description: "The Building class is an abstract class that defines the common properties and methods for all buildings in the game. It uses an enum to define the different building types.",
+        description:
+          "The Building class is an abstract class that defines the common properties and methods for all buildings in the game. It uses an enum to define the different building types.",
         language: "java",
         code: `public abstract class Building {
     // Enum for different building types
@@ -859,9 +895,9 @@ negateBtn.setOnAction(e -> {
   },
 };
 
-export const personalProjects = Object.values(projectsData).map(p => ({
+export const personalProjects = Object.values(projectsData).map((p) => ({
   title: p.title,
   description: p.description,
   lang: p.techStack,
-  link: p.slug
+  link: p.slug,
 }));
