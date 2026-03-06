@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "devicons-react": "^1.4.1",
-    "next": "^15.5.9",
+    "next": "16.1.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-syntax-highlighter": "^16.1.1"
@@ -20,11 +20,15 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
   }
 }
