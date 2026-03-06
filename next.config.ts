@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // In Next.js 16, turbopack is a top-level property
   turbopack: {
     rules: {
       "*.txt": {
@@ -10,16 +11,16 @@ const nextConfig: NextConfig = {
     },
   },
 
-  // DELETE OR COMMENT OUT THE FOLLOWING:
-  // output: "export",        <-- Remove to enable SSR, API routes, and Middleware
-  // trailingSlash: true,     <-- Optional, Vercel handles this automatically
-  // images: {                <-- Remove 'unoptimized' to let Vercel resize images for you
-  //   unoptimized: true,
-  // },
+  // Static Export Settings
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
   
-  // These are default, so you can safely remove them to keep it clean:
-  // basePath: "",
-  // assetPrefix: "",
+  // Explicitly ensuring no base path interference
+  basePath: "",
+  assetPrefix: "",
 };
 
 export default nextConfig;
