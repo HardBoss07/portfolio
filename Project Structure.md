@@ -3,27 +3,11 @@
 ```
 portfolio/
 ├── app/
-│   ├── asm-tic-tac-toe/
+│   ├── [slug]/
 │   │   └── page.tsx
 │   ├── contact/
 │   │   └── page.tsx
-│   ├── cord-path/
-│   │   └── page.tsx
-│   ├── css-valentines-card/
-│   │   └── page.tsx
-│   ├── java-calculator/
-│   │   └── page.tsx
-│   ├── java-jokemon/
-│   │   └── page.tsx
-│   ├── java-to-do-list/
-│   │   └── page.tsx
 │   ├── projects/
-│   │   └── page.tsx
-│   ├── rust-snake/
-│   │   └── page.tsx
-│   ├── tauri-resource-monitor/
-│   │   └── page.tsx
-│   ├── ts-barcode/
 │   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
@@ -42,8 +26,11 @@ portfolio/
 │   ├── RepositoryButton.tsx
 │   ├── Technologies.tsx
 │   └── YoutubeWrapper.tsx
+├── content/
+│   └── projects/
 ├── data/
 │   └── projects.ts
+├── lib/
 ├── public/
 │   └── assets/
 │       ├── images/
