@@ -1,206 +1,142 @@
 @import "tailwindcss";
 
-body {
-  @apply bg-black text-[#F207A8] font-['Roboto_Slab'] font-medium;
+@theme {
+  --color-hot-pink: #F207A8;
 }
 
-header {
-  @apply p-4 flex items-center justify-between border-b-2 mb-8;
-}
-
-header div {
-  @apply flex items-center gap-x-4 grow;
-}
-
-header a {
-  @apply text-2xl border-2 border-current px-6 py-0 rounded-full transition-colors w-48 md:w-40 hover:bg-[#F207A8] hover:text-black;
-}
-
-header div a:last-child {
-  @apply ml-auto text-right transition-colors w-48 md:w-40 bg-[#F207A8] text-black hover:bg-black hover:text-[#F207A8];
-}
-
-main {
-  @apply m-16 mt-12 px-8;
-}
-
-main h1 {
-  @apply text-7xl pb-4 border-b-2;
-}
-
-main h2 {
-  @apply text-5xl pb-4;
-}
-
-main h3 {
-  @apply text-lg pb-4;
-}
-
-main p {
-  @apply text-2xl pb-4 block;
-}
-
-main > p:first-of-type {
-  @apply mt-6;
-}
-
-.result-header {
-  @apply flex justify-between items-start border-b-2;
-}
-
-.result-header h1 {
-  @apply border-0;
-}
-
-.result {
-  @apply p-4 pb-2 border-2 mb-4;
-}
-
-.result-header a {
-  @apply transition-colors;
-}
-
-.project-card {
-  @apply p-4 pb-2 border-2 mb-4;
-}
-
-.project-card h3 {
-  @apply text-right mt-[2px];
-}
-
-.project-card-header {
-  @apply flex justify-between items-start mb-2;
-}
-
-.video-wrapper {
-  @apply relative w-full pt-[56.25%] mb-4 border-2 border-t-0;
-}
-
-iframe {
-  @apply absolute w-full h-full top-0 left-0;
-}
-
-.code-wrapper {
-  @apply text-[1rem];
-}
-
-.contact {
-  @apply text-xl flex flex-col mb-4;
-}
-
-@media (max-width: 800px) {
-  main {
-    @apply m-auto;
+@layer base {
+  body {
+    /* Brighter neutral text for better readability */
+    @apply bg-black text-neutral-300 font-['Roboto_Slab'] font-medium min-h-screen overflow-x-hidden;
   }
 
-  main h1 {
-    @apply text-6xl;
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-hot-pink font-bold leading-tight;
   }
 
-  main h2 {
-    @apply text-4xl pb-2;
+  h1 {
+    @apply text-[clamp(2.5rem,8vw,4.5rem)] mb-[1.5rem] border-b-2 border-hot-pink pb-[0.5rem];
   }
 
-  main h3 {
-    @apply text-sm;
+  h2 {
+    @apply text-[clamp(1.75rem,5vw,3rem)] mb-[1rem];
   }
 
-  main p {
-    @apply text-xl;
+  h3 {
+    @apply text-[clamp(1.1rem,3vw,1.5rem)] mb-[0.75rem];
   }
 
-  header,
-  .result-header {
-    @apply basis-1/2;
+  p {
+    @apply text-[clamp(1rem,2vw,1.25rem)] leading-relaxed mb-[1.5rem] block;
+  }
+
+  a {
+    @apply transition-all duration-300 ease-in-out decoration-hot-pink/30 hover:decoration-hot-pink;
+  }
+
+  footer {
+    @apply py-[3rem] px-[5vw] border-t-2 border-hot-pink mt-auto text-hot-pink text-center font-bold;
+  }
+
+  /* Specific paragraph spacing from original */
+  main > p:first-of-type {
+    @apply mt-[1.5rem];
+  }
+}
+
+@layer components {
+  header {
+    /* Full width border (100vw) */
+    @apply w-full border-b-2 border-hot-pink mb-[3rem];
+  }
+
+  .header-content {
+    /* Inner container matching main's width/alignment */
+    @apply w-[90vw] max-w-[75rem] mx-auto py-[1.5rem] flex flex-col md:flex-row items-center justify-between;
   }
 
   header div {
-    @apply grid grid-cols-2 gap-4 m-0;
+    @apply flex flex-wrap items-center justify-center md:justify-start gap-[1rem] w-full;
+  }
+
+  header a {
+    /* Sharper corners and sizing matching project buttons (Repository/Live Demo) */
+    @apply text-[clamp(1rem,2vw,1.2rem)] border-2 border-hot-pink px-[1.5rem] py-[0.5rem] rounded-[0.25rem] text-hot-pink font-bold transition-all hover:bg-hot-pink hover:text-black hover:translate-y-[-2px] active:translate-y-0;
   }
 
   header div a:last-child {
-    @apply text-left w-full;
+    @apply md:ml-auto bg-hot-pink text-black hover:bg-black hover:text-hot-pink;
   }
 
-  header a {
-    @apply w-full text-xl;
-  }
-
-  .code-wrapper {
-    @apply text-[0.9rem];
-  }
-
-  .result-header a {
-    @apply text-xl;
-  }
-}
-
-@media (max-width: 480px) {
   main {
-    @apply mb-6 p-6;
-  }
-
-  main h1 {
-    @apply text-5xl;
-  }
-
-  main h2 {
-    @apply text-3xl pb-1;
-  }
-
-  main h3 {
-    @apply text-xs;
-  }
-
-  main p {
-    @apply text-sm;
-  }
-
-  main > p:first-of-type {
-    @apply mt-4;
-  }
-
-  footer p {
-    @apply text-base pb-0;
-  }
-
-  .result div {
-    @apply m-0 p-0;
-  }
-
-  .code-wrapper {
-    @apply text-[0.75rem];
+    @apply w-[90vw] max-w-[75rem] mx-auto min-h-[80vh] flex flex-col;
   }
 
   .result-header {
-    @apply flex-col;
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-hot-pink pb-[0.5rem] mb-[1.5rem] gap-[1rem];
   }
 
   .result-header h1 {
-    @apply pb-2;
+    @apply mb-0 border-0 pb-0;
   }
 
-  .result-header a {
-    @apply text-base w-40 text-left ml-0 mb-4;
+  .result {
+    @apply p-[1.5rem] border-2 border-neutral-800 rounded-[0.5rem] mb-[2rem] bg-neutral-900/10 backdrop-blur-sm hover:border-hot-pink/40 transition-colors;
+  }
+
+  .project-card {
+    @apply p-[1.5rem] border-2 border-neutral-800 rounded-[0.5rem] mb-[1.5rem] bg-neutral-900/10 transition-all hover:border-hot-pink/40 hover:shadow-[0_0.5rem_2rem_-1rem_rgba(242,7,168,0.2)];
   }
 
   .project-card-header {
-    @apply block;
+    @apply flex flex-col sm:flex-row justify-between items-start mb-[1rem] gap-[0.5rem];
+  }
+
+  .project-card h2 {
+    @apply mb-0;
   }
 
   .project-card h3 {
-    @apply text-left pb-1;
+    @apply mb-0 text-neutral-400 font-normal italic sm:text-right;
   }
 
-  header div {
-    @apply grid grid-cols-2 gap-2 m-0;
+  .video-wrapper {
+    @apply w-full aspect-video mb-[2rem] border-2 border-hot-pink rounded-[0.5rem] overflow-hidden bg-black;
   }
 
-  header a {
-    @apply text-base;
+  iframe {
+    @apply w-full h-full border-0;
+  }
+
+  .code-wrapper {
+    @apply text-[clamp(0.8rem,1.5vw,1rem)] rounded-[0.5rem] border-2 border-neutral-800 overflow-hidden my-[1.5rem];
   }
 
   .contact {
-    @apply text-base mb-2;
+    @apply flex flex-col gap-[0.5rem] mb-[1.5rem] text-[clamp(1rem,2.5vw,1.25rem)] text-neutral-400;
+  }
+
+  .project-image-container {
+    @apply w-full rounded-[0.5rem] overflow-hidden border-2 border-neutral-800 my-[2rem] transition-colors hover:border-hot-pink/40;
+  }
+}
+
+/* Fluid responsive adjustments */
+@media (width < 48rem) {
+  header div {
+    /* Sharper grid layout for mobile */
+    @apply grid grid-cols-2 gap-[0.5rem] w-full;
+  }
+
+  header a {
+    @apply w-full text-center px-[0.25rem] text-[0.85rem];
+  }
+
+  .header-content {
+    @apply py-[1rem];
+  }
+
+  .result-header a {
+    @apply ml-0;
   }
 }
