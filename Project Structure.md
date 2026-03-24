@@ -28,19 +28,21 @@ portfolio/
 │   └── YoutubeWrapper.tsx
 ├── content/
 │   └── projects/
-├── data/
-│   └── projects.ts
+│       ├── asm-tic-tac-toe.mdx
+│       ├── cord-path.mdx
+│       ├── css-valentines-card.mdx
+│       ├── java-calculator.mdx
+│       ├── java-jokemon.mdx
+│       ├── java-to-do-list.mdx
+│       ├── rust-snake.mdx
+│       ├── tauri-resource-monitor.mdx
+│       └── ts-barcode.mdx
 ├── lib/
+│   └── projects.ts
 ├── public/
 │   └── assets/
-│       ├── images/
-│       │   └── java-jokemon.png
-│       └── snippets/
-│           ├── tauri-resource-monitor/
-│           │   └── LineGraph.txt
-│           └── ts-barcode/
-│               ├── barcode.txt
-│               └── camera.txt
+│       └── images/
+│           └── java-jokemon.png
 ├── types/
 │   └── project.ts
 ├── LICENSE
