@@ -1,20 +1,21 @@
 import ProjectCard from "@/components/ProjectCard";
-import { personalProjects } from "@/data/projects";
+import { getAllProjects } from "@/lib/projects";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  lang: string | string[];
-  link: string;
-}
+export default async function Projects() {
+  const projects = await getAllProjects();
 
-export default function Projects() {
   return (
     <main>
       <h1>My Projects</h1>
       <div className="mt-6">
-        {personalProjects.map((props: ProjectCardProps, index: number) => (
-          <ProjectCard key={index} {...props} />
+        {projects.map((project, index: number) => (
+          <ProjectCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            lang={project.techStack}
+            link={project.slug}
+          />
         ))}
       </div>
     </main>

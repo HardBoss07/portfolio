@@ -1,61 +1,32 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import RepositoryButton from "./RepositoryButton";
 import DownloadButton from "./DownloadButton";
 import LiveDemoButton from "./LiveDemoButton";
-import Code from "./Code";
 import ProjectVideo from "./ProjectVideo";
-import { Project } from "@/types/project";
+import { ProjectMetadata } from "@/types/project";
 
 interface ProjectTemplateProps {
-  project: Project;
+  metadata: ProjectMetadata;
+  children: React.ReactNode;
 }
 
-export default function ProjectTemplate({ project }: ProjectTemplateProps) {
-  const [sections, setSections] = useState(project.sections);
-
-  useEffect(() => {
-    // Fetch external snippets if needed
-    const fetchSnippets = async () => {
-      const updatedSections = await Promise.all(
-        project.sections.map(async (section) => {
-          if (section.filePath && !section.code) {
-            try {
-              const res = await fetch(section.filePath);
-              const code = await res.text();
-              return { ...section, code };
-            } catch (err) {
-              console.error(
-                `Failed to fetch snippet from ${section.filePath}`,
-                err,
-              );
-              return section;
-            }
-          }
-          return section;
-        }),
-      );
-      setSections(updatedSections);
-    };
-
-    fetchSnippets();
-  }, [project.sections]);
-
+export default function ProjectTemplate({
+  metadata,
+  children,
+}: ProjectTemplateProps) {
   return (
     <main>
       <div className="result-header">
-        <h1>{project.title}</h1>
-        <RepositoryButton link={project.repoLink} />
+        <h1>{metadata.title}</h1>
+        <RepositoryButton link={metadata.repoLink} />
       </div>
-      <p>{project.description}</p>
+      <p>{metadata.description}</p>
 
-      {project.hasImage && (
+      {metadata.hasImage && (
         <div className="project-image-container my-8">
           <Image
-            src={`/assets/images/${project.slug}.png`}
-            alt={`${project.title} screenshot`}
+            src={`/assets/images/${metadata.slug}.png`}
+            alt={`${metadata.title} screenshot`}
             width={1200}
             height={800}
             className="rounded-lg shadow-lg"
@@ -63,50 +34,40 @@ export default function ProjectTemplate({ project }: ProjectTemplateProps) {
         </div>
       )}
 
-      {sections.map((section, idx) => (
-        <div key={idx} className="result">
-          <h2>{section.title}</h2>
-          <div>
-            <p>{section.description}</p>
-            {section.code && (
-              <Code language={section.language || "tsx"}>{section.code}</Code>
-            )}
-          </div>
-        </div>
-      ))}
+      {children}
 
-      {project.downloadLink && (
+      {metadata.downloadLink && (
         <>
           <div className="result-header">
             <h1>Try it out yourself!</h1>
-            <DownloadButton link={project.downloadLink} />
+            <DownloadButton link={metadata.downloadLink} />
           </div>
           <p className="mt-2">
-            {project.downloadText ||
+            {metadata.downloadText ||
               "If you want to try this app out for yourself, click on the download button and install from GitHub."}
           </p>
         </>
       )}
 
-      {project.liveDemoLink && (
+      {metadata.liveDemoLink && (
         <>
           <div className="result-header">
             <h1>Live Demonstration</h1>
-            <LiveDemoButton link={project.liveDemoLink} />
+            <LiveDemoButton link={metadata.liveDemoLink} />
           </div>
           <p className="mt-2">
-            {project.liveDemoText ||
+            {metadata.liveDemoText ||
               "You can try the web app yourself by clicking on the button."}
           </p>
         </>
       )}
 
-      {project.videoYoutubeId && (
+      {metadata.videoYoutubeId && (
         <>
-          <h1>Video Demonstration</h1>
+          <h1 className="mt-8">Video Demonstration</h1>
           <ProjectVideo
-            youtubeId={project.videoYoutubeId}
-            title={project.title}
+            youtubeId={metadata.videoYoutubeId}
+            title={metadata.title}
           />
         </>
       )}
