@@ -1,0 +1,91 @@
+---
+title: Jokemon
+description: In this project I created a 2D console based game with Java. The game is inspired by Pokémon but it's really limited regarding gameplay.
+repoLink: jokemon
+techStack: Java
+hasImage: true
+---
+
+## GameState Class
+
+The GameState class is used to store all the data related to the current game, such as the player's level, position, and their Jokemons. This class is serializable, which allows it to be saved and loaded from a file.
+
+```java
+public class GameState implements Serializable {
+    private int seed;
+    private int playerLevel;
+    private int playerCoins;
+    private int playerTreats;
+    private int[] playerPosition;
+    private int playerDirection;
+
+    private List<JokemonData> playerJokemons;
+    private List<JokemonData> jokemons;
+    private List<WildJokemonData> wildJokemons;
+
+    public GameState(int seed, int playerLevel, int playerCoins, int playerTreats, int[] playerPosition,
+      int playerDirection, List<JokemonData> jokemons, List<WildJokemonData> wildJokemons) {
+
+        this.seed = seed;
+        this.playerLevel = playerLevel;
+        this.playerCoins = playerCoins;
+        this.playerTreats = playerTreats;
+        this.playerPosition = playerPosition;
+        this.playerDirection = playerDirection;
+        this.jokemons = jokemons;
+        this.wildJokemons = wildJokemons;
+    }
+}
+```
+
+## Building Abstract Class
+
+The Building class is an abstract class that defines the common properties and methods for all buildings in the game. It uses an enum to define the different building types.
+
+```java
+public abstract class Building {
+    // Enum for different building types
+    public enum BuildingType {
+        MEDICAL,
+        SHOP,
+        HOUSE,
+        OUTSIDE
+    }
+
+    // Common properties
+    protected int centerX;
+    protected int centerY;
+    protected BuildingType buildingType;
+    protected boolean canEnter;
+    protected char[][] design;
+
+    // Constructor for the abstract class
+    public Building(int centerX, int centerY, BuildingType buildingType, boolean canEnter, char[][] design) {
+        this.centerX = centerX;
+        this.centerY = centerY;
+        this.buildingType = buildingType;
+        this.canEnter = canEnter;
+        this.design = design;
+    }
+
+    // Getter for the Design of the abstract class
+    public char[][] getBuildingDesign() {
+        return design;
+    }
+}
+```
+
+## Java 21 Feature Demonstration: Pattern Matching for switch
+
+To verify the syntax highlighting and Java 21 compatibility, here is a snippet using pattern matching for switch, introduced as a standard feature in Java 21.
+
+```java
+public String getBuildingDescription(Building building) {
+    return switch (building) {
+        case MedicalBuilding m -> "A medical facility located at (" + m.centerX + ", " + m.centerY + ")";
+        case ShopBuilding s -> "A shop where you can buy items";
+        case HouseBuilding h -> "A private residence";
+        default -> "An unknown building type";
+    };
+}
+```

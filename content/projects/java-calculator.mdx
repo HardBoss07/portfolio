@@ -1,0 +1,94 @@
+---
+title: Calculator
+description: This is a semi-advanced calculator written in Java and CSS for styling using the JavaFX GUI library.
+repoLink: calculator
+techStack: ["Java", "CSS"]
+videoYoutubeId: p_u8rE-o49E
+---
+
+## Operator Actions
+
+This snippet shows how the operator buttons are handled. It uses a Map to store the buttons and their corresponding operators, and then iterates through the map to set the action for each button.
+
+```java
+//Operator Button Actions
+Map<Button, String> operatorButtons = new HashMap<>();
+operatorButtons.put(addBtn, "+");
+operatorButtons.put(subtractBtn, "-");
+operatorButtons.put(multiplyBtn, "*");
+operatorButtons.put(divideBtn, "/");
+
+operatorButtons.forEach((button, operator) ->
+        button.setOnAction(e -> {
+            if (!calc.currentNumber.isEmpty()) {
+                calc.allNumbers.add(calc.currentNumber);
+                calc.currentNumber = "";
+                calc.allOperations.add(operator);
+            } else if (!calc.allOperations.isEmpty()) {
+                calc.allOperations.set(calc.allOperations.size() - 1, operator);
+            } else {
+                calc.allOperations.add(operator);
+            }
+            equationLabel.setText(calc.getCurrentEquation());
+        })
+);
+
+//Negate button
+negateBtn.setOnAction(e -> {
+    if (calc.currentNumber.isEmpty()) {
+        calc.currentNumber += "-";
+    } else {
+        if (calc.currentNumber.charAt(0) == '-') {
+            calc.currentNumber = calc.currentNumber.substring(1);
+        } else {
+            calc.currentNumber = "-" + calc.currentNumber;
+        }
+    }
+    output.setText(calc.getCurrentNumber());
+    equationLabel.setText(calc.getCurrentEquation());
+});
+```
+
+## Calculation Logic
+
+The calculation logic handles the order of operations (multiplication and division first, then addition and subtraction). It splits the equation into parts and then iterates through them to perform the calculations.
+
+```java
+public void calculateAll() {
+    if (correctNumberAndOperationAmount()) {
+        try {
+            String[] parts = currentEquation.split(" ");
+            System.out.println("Parts: " + Arrays.toString(parts));
+
+            for (int i = 1; i < parts.length; i++) {
+                if (parts[i].equals("*") || parts[i].equals("/")) {
+                    double prevNum = Double.parseDouble(parts[i - 1]);
+                    double nextNum = Double.parseDouble(parts[i + 1]);
+                    double resultPart = 0;
+
+                    if (parts[i].equals("*")) {
+                        resultPart = prevNum * nextNum;
+                    } else if (parts[i].equals("/")) {
+                        if (nextNum == 0) {
+                            result = "#ERROR#";
+                            return;
+                        }
+                        resultPart = prevNum / nextNum;
+                    }
+
+                    parts[i - 1] = String.valueOf(resultPart);
+                    for (int j = i; j < parts.length - 2; j++) {
+                        parts[j] = parts[j + 2];
+                    }
+                    parts = Arrays.copyOf(parts, parts.length - 2);
+                    i--;
+                }
+            }
+        } catch (Exception e) {
+            result = "#ERROR#";
+        }
+    } else {
+        result = "#ERROR#";
+    }
+}
+```

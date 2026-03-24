@@ -1,0 +1,122 @@
+---
+title: 1D & 2D Barcodes
+description: I created this project in order to gain more experience with the NextJS framework. With this web app you can generate different types of 1 and 2 dimensional barcodes, such as QR Codes, EAN-13 Codes, Code 128 codes or Data Matrix. This web app also allows you to to scan your previously generated codes and other codes. For the styling of the web app I chose the Tailwind CSS library for inline styling and in general shortened styling.
+repoLink: barcode-reader
+techStack: TypeScript
+liveDemoLink: qr
+liveDemoText: You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. From personal experience I noticed the web app does not always work on Android devices.
+videoYoutubeId: p57TidpYQ3Q
+---
+
+## Barcode Component
+
+This React component takes in props and based off of these props it generates a barcode. With the prop chosenOption you can define what type of code you want. The prop value defines the content of the barcode. To generate the barcodes I used the bwipjs library. At the end, this component returns either the successfully rendered barcode or an error message.
+
+```typescript
+interface BarCodeProps {
+    chosenOption: string;
+    value: string;
+    onRendered?: (canvas: HTMLCanvasElement) => void;
+}
+
+export default function BarCode({chosenOption, value, onRendered}: BarCodeProps) {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        setError(null);
+        if (!canvasRef.current) return;
+
+        try {
+            bwipjs.toCanvas(canvasRef.current, {
+                bcid: chosenOption,
+                text: value,
+                scale: 3,
+                includetext: true,
+                textxalign: 'center',
+            });
+            if (onRendered) {
+                onRendered(canvasRef.current);
+            }
+        } catch (e: any) {
+            console.error("Barcode generation error:", e);
+            setError(e.message || 'Failed to generate barcode.');
+        }
+    }, [value, chosenOption, onRendered])
+
+    return (
+        <div className="w-full h-auto border rounded-lg p-4 bg-white flex items-center justify-center">
+            {error ? (
+                <p className="text-red-500 text-center text-sm font-medium">{error}</p>
+            ) : (
+                <canvas ref={canvasRef} className="w-full h-auto" />
+            )}
+        </div>
+    );
+}
+```
+
+## getCameraStream()
+
+This function is part of my Camera component. It creates a visual input field for the camera, captures the content of the video feed and then decodes the barcode. For the decoding of the barcode I use the popular @zxing multi code reader library. If the camera decodes successfully, it sets the value of the barcode, if not, it will return a detailed error message which also shows what kind of error.
+
+```typescript
+const codeReader = new BrowserMultiFormatReader();
+let active = true;
+
+const getCameraStream = async () => {
+    try {
+        console.log('Requesting camera access...');
+
+        const constraints = {
+            audio: false,
+            video: {
+                facingMode: {ideal: 'environment'},
+                width: {min: 640, ideal: 1280, max: 1920},
+                height: {min: 480, ideal: 720, max: 1080},
+                frameRate: {ideal: 30}
+            }
+        };
+
+        let videoStream;
+        try {
+            videoStream = await navigator.mediaDevices.getUserMedia(constraints);
+        } catch (idealError) {
+            console.log('Ideal constraints failed, trying more relaxed constraints');
+            videoStream = await navigator.mediaDevices.getUserMedia({
+                audio: false,
+                video: {
+                    facingMode: 'environment',
+                    width: {min: 320, ideal: 640},
+                    height: {min: 240, ideal: 480}
+                }
+            });
+        }
+
+        console.log('Camera stream obtained:', videoStream);
+        setHasPermission(true);
+
+        if (videoRef.current) {
+            videoRef.current.srcObject = videoStream;
+
+            codeReader.decodeFromVideoDevice(null, videoRef.current, (result, err) => {
+                if (active && result) {
+                    console.log('Barcode detected:', result.getText());
+                    setBarcode(result.getText());
+                }
+            });
+        }
+    } catch (e: any) {
+        console.error('Camera access failed:', e.name, e.message);
+        setError(`Camera access failed: ${e.name} – ${e.message}`);
+
+        if (e.name === 'NotAllowedError') {
+            setError('Please allow camera access in your browser settings');
+        } else if (e.name === 'NotFoundError' || e.name === 'OverconstrainedError') {
+            setError('No suitable camera found. Please try with a different device.');
+        } else {
+            setError('Failed to access camera: ' + e.message);
+        }
+    }
+};
+```
