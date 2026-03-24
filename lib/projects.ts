@@ -5,7 +5,9 @@ import { ProjectMetadata, ProjectData } from "@/types/project";
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
 
-export async function getProjectBySlug(slug: string): Promise<ProjectData | null> {
+export async function getProjectBySlug(
+  slug: string,
+): Promise<ProjectData | null> {
   try {
     const filePath = path.join(PROJECTS_DIRECTORY, `${slug}.mdx`);
     if (!fs.existsSync(filePath)) {

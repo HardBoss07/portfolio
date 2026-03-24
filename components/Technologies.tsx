@@ -62,7 +62,6 @@ import {
   YamlOriginal,
   SurrealdbOriginal,
   DartOriginal,
-
 } from "devicons-react";
 
 interface Technology {
@@ -149,7 +148,7 @@ export default function Technologies() {
 
   // Programmatically split technologies into NUM_ROWS sub-arrays
   const rows = Array.from({ length: NUM_ROWS }, (_, i) =>
-    technologies.filter((_, idx) => idx % NUM_ROWS === i)
+    technologies.filter((_, idx) => idx % NUM_ROWS === i),
   );
 
   const BASE_DURATION_PER_ITEM = 5; // Seconds per item
@@ -161,17 +160,23 @@ export default function Technologies() {
         {rows.map((row, rowIndex) => {
           const duration = `${row.length * BASE_DURATION_PER_ITEM * modifiers[rowIndex % modifiers.length]}s`;
           const isReverse = rowIndex % 2 === 0;
-          const animationClass = isReverse ? "animate-marquee-reverse" : "animate-marquee";
+          const animationClass = isReverse
+            ? "animate-marquee-reverse"
+            : "animate-marquee";
 
           return (
             <div
               key={rowIndex}
               className="flex whitespace-nowrap"
-              style={{
-                "--duration": duration,
-              } as React.CSSProperties}
+              style={
+                {
+                  "--duration": duration,
+                } as React.CSSProperties
+              }
             >
-              <div className={`flex shrink-0 items-center gap-x-[1.5rem] px-[0.75rem] ${animationClass}`}>
+              <div
+                className={`flex shrink-0 items-center gap-x-[1.5rem] px-[0.75rem] ${animationClass}`}
+              >
                 {row.concat(row).map(({ label, icon: Icon }, idx) => (
                   <div
                     key={`${label}-${idx}`}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-hot-pink: #F207A8;
+  --color-hot-pink: #f207a8;
 }
 
 @keyframes marquee {
@@ -37,7 +37,12 @@
     @apply bg-black text-neutral-300 font-['Roboto_Slab'] font-medium min-h-screen overflow-x-hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply text-hot-pink font-bold leading-tight;
   }
 
@@ -89,7 +94,6 @@
   }
 
   main {
-
     @apply w-[90vw] max-w-[75rem] mx-auto min-h-[80vh] flex flex-col;
   }
 

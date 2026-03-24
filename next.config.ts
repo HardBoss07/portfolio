@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   // images: {                <-- Remove 'unoptimized' to let Vercel resize images for you
   //   unoptimized: true,
   // },
-  
+
   // These are default, so you can safely remove them to keep it clean:
   // basePath: "",
   // assetPrefix: "",
