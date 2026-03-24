@@ -46,29 +46,23 @@
 
 @layer components {
   header {
-    /* Full width border (100vw) */
-    @apply w-full border-b-2 border-hot-pink mb-[3rem];
-  }
-
-  .header-content {
-    /* Inner container matching main's width/alignment */
-    @apply w-[90vw] max-w-[75rem] mx-auto py-[1.5rem] flex flex-col md:flex-row items-center justify-between;
+    @apply p-4 flex items-center justify-between border-b-2 mb-8 border-hot-pink;
   }
 
   header div {
-    @apply flex flex-wrap items-center justify-center md:justify-start gap-[1rem] w-full;
+    @apply flex items-center gap-x-4 grow;
   }
 
   header a {
-    /* Sharper corners and sizing matching project buttons (Repository/Live Demo) */
-    @apply text-[clamp(1rem,2vw,1.2rem)] border-2 border-hot-pink px-[1.5rem] py-[0.5rem] rounded-[0.25rem] text-hot-pink font-bold transition-all hover:bg-hot-pink hover:text-black hover:translate-y-[-2px] active:translate-y-0;
+    @apply text-2xl border-2 border-current px-6 py-0 rounded-full transition-colors w-48 md:w-40 text-hot-pink hover:bg-hot-pink hover:text-black;
   }
 
   header div a:last-child {
-    @apply md:ml-auto bg-hot-pink text-black hover:bg-black hover:text-hot-pink;
+    @apply ml-auto text-right transition-colors w-48 md:w-40 bg-hot-pink text-black hover:bg-black hover:text-hot-pink;
   }
 
   main {
+
     @apply w-[90vw] max-w-[75rem] mx-auto min-h-[80vh] flex flex-col;
   }
 
@@ -121,22 +115,32 @@
   }
 }
 
-/* Fluid responsive adjustments */
-@media (width < 48rem) {
+/* Fluid responsive adjustments using rem-based width */
+@media (width < 50rem) {
+  header,
+  .result-header {
+    @apply basis-1/2;
+  }
+
   header div {
-    /* Sharper grid layout for mobile */
-    @apply grid grid-cols-2 gap-[0.5rem] w-full;
+    @apply grid grid-cols-2 gap-4 m-0;
+  }
+
+  header div a:last-child {
+    @apply text-left w-full;
   }
 
   header a {
-    @apply w-full text-center px-[0.25rem] text-[0.85rem];
+    @apply w-full text-xl;
+  }
+}
+
+@media (width < 30rem) {
+  header div {
+    @apply grid grid-cols-2 gap-2 m-0;
   }
 
-  .header-content {
-    @apply py-[1rem];
-  }
-
-  .result-header a {
-    @apply ml-0;
+  header a {
+    @apply text-base;
   }
 }

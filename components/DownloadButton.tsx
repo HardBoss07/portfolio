@@ -8,7 +8,7 @@ export default function DownloadButton({ link }: DownloadButtonProps) {
       href={`https://github.com/HardBoss07/${link}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="ml-auto flex items-center justify-center gap-2 rounded-[0.25rem] border-2 border-current bg-[#F207A8] px-6 py-1 text-[1.25rem] text-black transition-colors hover:bg-black hover:text-[#F207A8] w-[13rem]"
+      className="ml-auto flex items-center justify-center gap-2 rounded-full border-2 border-current bg-[#F207A8] px-6 py-0 text-2xl text-left text-black transition-colors hover:bg-black hover:text-[#F207A8] w-[13rem]"
     >
       <span>Download</span>
       <svg
