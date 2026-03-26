@@ -1,0 +1,160 @@
+---
+title: Portfolio Leonie Bosshard
+description: This is a professional portfolio created with Next.js portraying my client, Leonie Bosshard, and her professional work in photography, graphic design, and more.
+repoLink: leonie-bosshard-portfolio
+techStack: TypeScript
+liveDemoLink: leoniebosshard
+liveDemoText: You can view her portfolio by clicking the button and potentially hire her for your next photography needs.
+---
+
+## Dynamic Project Card Generation
+
+With this strongly typed export of projects, the frontend dynamically generates project cards by utilizing some of Next.js's core features.
+
+```typescript
+const suffix: string = "/projects/";
+const graphicDesign: string = `${suffix}graphic-design/#`;
+const photography: string = `${suffix}photography/#`;
+const uiUxInterface: string = `${suffix}ui-ux-interface/#`;
+const analogProjects: string = `${suffix}analog-projects/#`;
+
+export const projects: ProjectCardProps[] = [
+  {
+    coverImage: projectImages.graphicDesign[0].src,
+    name: "Poster Design",
+    category: "Grafik Design",
+    url: `${graphicDesign}posters`,
+  },
+  {
+    coverImage: projectImages.mora[0].src,
+    name: "Brand Concept: mora",
+    category: "Grafik Design",
+    url: `${graphicDesign}brand-concept`,
+  },
+  {
+    coverImage: projectImages.redentApp[0].src,
+    name: "Re:Dent App",
+    category: "UX / UI Interface",
+    url: `${uiUxInterface}redent-app`,
+  },
+  {
+    coverImage: projectImages.kaosKomplett[0].src,
+    name: "Kaos Komplett",
+    category: "Analoge Projekte",
+    url: `${analogProjects}kaos-komplett`,
+  },
+];
+```
+
+## Custom Speedometer Icon
+
+This component generates a speedometer icon with a specified tool in the center and a skill indicator on a 0-100 scale that dynamically changes based on the value.
+
+```typescript
+const SkillIndicator: React.FC<SkillIndicatorComponentProps> = ({
+  icon,
+  skill,
+  className,
+}) => {
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (skill / 100) * circumference;
+
+  const renderIcon = () => {
+    if (icon.startsWith("Adobe")) {
+      const toolName = icon.replace("Adobe ", "").replace(" ", "") as AdobeTool;
+      return <AdobeIcon tool={toolName} size={32} />;
+    }
+
+    if (icon === "Figma") {
+      return <Figma className="w-8 h-8 text-primary-text" />;
+    }
+
+    return <span className="text-white text-[0.625rem] uppercase">Icon</span>;
+  };
+
+  return (
+    <div className={cn("flex flex-col items-center", className)}>
+      <div className="relative w-24 h-24">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <circle
+            className="stroke-neutral-800"
+            strokeWidth="8"
+            fill="transparent"
+            r={radius}
+            cx="50"
+            cy="50"
+          />
+          <circle
+            className="stroke-primary-accent"
+            strokeWidth="8"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            fill="transparent"
+            r={radius}
+            cx="50"
+            cy="50"
+            transform="rotate(-90 50 50)"
+          />
+        </svg>
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          {renderIcon()}
+        </div>
+      </div>
+
+      <span className="mt-2 text-primary-accent text-lg font-bold">
+        {skill}%
+      </span>
+
+      <span className="text-primary-text font-bold text-md capitalize">
+        {icon}
+      </span>
+    </div>
+  );
+};
+
+export default SkillIndicator;
+```
+
+## Modifyable Headshot component
+
+This component returns a headshot image with dynamic styling passed via parameters. The styling follows the modern standard of merging styles defined inside the component with those passed in as parameters by utilizing a cn utility function.
+
+```typescript
+import Image from "next/image";
+import { cn } from "@/lib/utils/cn";
+import { HeadshotProps } from "@/types/headshot";
+
+const Headshot = ({
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
+  className,
+}: HeadshotProps) => {
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden",
+        topLeft ? "rounded-tl-full" : "rounded-tl-xl",
+        topRight ? "rounded-tr-full" : "rounded-tr-xl",
+        bottomLeft ? "rounded-bl-full" : "rounded-bl-xl",
+        bottomRight ? "rounded-br-full" : "rounded-br-xl",
+        className,
+      )}
+    >
+      <Image
+        src="/images/headshot.avif"
+        alt="Headshot"
+        fill
+        priority
+        className="object-cover transition-all duration-300 bg-neutral-800"
+      />
+    </div>
+  );
+};
+
+export default Headshot;
+```
