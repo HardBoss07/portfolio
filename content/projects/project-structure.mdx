@@ -50,7 +50,7 @@ pub struct Cli {
 
 In this main function, you can see the modular architecture of the project. Instead of having one giant function, it breaks the logic down into different modules that handle specific tasks before passing the data to the next step.
 
-```rust
+````rust
 fn main() -> Result<()> {
     let cli = Cli::parse();
     let config = Config::from(cli.clone());
@@ -88,7 +88,7 @@ fn main() -> Result<()> {
 
     Ok(())
 }
-```
+````
 
 ## Example Showcase
 

@@ -29,14 +29,18 @@ portfolio/
 ├── content/
 │   └── projects/
 │       ├── asm-tic-tac-toe.mdx
+│       ├── auto-ocr.mdx
 │       ├── cord-path.mdx
 │       ├── css-valentines-card.mdx
 │       ├── java-calculator.mdx
 │       ├── java-jokemon.mdx
 │       ├── java-to-do-list.mdx
+│       ├── project-structure.mdx
 │       ├── rust-snake.mdx
 │       ├── tauri-resource-monitor.mdx
-│       └── ts-barcode.mdx
+│       ├── ts-barcode.mdx
+│       ├── ts-client-portfolio.mdx
+│       └── wordle-bot.mdx
 ├── lib/
 │   └── projects.ts
 ├── public/
