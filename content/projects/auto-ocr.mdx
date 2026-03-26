@@ -1,0 +1,105 @@
+---
+title: AutoOCR
+description: Effortless OCR for Windows. Convert screenshots to text instantly and stay productive with a simple global hotkey.
+repoLink: AutoOCR
+techStack: Rust
+---
+
+## Thread Handling
+
+Since my goal was to write a minimal program that leaves almost no footprint unless used, I decided to handle this by spawning a second background thread.
+
+```rust
+thread::spawn(move || {
+    let device_state = DeviceState::new();
+    let mut clipboard = Clipboard::new().unwrap();
+
+    // Define path to tessdata relative to the EXE
+    let mut tessdata_path = std::env::current_exe().unwrap();
+    tessdata_path.pop();
+    tessdata_path.push("tessdata");
+
+    loop {
+        let keys = device_state.get_keys();
+
+        // Trigger: Shift + Alt + O
+        if keys.contains(&Keycode::LShift)
+            && keys.contains(&Keycode::LAlt)
+            && keys.contains(&Keycode::O)
+        {
+            if let Ok(image) = clipboard.get_image() {
+                if let Some(text) = perform_ocr(&image, &tessdata_path) {
+                    let cleaned = text.trim().to_string();
+                    if !cleaned.is_empty() {
+                        let _ = clipboard.set_text(cleaned);
+                        notify("AutoOCR", "Text copied to clipboard!");
+                    } else {
+                        notify("AutoOCR", "OCR finished, but no text found.");
+                    }
+                } else {
+                    notify("AutoOCR", "OCR Failed. Check tessdata folder.");
+                }
+            }
+            // Cooldown to prevent multiple triggers in one press
+            thread::sleep(Duration::from_millis(1000));
+        }
+        // Low sleep to keep CPU usage minimal
+        thread::sleep(Duration::from_millis(50));
+    }
+});
+```
+
+## System Tray Menu
+
+Since it is a background task, I felt it didn't need to be visible via the taskbar and moved it into the system tray. Here you can see the simple setup for keeping it running in the tray.
+
+```rust
+// Setup Tray Menu
+let tray_menu = Menu::new();
+let quit_item = MenuItem::new("Quit AutoOCR", true, None);
+let quit_id = quit_item.id();
+tray_menu.append(&quit_item).unwrap();
+
+let icon = load_icon();
+// Keep this variable in scope to keep the tray icon alive
+let _tray_icon = TrayIconBuilder::new()
+    .with_menu(Box::new(tray_menu))
+    .with_tooltip("AutoOCR - Shift+Alt+O")
+    .with_icon(icon)
+    .build()
+    .unwrap();
+```
+
+## Performing the optical Character Recognition
+
+This function initializes the Tesseract OCR engine and performs optical character recognition. This process works by splitting the image into smaller chunks, passing these chunks to Tesseract, and retrieving the results.
+
+```rust
+fn perform_ocr(img: &ImageData, path: &PathBuf) -> Option<String> {
+    // Check for existence to avoid crashing
+    if !path.exists() {
+        return None;
+    }
+
+    // Initialize with your 5 language packs
+    let mut lt = LepTess::new(Some(path.to_str()?), "eng+deu+hin+pol+rus").ok()?;
+
+    // Convert RGBA to RGB (strip Alpha channel)
+    let mut rgb_data = Vec::with_capacity(img.width * img.height * 3);
+    for chunk in img.bytes.chunks_exact(4) {
+        rgb_data.push(chunk[0]); // R
+        rgb_data.push(chunk[1]); // G
+        rgb_data.push(chunk[2]); // B
+    }
+
+    // Prepare image for Tesseract via Leptonica
+    let img_buffer = RgbImage::from_raw(img.width as u32, img.height as u32, rgb_data)?;
+    let mut buffer = std::io::Cursor::new(Vec::new());
+    DynamicImage::ImageRgb8(img_buffer)
+        .write_to(&mut buffer, image::ImageFormat::Png)
+        .ok()?;
+
+    lt.set_image_from_mem(buffer.get_ref()).ok()?;
+    lt.get_utf8_text().ok()
+}
+```
