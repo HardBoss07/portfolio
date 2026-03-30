@@ -1,4 +1,4 @@
-"use cache";
+// "use cache";
 import { cacheLife } from "next/cache";
 import fs from "fs";
 import path from "path";

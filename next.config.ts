@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
+  /*cacheComponents: true,
   cacheLife: {
     "stale-while-revalidate": {
       stale: 3600,
       revalidate: 60,
       expire: 86400,
     },
-  },
+  },*/
   images: {
     minimumCacheTTL: 31536000,
   },
