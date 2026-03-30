@@ -1,5 +1,21 @@
 import ProjectCard from "@/components/ProjectCard";
 import { getAllProjects } from "@/lib/projects";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects | Matteo Bosshard Portfolio",
+  description:
+    "A showcase of my projects including Java, Rust, and TypeScript applications.",
+  alternates: {
+    canonical: "https://m4tt3o.dev/projects",
+  },
+  openGraph: {
+    title: "Projects | Matteo Bosshard Portfolio",
+    description: "Explore the various projects built by Matteo Bosshard.",
+    url: "https://m4tt3o.dev/projects",
+    type: "website",
+  },
+};
 
 export default async function Projects() {
   const projects = await getAllProjects();

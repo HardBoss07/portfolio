@@ -1,21 +1,25 @@
 import Technologies from "@/components/Technologies";
+import Experience from "@/components/Experience";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | Matteo Bosshard Portfolio",
+  description:
+    "Matteo Bosshard is an aspiring application developer specializing in full-stack development, React, and enterprise technologies.",
+  alternates: {
+    canonical: "https://m4tt3o.dev",
+  },
+  openGraph: {
+    title: "Home | Matteo Bosshard Portfolio",
+    description:
+      "Matteo Bosshard is an aspiring application developer specializing in full-stack development.",
+    url: "https://m4tt3o.dev",
+    siteName: "Matteo Bosshard Portfolio",
+    type: "website",
+  },
+};
 
 export default function Home() {
-  const getYearsOfExperience = (startYear: number): number => {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth();
-
-    let years = currentYear - startYear;
-
-    if (currentMonth < 2) {
-      years--;
-    }
-    return years;
-  };
-
-  const yearsExperience = getYearsOfExperience(2020);
-
   return (
     <main>
       <h1>Hello, World!</h1>
@@ -40,12 +44,12 @@ export default function Home() {
       <h2>About Me</h2>
       <p>
         I am a self-taught software developer based out of Switzerland with{" "}
-        {yearsExperience} years of experience. I started learning how to program
-        in the game development sector using C# with the Unity game engine. Now
-        I focus more on full-stack development, using React frameworks for
-        frontend development. For the backend, I use enterprise technologies
-        such as Java and Spring Boot, as well as performance-oriented
-        technologies like Rust.
+        <Experience startYear={2020} /> years of experience. I started learning
+        how to program in the game development sector using C# with the Unity
+        game engine. Now I focus more on full-stack development, using React
+        frameworks for frontend development. For the backend, I use enterprise
+        technologies such as Java and Spring Boot, as well as
+        performance-oriented technologies like Rust.
       </p>
       <p>
         I also work with MySQL on an enterprise level for managing relational

@@ -7,13 +7,13 @@ export default function Header() {
         <Link href="/">Home</Link>
         <Link href="/projects">Projects</Link>
         <Link href="/contact">Contact</Link>
-        <a
+        <Link
           href="https://github.com/HardBoss07"
           target="_blank"
           rel="noopener noreferrer"
         >
           GitHub
-        </a>
+        </Link>
       </div>
     </header>
   );
