@@ -17,6 +17,7 @@ portfolio/
 │   ├── Code.tsx
 │   ├── CookieConsent.tsx
 │   ├── DownloadButton.tsx
+│   ├── Experience.tsx
 │   ├── Footer.tsx
 │   ├── Header.tsx
 │   ├── LiveDemoButton.tsx
