@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import CookieConsent from "@/components/CookieConsent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,6 +29,7 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
