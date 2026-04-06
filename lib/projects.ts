@@ -21,7 +21,7 @@ const PROJECT_ORDER = [
   "ts-barcode",
   "java-jokemon",
   "css-valentines-card",
-]
+];
 
 export async function getProjectBySlug(
   slug: string,

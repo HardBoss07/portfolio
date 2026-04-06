@@ -1,4 +1,5 @@
 import Technologies from "@/components/Technologies";
+import Featured from "@/components/Featured";
 import Experience from "@/components/Experience";
 import { Metadata } from "next";
 
@@ -58,6 +59,7 @@ export default function Home() {
       </p>
       <h1>Technologies I worked with</h1>
       <Technologies />
+      <Featured />
     </main>
   );
 }
