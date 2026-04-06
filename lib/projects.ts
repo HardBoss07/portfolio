@@ -7,6 +7,22 @@ import { ProjectMetadata, ProjectData } from "@/types/project";
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
 
+const PROJECT_ORDER = [
+  "wordle-bot",
+  "ts-client-portfolio",
+  "cord-path",
+  "tauri-resource-monitor",
+  "auto-ocr",
+  "rust-snake",
+  "java-to-do-list",
+  "asm-tic-tac-toe",
+  "project-structure",
+  "java-calculator",
+  "ts-barcode",
+  "java-jokemon",
+  "css-valentines-card",
+]
+
 export async function getProjectBySlug(
   slug: string,
 ): Promise<ProjectData | null> {
@@ -37,6 +53,7 @@ export async function getAllProjects(): Promise<ProjectMetadata[]> {
   if (!fs.existsSync(PROJECTS_DIRECTORY)) {
     return [];
   }
+
   const fileNames = fs.readdirSync(PROJECTS_DIRECTORY);
   const projects = fileNames
     .filter((fileName) => fileName.endsWith(".mdx"))
@@ -50,7 +67,19 @@ export async function getAllProjects(): Promise<ProjectMetadata[]> {
         ...(data as Omit<ProjectMetadata, "slug">),
       };
     })
-    .sort((a, b) => a.title.localeCompare(b.title));
+    .sort((a, b) => {
+      const indexA = PROJECT_ORDER.indexOf(a.slug);
+      const indexB = PROJECT_ORDER.indexOf(b.slug);
+
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+
+      return a.title.localeCompare(b.title);
+    });
 
   return projects;
 }
