@@ -25,7 +25,7 @@ export default async function Featured() {
               title={project.title}
               description={project.description}
               lang={project.techStack || "Unknown"}
-              link={`/projects/${project.slug}`}
+              link={project.slug}
             />
           );
         })}
