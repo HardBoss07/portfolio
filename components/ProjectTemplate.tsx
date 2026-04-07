@@ -20,7 +20,7 @@ export default function ProjectTemplate({
         <h1>{metadata.title}</h1>
         <RepositoryButton link={metadata.repoLink} />
       </div>
-      <p>{metadata.description}</p>
+      <p>{metadata.intro}</p>
 
       {metadata.hasImage && (
         <div className="project-image-container my-8">

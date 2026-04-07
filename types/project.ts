@@ -2,6 +2,7 @@ export interface ProjectMetadata {
   slug: string;
   title: string;
   description: string;
+  intro: string;
   repoLink: string;
   downloadLink?: string;
   downloadText?: string;
