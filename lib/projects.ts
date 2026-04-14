@@ -1,5 +1,3 @@
-// "use cache";
-// import { cacheLife } from "next/cache";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -26,7 +24,6 @@ const PROJECT_ORDER = [
 export async function getProjectBySlug(
   slug: string,
 ): Promise<ProjectData | null> {
-  // cacheLife("stale-while-revalidate");
   try {
     const filePath = path.join(PROJECTS_DIRECTORY, `${slug}.mdx`);
     if (!fs.existsSync(filePath)) {
@@ -49,7 +46,6 @@ export async function getProjectBySlug(
 }
 
 export async function getAllProjects(): Promise<ProjectMetadata[]> {
-  // cacheLife("stale-while-revalidate");
   if (!fs.existsSync(PROJECTS_DIRECTORY)) {
     return [];
   }
