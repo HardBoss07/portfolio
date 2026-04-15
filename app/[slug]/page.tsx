@@ -26,22 +26,24 @@ export async function generateMetadata({
   }
 
   const { title, description } = project.metadata;
-  const url = `https://m4tt3o.dev/projects/${slug}`;
+  const url = `https://m4tt3o.dev/${slug}`;
 
   return {
-    title: `${title} | Matteo Bosshard Portfolio`,
-    description,
+    title: `${title} | Project by Matteo Bosshard`,
+    description: `${description} - A technical project by Matteo Bosshard exploring ${project.metadata.techStack}.`,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title,
+      title: `${title} | Matteo Bosshard`,
       description,
       url,
       type: "article",
       images: [
         {
-          url: `https://m4tt3o.dev/assets/images/${slug}.png`,
+          url: project.metadata.hasImage
+            ? `https://m4tt3o.dev/assets/images/${slug}.png`
+            : "https://m4tt3o.dev/favicon.ico",
           width: 1200,
           height: 630,
           alt: title,
@@ -52,7 +54,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`https://m4tt3o.dev/assets/images/${slug}.png`],
+      images: [
+        project.metadata.hasImage
+          ? `https://m4tt3o.dev/assets/images/${slug}.png`
+          : "https://m4tt3o.dev/favicon.ico",
+      ],
     },
   };
 }
@@ -65,9 +71,31 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.metadata.title,
+    description: project.metadata.description,
+    author: {
+      "@type": "Person",
+      name: "Matteo Bosshard",
+    },
+    url: `https://m4tt3o.dev/${slug}`,
+    keywords: Array.isArray(project.metadata.techStack)
+      ? project.metadata.techStack.join(", ")
+      : project.metadata.techStack,
+    inLanguage: ["de-CH", "en-CH"],
+  };
+
   return (
-    <ProjectTemplate metadata={project.metadata}>
-      <MDXRemote source={project.content} components={mdxComponents} />
-    </ProjectTemplate>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectTemplate metadata={project.metadata}>
+        <MDXRemote source={project.content} components={mdxComponents} />
+      </ProjectTemplate>
+    </>
   );
 }
