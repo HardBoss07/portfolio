@@ -6,14 +6,18 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Home | Matteo Bosshard Portfolio",
   description:
-    "Matteo Bosshard is an aspiring application developer specializing in full-stack development, React, and enterprise technologies.",
+    "Matteo Bosshard is an aspiring Fullstack Software & Application Developer at WISS Schule Zürich. Expert in Java Spring Boot, Rust, and React, building performance-oriented applications.",
   alternates: {
     canonical: "https://m4tt3o.dev",
+    languages: {
+      "de-CH": "https://m4tt3o.dev",
+      "en-CH": "https://m4tt3o.dev",
+    },
   },
   openGraph: {
     title: "Home | Matteo Bosshard Portfolio",
     description:
-      "Matteo Bosshard is an aspiring application developer specializing in full-stack development.",
+      "Fullstack Software & Application Developer based in Switzerland. Showcasing projects in Rust, Java, and TypeScript.",
     url: "https://m4tt3o.dev",
     siteName: "Matteo Bosshard Portfolio",
     type: "website",
@@ -44,12 +48,12 @@ export default function Home() {
       </p>
       <h2>About Me</h2>
       <p>
-        I am a self-taught software developer based out of Switzerland with{" "}
-        <Experience startYear={2020} /> years of experience. I started learning
-        how to program in the game development sector using C# with the Unity
-        game engine. Now I focus more on full-stack development, using React
-        frameworks for frontend development. For the backend, I use enterprise
-        technologies such as Java and Spring Boot, as well as
+        I am a self-taught software developer based out of Switzerland (Zürich /
+        Winterthur) with <Experience startYear={2020} /> years of experience. I
+        started learning how to program in the game development sector using C#
+        with the Unity game engine. Now I focus more on full-stack development,
+        using React frameworks for frontend development. For the backend, I use
+        enterprise technologies such as Java and Spring Boot, as well as
         performance-oriented technologies like Rust.
       </p>
       <p>

@@ -2,15 +2,16 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact | Matteo Bosshard Portfolio",
+  title: "Contact | Matteo Bosshard",
   description:
-    "Get in touch with Matteo Bosshard for collaborations or inquiries.",
+    "Get in touch with Matteo Bosshard, a Swiss-based Fullstack Developer, for collaborations or inquiries regarding software development projects.",
   alternates: {
     canonical: "https://m4tt3o.dev/contact",
   },
   openGraph: {
     title: "Contact | Matteo Bosshard Portfolio",
-    description: "Contact Matteo Bosshard for software development projects.",
+    description:
+      "Contact Matteo Bosshard for software development projects and collaborations.",
     url: "https://m4tt3o.dev/contact",
     type: "website",
   },

@@ -3,15 +3,16 @@ import { getAllProjects } from "@/lib/projects";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects | Matteo Bosshard Portfolio",
+  title: "Projects | Software Development Portfolio",
   description:
-    "A showcase of my projects including Java, Rust, and TypeScript applications.",
+    "Explore a diverse collection of software projects by Matteo Bosshard, featuring high-performance applications in Rust, Java Spring Boot, and modern web frameworks.",
   alternates: {
     canonical: "https://m4tt3o.dev/projects",
   },
   openGraph: {
     title: "Projects | Matteo Bosshard Portfolio",
-    description: "Explore the various projects built by Matteo Bosshard.",
+    description:
+      "Technical projects showcasing expertise in Fullstack development, Rust, and Java.",
     url: "https://m4tt3o.dev/projects",
     type: "website",
   },
