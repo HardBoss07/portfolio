@@ -1,0 +1,30 @@
+@theme {
+  --color-hot-pink: #f207a8;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-reverse var(--duration) linear infinite;
+  }
+}

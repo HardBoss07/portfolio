@@ -18,6 +18,7 @@ portfolio/
 │   ├── CookieConsent.tsx
 │   ├── DownloadButton.tsx
 │   ├── Experience.tsx
+│   ├── Featured.tsx
 │   ├── Footer.tsx
 │   ├── Header.tsx
 │   ├── LiveDemoButton.tsx
@@ -48,6 +49,11 @@ portfolio/
 │   └── assets/
 │       └── images/
 │           └── java-jokemon.png
+├── styles/
+│   ├── components.css
+│   ├── layout.css
+│   ├── typography.css
+│   └── variables.css
 ├── types/
 │   └── project.ts
 ├── LICENSE

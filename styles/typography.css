@@ -1,0 +1,35 @@
+@layer base {
+  body {
+    /* Brighter neutral text for better readability */
+    @apply bg-black text-neutral-300 font-['Roboto_Slab'] font-medium min-h-screen overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-hot-pink font-bold leading-tight;
+  }
+
+  h1 {
+    @apply text-[clamp(2.5rem,8vw,4.5rem)] mb-[1.5rem] border-b-2 border-hot-pink pb-[0.5rem];
+  }
+
+  h2 {
+    @apply text-[clamp(1.75rem,5vw,3rem)] mb-[1rem];
+  }
+
+  h3 {
+    @apply text-[clamp(1.1rem,3vw,1.5rem)] mb-[0.75rem];
+  }
+
+  p {
+    @apply text-[clamp(1rem,2vw,1.25rem)] leading-relaxed mb-[1.5rem] block;
+  }
+
+  a {
+    @apply transition-all duration-300 ease-in-out decoration-hot-pink/30 hover:decoration-hot-pink;
+  }
+}
