@@ -4,7 +4,13 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/CookieConsent";
 import Header from "@/components/Header";
-import { jsonLd, keywords, openGraph, description, twitter } from "@/lib/seo_metadata";
+import {
+  jsonLd,
+  keywords,
+  openGraph,
+  description,
+  twitter,
+} from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
 
 const robotoSlab = Roboto_Slab({

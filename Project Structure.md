@@ -44,10 +44,13 @@ portfolio/
 │       ├── ts-client-portfolio.mdx
 │       └── wordle-bot.mdx
 ├── lib/
-│   └── projects.ts
+│   ├── projects.ts
+│   ├── seo_metadata.ts
+│   └── technologies.ts
 ├── public/
 │   └── assets/
 │       └── images/
+│           ├── headshot.png
 │           └── java-jokemon.png
 ├── styles/
 │   ├── components.css
