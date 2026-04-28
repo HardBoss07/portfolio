@@ -1,7 +1,7 @@
 ---
-title: To Do List
+title: To-Do List
 description: A Java desktop application for task management with JSON-based persistence and custom UI.
-intro: This project is a simple To Do List application written in Java for Desktop. It includes the whole life cycle of an application.
+intro: This project is a simple To-Do List application written in Java for desktop. It includes the whole lifecycle of an application.
 repoLink: To-Do-List-Application
 techStack: ["Java", "CSS"]
 videoYoutubeId: MIE_N4qAD_s
@@ -18,7 +18,7 @@ The main view of the application is where the user can see all their lists and c
 public void start(Stage mainStage) {
     allLists = saveSystem.loadData();
     // Title label
-    Label label = new Label("To Do List App");
+    Label label = new Label("To-Do List App");
     label.getStyleClass().add("title-label");
 
     // Create List Button
@@ -50,7 +50,7 @@ public void start(Stage mainStage) {
     updateListGroup(mainStage);
     Scene scene = new Scene(mainHBox, 350, 600);
     scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-    mainStage.setTitle("To Do List App");
+    mainStage.setTitle("To-Do List App");
     mainStage.setScene(scene);
     mainStage.show();
 
