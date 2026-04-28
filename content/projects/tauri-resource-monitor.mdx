@@ -8,9 +8,9 @@ downloadLink: resource-monitor/releases/latest
 downloadText: If you want to try this app out for yourself, click on the download button and install the app using the MSI or EXE installer from GitHub.
 ---
 
-## ResourceMonitor Rust Struct
+## ResourceMonitor Rust struct
 
-This is a snippet of my ResourceMonitor Struct written in Rust. This struct helps me gather all data from the different monitors with a function to return all data at once and functions to only get certain data from each monitor.
+This is a snippet of my ResourceMonitor struct written in Rust. This struct helps me gather all data from the different monitors with a function to return all data at once and functions to only get certain data from each monitor.
 
 ```rust
 impl ResourceMonitor {
@@ -67,7 +67,7 @@ impl ResourceMonitor {
 
 ## lib.rs
 
-The lib.rs file is the connection point between the NextJS frontend and Rust backend. This file exposes commands to the frontend which fetch the data gathered by the ResourceMonitor.
+The lib.rs file is the connection point between the Next.js frontend and Rust backend. This file exposes commands to the frontend which fetch the data gathered by the ResourceMonitor.
 
 ```rust
 #[tauri::command]
@@ -103,7 +103,7 @@ fn get_gpu_data(monitor: State<SharedResourceMonitor>) -> GpuInfo {
 
 ## LineGraph Component
 
-This component generates a line graph on the fly to represent some historical data about the usages from each monitor. This line graph is an SVG image which get displayed below the other component data.
+This component generates a line graph on the fly to represent some historical data about the usages from each monitor. This line graph is an SVG image which gets displayed below the other component data.
 
 ```typescript
 export default function LineGraph({dataPoints, label, maxPoints = 100, upperRange = 100}: LineGraphInterface) {
