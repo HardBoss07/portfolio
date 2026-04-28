@@ -8,7 +8,7 @@ techStack: Rust
 
 ## cli.rs - Custom Flags
 
-Here you can see the different flags and options implemented in cli.rs. You can use these for the CLI tool to customize the output—from automated sorting to writing to a Markdown file or limiting the tree depth, everything is possible.
+Here you can see the different flags and options implemented in cli.rs. You can use these for the CLI tool to customize the output: from automated sorting to writing to a Markdown file or limiting the tree depth, everything is possible.
 
 ```rust
 #[derive(Parser, Clone)]
@@ -25,7 +25,7 @@ pub struct Cli {
     #[arg(long)]
     pub no_git: bool,
 
-    /// Space-seperated exclude patterns (gitignore-style)
+    /// Space-separated exclude patterns (gitignore-style)
     #[arg(long)]
     pub exclude: Option<String>,
 
