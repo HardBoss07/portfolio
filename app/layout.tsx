@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Digital portfolio of Matteo Bosshard, showcasing expertise in Java, Rust, and modern web technologies.",
     images: [
       {
-        url: "/favicon.ico", // Using favicon as requested since no headshot is available
+        url: "/assets/images/headshot.png",
         width: 32,
         height: 32,
         alt: "Matteo Bosshard",
