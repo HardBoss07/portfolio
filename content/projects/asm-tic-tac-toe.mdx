@@ -1,15 +1,15 @@
 ---
 title: Tic Tac Toe
 description: A classic Tic Tac Toe game written in x86 Assembly to explore CPU architecture and low-level logic.
-intro: To improve my assembly skills, I have set myself the goal of writing Tic Tac Toe in assembly. I use the emu8086 emulator to test my assembly code. This project helped me a lot to learn more about the internal structure of a CPU. I learned how to use methods and loops in assembly, how to better handle user inputs and error handling in assembly. With this project I also learned how the 32 bit addresses inside a program look like and how to assign values to them.
+intro: To improve my assembly skills, I have set myself the goal of writing Tic Tac Toe in assembly. I use the emu8086 emulator to test my assembly code. This project helped me a lot to learn more about the internal structure of a CPU. I learned how to use methods and loops in assembly, how to better handle user inputs and error handling in assembly. With this project I also learned how the 32-bit addresses inside a program look like and how to assign values to them.
 repoLink: assembly-tic-tac-toe
 techStack: Assembly
 videoYoutubeId: astwYXRNOK8
 ---
 
-## Game initialisation
+## Game initialization
 
-Here is the INIT method. This method initialises and declares all needed variables, in order to start the game without encountering any errors.
+Here is the INIT method. This method initializes and declares all needed variables, in order to start the game without encountering any errors.
 
 ```x86asm
     INIT:         ; init all variables
@@ -37,7 +37,7 @@ This is a section of my CHECK method. This method goes over all possible combina
 
 ```x86asm
 CHECK:                  ; 8 possible combinations
-    CHECK1:             ; checking combo combo 1, 2, 3
+    CHECK1:             ; checking combo 1, 2, 3
         MOV AL, C1
         MOV BL, C2
         MOV CL, C3
@@ -80,7 +80,7 @@ CHECK:                  ; 8 possible combinations
         JMP BOARD
 ```
 
-## Handling invalid Inputs
+## Handling invalid inputs
 
 This here is my TAKEN method. This method makes sure that no invalid inputs are made. If an invalid input is made, it overwrites the last input with an empty line
 
