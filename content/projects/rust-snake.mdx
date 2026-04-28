@@ -1,7 +1,7 @@
 ---
 title: Snake
 description: A recreation of the iconic Snake game in Rust, exploring modern syntax and graphics libraries.
-intro: I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to make myself familiar with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.
+intro: I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to familiarize myself with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.
 repoLink: rust-snake
 techStack: Rust
 downloadLink: rust-snake/releases/latest
@@ -53,7 +53,7 @@ This is the run() function. This function handles the entire game loop. First, i
 ```rust
 fn run(&mut self) {
     while self.window.is_open() {
-        if self.window. is_key_down(Key::Space) && self.has_started == false {
+        if self.window.is_key_down(Key::Space) && self.has_started == false {
             self.reset_buffer();
             self.has_started = true;
             let head = *self.snake.body.front().unwrap();
