@@ -17,7 +17,10 @@ export default function Footer() {
         All Rights Reserved.
       </p>
       <div className="flex justify-center gap-6 mt-4 text-lg">
-        <Link href="/legal" className="hover:text-[#F207A8] underline transition-colors">
+        <Link
+          href="/legal"
+          className="hover:text-[#F207A8] underline transition-colors"
+        >
           Legal Notice & Privacy Policy
         </Link>
       </div>
