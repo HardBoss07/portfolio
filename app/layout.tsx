@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/CookieConsent";
 import Header from "@/components/Header";
 import {
@@ -12,6 +11,7 @@ import {
   twitter,
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
+import VercelAnalytics from "@/components/VercelAnalytics";
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-roboto-slab",
@@ -70,7 +70,7 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <Footer />
-        <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
