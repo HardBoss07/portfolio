@@ -31,16 +31,10 @@ export const LEGAL_CONTENT: Record<"DE" | "EN", LegalContent> = {
             PUBLISHER_DATA.address,
             "Schweiz",
             `E-Mail: ${PUBLISHER_DATA.email}`,
-          ],
-        },
-        {
-          title: "Handelsregistereintrag",
-          content:
-            "Hinweis: Da kein Eintrag im Handelsregister besteht, wird keine UID/Mehrwertsteuernummer aufgeführt.",
-          isNotice: true,
-        },
-        {
-          title: "Haftungsausschluss",
+            ],
+            },
+            {
+            title: "Haftungsausschluss",
           content:
             "Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen entstehen, werden ausgeschlossen.",
         },
@@ -98,12 +92,6 @@ export const LEGAL_CONTENT: Record<"DE" | "EN", LegalContent> = {
             "Switzerland",
             `Email: ${PUBLISHER_DATA.email}`,
           ],
-        },
-        {
-          title: "Commercial Register",
-          content:
-            "Notice: As there is no entry in the register of commerce, no UID/VAT number is listed.",
-          isNotice: true,
         },
         {
           title: "Disclaimer",
