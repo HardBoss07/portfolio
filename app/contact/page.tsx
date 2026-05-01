@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import ContactItem from "@/components/contact/ContactItem";
 
 export const metadata: Metadata = {
   title: "Contact | Matteo Bosshard",
@@ -27,54 +28,45 @@ export default function Contact() {
       </p>
       <h2>Social Media</h2>
       <div className="contact">
-        <Link
-          href="https://github.com/HardBoss07"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub - @HardBoss07
-        </Link>
-        <Link
-          href="https://linkedin.com/in/m4tt3o"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn - @m4tt3o
-        </Link>
-        <Link
-          href="https://instagram.com/matteoluca07"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Instagram - @matteoluca07
-        </Link>
-        <Link
-          href="https://discord.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Discord - @m4tt3o
-        </Link>
-        <Link
-          href="https://steamcommunity.com/id/m4tt3o_woof/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Steam - @m4tt3o_woof
-        </Link>
+        <ContactItem
+          url="https://github.com/HardBoss07"
+          label="GitHub - @HardBoss07"
+        />
+        <ContactItem
+          url="https://linkedin.com/in/m4tt3o"
+          label="LinkedIn - @m4tt3o"
+        />
+        <ContactItem
+          url="https://instagram.com/matteoluca07"
+          label="Instagram - @matteoluca07"
+        />
+
+        <ContactItem
+          url="https://discord.com"
+          label="Discord - @m4tt3o"
+        />
+        <ContactItem
+          url="https://steamcommunity.com/id/m4tt3o_woof/"
+          label="Steam - @m4tt3o_woof"
+        />
       </div>
       <h2>Personal Email</h2>
       <div className="contact">
-        <Link href="mailto:matteobosshard@gmail.com">
-          matteobosshard@gmail.com
-        </Link>
-        <Link href="mailto:matteo@bosshard.net">matteo@bosshard.net</Link>
+        <ContactItem
+          url="mailto:matteobosshard@gmail.com"
+          label="matteobosshard@gmail.com"
+        />
+        <ContactItem
+          url="mailto:matteo@bosshard.net"
+          label="matteo@bosshard.net"
+        />
       </div>
       <h2>School Email</h2>
       <div className="contact">
-        <Link href="mailto:matteo.bosshard@wiss-edu.ch">
-          matteo.bosshard@wiss-edu.ch
-        </Link>
+        <ContactItem
+          url="mailto:matteo.bosshard@wiss-edu.ch"
+          label="matteo.bosshard@wiss-edu.ch"
+        />
       </div>
     </main>
   );
