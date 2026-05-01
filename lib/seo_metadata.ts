@@ -7,7 +7,7 @@ export const jsonLd = {
   sameAs: [
     "https://github.com/HardBoss07",
     "https://instagram.com/matteoluca07",
-    "https://www.linkedin.com/in/matteo-bosshard-5aa027253/",
+    "https://www.linkedin.com/in/m4tt3o",
     "https://steamcommunity.com/id/m4tt3o_woof/",
   ],
   jobTitle: "Fullstack Software & Application Developer",
