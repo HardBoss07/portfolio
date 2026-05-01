@@ -35,6 +35,20 @@ export default function Contact() {
           GitHub - @HardBoss07
         </Link>
         <Link
+          href="https://linkedin.com/in/m4tt3o"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn - @m4tt3o
+        </Link>
+        <Link
+          href="https://instagram.com/matteoluca07"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram - @matteoluca07
+        </Link>
+        <Link
           href="https://discord.com"
           target="_blank"
           rel="noopener noreferrer"
