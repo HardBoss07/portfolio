@@ -30,24 +30,29 @@ export default function Contact() {
       <div className="contact">
         <ContactItem
           url="https://github.com/HardBoss07"
-          label="GitHub - @HardBoss07"
+          label="@HardBoss07"
+          icon="github"
         />
         <ContactItem
           url="https://linkedin.com/in/m4tt3o"
-          label="LinkedIn - @m4tt3o"
+          label="@m4tt3o"
+          icon="linkedin"
         />
         <ContactItem
           url="https://instagram.com/matteoluca07"
-          label="Instagram - @matteoluca07"
+          label="@matteoluca07"
+          icon="instagram"
         />
 
         <ContactItem
           url="https://discord.com"
-          label="Discord - @m4tt3o"
+          label="@m4tt3o"
+          icon="discord"
         />
         <ContactItem
           url="https://steamcommunity.com/id/m4tt3o_woof/"
-          label="Steam - @m4tt3o_woof"
+          label="@m4tt3o_woof"
+          icon="steam"
         />
       </div>
       <h2>Personal Email</h2>
@@ -55,10 +60,12 @@ export default function Contact() {
         <ContactItem
           url="mailto:matteobosshard@gmail.com"
           label="matteobosshard@gmail.com"
+          icon="mail"
         />
         <ContactItem
           url="mailto:matteo@bosshard.net"
           label="matteo@bosshard.net"
+          icon="mail"
         />
       </div>
       <h2>School Email</h2>
@@ -66,6 +73,7 @@ export default function Contact() {
         <ContactItem
           url="mailto:matteo.bosshard@wiss-edu.ch"
           label="matteo.bosshard@wiss-edu.ch"
+          icon="mail"
         />
       </div>
     </main>
