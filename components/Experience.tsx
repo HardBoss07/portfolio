@@ -1,13 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-interface ExperienceProps {
-  startYear: number;
-}
+import React, { useState, useEffect } from "react";
+import { ExperienceProps, ExperienceState } from "@/types/components/Experience";
 
 export default function Experience({ startYear }: ExperienceProps) {
-  const [years, setYears] = useState<number | null>(null);
+  const [years, setYears] = useState<ExperienceState>(null);
 
   useEffect(() => {
     const now = new Date();

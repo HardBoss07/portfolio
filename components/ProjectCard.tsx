@@ -1,11 +1,7 @@
+import React from "react";
 import Link from "next/link";
-
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  lang: string | string[];
-  link: string;
-}
+import styles from "./ProjectCard.module.css";
+import { ProjectCardProps } from "@/types/components/ProjectCard";
 
 export default function ProjectCard({
   title,
@@ -16,16 +12,16 @@ export default function ProjectCard({
   const absoluteLink = link.startsWith("/") ? link : `/${link}`;
 
   return (
-    <div className="project-card">
+    <div className={styles.projectCard}>
       <Link href={absoluteLink}>
-        <div className="project-card-header">
-          <h2>{title}</h2>
-          <h3>
+        <div className={styles.projectCardHeader}>
+          <h2 className={styles.title}>{title}</h2>
+          <h3 className={styles.language}>
             {Array.isArray(lang) ? "Languages" : "Language"}:{" "}
             {Array.isArray(lang) ? lang.join(", ") : lang}
           </h3>
         </div>
-        <p>{description}</p>
+        <p className={styles.description}>{description}</p>
       </Link>
     </div>
   );

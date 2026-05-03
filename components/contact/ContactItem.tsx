@@ -1,33 +1,19 @@
+import React from "react";
 import Link from "next/link";
-import { ContactIcon, IconName } from "./ContactIcon";
-
-export interface ContactItemProps {
-    url: string;
-    label: string;
-    icon: IconName;
-}
+import { ContactIcon } from "./ContactIcon";
+import styles from "@/styles/ContactItem.module.css";
+import { ContactItemProps } from "@/types/components/ContactItem";
 
 export default function ContactItem({ url, label, icon }: ContactItemProps) {
-    return (
-        <Link
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                gap: '8px',
-                textDecoration: 'none',
-                color: 'inherit'
-            }}
-        >
-            <ContactIcon
-                name={icon}
-                size={20}
-                strokeWidth={2}
-            />
-            <span>{label}</span>
-        </Link>
-    );
+  return (
+    <Link
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.contactLink}
+    >
+      <ContactIcon name={icon} size={20} strokeWidth={2} />
+      <span className={styles.label}>{label}</span>
+    </Link>
+  );
 }

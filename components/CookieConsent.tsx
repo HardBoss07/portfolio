@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useConsent, ConsentState } from "@/hooks/useConsent";
 import { BannerOverlay } from "./cookie-consent/BannerOverlay";
 import { BannerActionButtons } from "./cookie-consent/BannerActionButtons";
 import { PreferenceToggle } from "./cookie-consent/PreferenceToggle";
+import { Language, Translations } from "@/types/components/CookieConsent";
 
-type Language = "DE" | "EN";
-
-const TRANSLATIONS = {
+const TRANSLATIONS: Translations = {
   DE: {
     title: "Cookie-Einstellungen",
     description:
@@ -102,11 +101,11 @@ export default function CookieConsent() {
     <BannerOverlay activeLang={lang} onLanguageChange={setLang}>
       {!showSettings ? (
         <>
-          <h2 className="text-2xl font-bold mb-4">{t.title}</h2>
-          <p className="text-lg mb-6 leading-relaxed">{t.description}</p>
-          <p className="text-sm mb-8 opacity-80">
+          <h2 className="CookieConsent_title">{t.title}</h2>
+          <p className="CookieConsent_description">{t.description}</p>
+          <p className="CookieConsent_moreInfo">
             {t.moreInfo}{" "}
-            <Link href="/legal" className="underline hover:text-white">
+            <Link href="/legal" className="CookieConsent_legalNoticeLink">
               {t.legalNotice}
             </Link>
             .
@@ -120,8 +119,8 @@ export default function CookieConsent() {
         </>
       ) : (
         <>
-          <h2 className="text-2xl font-bold mb-6">{t.settingsTitle}</h2>
-          <div className="space-y-6 mb-8">
+          <h2 className="CookieConsent_settingsTitle">{t.settingsTitle}</h2>
+          <div className="CookieConsent_settingsList">
             <PreferenceToggle
               label={t.catNecessary}
               description={t.catNecessaryDesc}
@@ -145,17 +144,14 @@ export default function CookieConsent() {
               }
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mt-4">
+          <div className="CookieConsent_actionsContainer">
             <button
               onClick={() => setShowSettings(false)}
-              className="text-lg underline hover:text-white"
+              className="CookieConsent_backButton"
             >
               {t.btnBack}
             </button>
-            <button
-              onClick={handleSaveSettings}
-              className="border-2 border-[#F207A8] px-6 py-2 rounded-full bg-[#F207A8] text-black text-lg font-bold transition-colors hover:bg-black hover:text-[#F207A8] w-full sm:w-auto"
-            >
+            <button onClick={handleSaveSettings} className="CookieConsent_saveButton">
               {t.btnSave}
             </button>
           </div>

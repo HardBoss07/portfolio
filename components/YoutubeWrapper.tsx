@@ -1,23 +1,23 @@
 "use client";
-import { useConsent } from "@/hooks/useConsent";
 
-export default function YouTubeWrapper({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import React from "react";
+import { useConsent } from "@/hooks/useConsent";
+import styles from "./YoutubeWrapper.module.css";
+import { YouTubeWrapperProps } from "@/types/components/YoutubeWrapper";
+
+export default function YouTubeWrapper({ children }: YouTubeWrapperProps) {
   const { consent, updateConsent } = useConsent();
 
   if (consent.externalMedia) return <>{children}</>;
 
   return (
-    <div className="video-wrapper flex flex-col items-center justify-center bg-black border-2 border-t-0 text-center p-6 min-h-[300px]">
-      <p className="text-xl mb-4">
+    <div className={styles.placeholder}>
+      <p className={styles.notice}>
         Dieses Video erfordert Cookies von Drittanbietern (YouTube).
       </p>
 
       <button
-        className="border-2 border-[#F207A8] px-6 py-2 rounded-full text-xl transition-colors hover:bg-[#F207A8] hover:text-black"
+        className={styles.acceptButton}
         onClick={() => updateConsent({ externalMedia: true })}
       >
         Video laden & Cookies akzeptieren

@@ -1,18 +1,12 @@
 import React from "react";
-
-type LegalSectionProps = {
-  title: string;
-  children: React.ReactNode;
-  isNotice?: boolean;
-};
+import styles from "@/styles/LegalSection.module.css";
+import { LegalSectionProps } from "@/types/components/LegalSection";
 
 export function LegalSection({ title, children, isNotice }: LegalSectionProps) {
   return (
-    <div
-      className={`space-y-4 ${isNotice ? "p-4 border-l-4 border-[#F207A8] bg-white/5 italic" : ""}`}
-    >
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <div className="text-lg leading-relaxed">{children}</div>
+    <div className={`${styles.section} ${isNotice ? styles.notice : ""}`}>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 }
