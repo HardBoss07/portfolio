@@ -1,0 +1,5 @@
+@reference "../../app/globals.css";
+
+.contactList {
+  @apply flex flex-col gap-[0.5rem] mb-[1.5rem] text-[clamp(1rem,2.5vw,1.25rem)];
+}

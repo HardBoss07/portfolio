@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import ContactItem from "@/components/contact/ContactItem";
+import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact | Matteo Bosshard",
+  title: "Contact | Matteo Bosshard Portfolio",
   description:
-    "Get in touch with Matteo Bosshard, a Swiss-based Fullstack Developer, for collaborations or inquiries regarding software development projects.",
+    "Contact Matteo Bosshard for software development projects and collaborations.",
   alternates: {
     canonical: "https://m4tt3o.dev/contact",
   },
@@ -27,7 +27,7 @@ export default function Contact() {
         chosen methods below. I will try to respond as quickly as possible.
       </p>
       <h2>Social Media</h2>
-      <div className="contact">
+      <div className={styles.contactList}>
         <ContactItem
           url="https://github.com/HardBoss07"
           label="@HardBoss07"
@@ -56,7 +56,7 @@ export default function Contact() {
         />
       </div>
       <h2>Personal Email</h2>
-      <div className="contact">
+      <div className={styles.contactList}>
         <ContactItem
           url="mailto:matteobosshard@gmail.com"
           label="matteobosshard@gmail.com"
@@ -69,7 +69,7 @@ export default function Contact() {
         />
       </div>
       <h2>School Email</h2>
-      <div className="contact">
+      <div className={styles.contactList}>
         <ContactItem
           url="mailto:matteo.bosshard@wiss-edu.ch"
           label="matteo.bosshard@wiss-edu.ch"
@@ -79,3 +79,4 @@ export default function Contact() {
     </main>
   );
 }
+
