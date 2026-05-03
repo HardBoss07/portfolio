@@ -1,8 +1,4 @@
 @layer base {
-  footer {
-    @apply py-[3rem] px-[5vw] border-t-2 border-hot-pink mt-auto text-hot-pink text-center font-bold;
-  }
-
   /* Specific paragraph spacing from original */
   main > p:first-of-type {
     @apply mt-[1.5rem];
@@ -12,35 +8,5 @@
 @layer components {
   main {
     @apply w-[90vw] max-w-[75rem] mx-auto min-h-[80vh] flex flex-col;
-  }
-}
-
-/* Fluid responsive adjustments using rem-based width */
-@media (width < 50rem) {
-  header,
-  .result-header {
-    @apply basis-1/2;
-  }
-
-  header div {
-    @apply grid grid-cols-2 gap-4 m-0;
-  }
-
-  header div a:last-child {
-    @apply text-left w-full;
-  }
-
-  header a {
-    @apply w-full text-xl;
-  }
-}
-
-@media (width < 30rem) {
-  header div {
-    @apply grid grid-cols-2 gap-2 m-0;
-  }
-
-  header a {
-    @apply text-base;
   }
 }
