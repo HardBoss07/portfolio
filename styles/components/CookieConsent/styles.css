@@ -1,0 +1,37 @@
+@reference "../../../app/globals.css";
+
+.CookieConsent_title {
+  @apply text-2xl font-bold mb-4;
+}
+
+.CookieConsent_description {
+  @apply text-lg mb-6 leading-relaxed;
+}
+
+.CookieConsent_moreInfo {
+  @apply text-sm mb-8 opacity-80;
+}
+
+.CookieConsent_legalNoticeLink {
+  @apply underline hover:text-white;
+}
+
+.CookieConsent_settingsTitle {
+  @apply text-2xl font-bold mb-6;
+}
+
+.CookieConsent_settingsList {
+  @apply space-y-6 mb-8;
+}
+
+.CookieConsent_actionsContainer {
+  @apply flex flex-col sm:flex-row gap-4 justify-between items-center mt-4;
+}
+
+.CookieConsent_backButton {
+  @apply text-lg underline hover:text-white;
+}
+
+.CookieConsent_saveButton {
+  @apply border-2 border-hot-pink px-6 py-2 rounded-full bg-hot-pink text-black text-lg font-bold transition-colors hover:bg-black hover:text-hot-pink w-full sm:w-auto;
+}

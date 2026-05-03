@@ -1,0 +1,17 @@
+@reference "../../../app/globals.css";
+
+.LegalSection_section {
+  @apply space-y-4;
+}
+
+.LegalSection_notice {
+  @apply p-4 border-l-4 border-hot-pink bg-white/5 italic;
+}
+
+.LegalSection_title {
+  @apply text-2xl font-bold mb-2;
+}
+
+.LegalSection_content {
+  @apply text-lg leading-relaxed;
+}

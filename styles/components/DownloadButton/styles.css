@@ -1,0 +1,5 @@
+@reference "../../../app/globals.css";
+
+.DownloadButton_button {
+  @apply ml-auto flex items-center justify-center gap-2 rounded-full border-2 border-current bg-hot-pink px-6 py-0 text-2xl text-left text-black transition-colors hover:bg-black hover:text-hot-pink w-[13rem];
+}

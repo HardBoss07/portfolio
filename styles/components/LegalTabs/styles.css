@@ -1,0 +1,17 @@
+@reference "../../../app/globals.css";
+
+.LegalTabs_tabsContainer {
+  @apply flex gap-8 border-b-2 border-hot-pink/30 mb-12;
+}
+
+.LegalTabs_tabButton {
+  @apply pb-2 text-xl font-bold transition-all;
+}
+
+.LegalTabs_tabButtonActive {
+  @apply text-hot-pink border-b-4 border-hot-pink;
+}
+
+.LegalTabs_tabButtonInactive {
+  @apply text-gray-500 hover:text-white;
+}

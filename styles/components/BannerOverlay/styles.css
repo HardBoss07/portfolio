@@ -1,0 +1,25 @@
+@reference "../../../app/globals.css";
+
+.BannerOverlay_overlay {
+  @apply fixed inset-0 z-50 flex items-end justify-center p-4 bg-black/60 backdrop-blur-md;
+}
+
+.BannerOverlay_banner {
+  @apply border-2 border-hot-pink bg-black text-hot-pink p-6 rounded-lg max-w-2xl w-full shadow-2xl overflow-y-auto max-h-[90vh];
+}
+
+.BannerOverlay_languageSwitcher {
+  @apply flex justify-end gap-2 mb-4;
+}
+
+.BannerOverlay_langButton {
+  @apply text-sm font-bold;
+}
+
+.BannerOverlay_langButtonActive {
+  @apply underline;
+}
+
+.BannerOverlay_langButtonInactive {
+  @apply opacity-50;
+}

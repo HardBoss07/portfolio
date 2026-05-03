@@ -1,0 +1,38 @@
+@reference "../../../app/globals.css";
+
+.Technologies_container {
+  @apply relative w-full overflow-hidden py-[1rem];
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.Technologies_rowsList {
+  @apply flex flex-col gap-y-[0.75rem];
+}
+
+.Technologies_rowWrapper {
+  @apply flex whitespace-nowrap;
+}
+
+.Technologies_marqueeContainer {
+  @apply flex shrink-0 items-center gap-x-[1.5rem] px-[0.75rem];
+}
+
+.Technologies_technologyItem {
+  @apply flex flex-row items-center gap-[0.6rem] pl-[0.75rem] pr-[1.25rem] py-[0.15rem] bg-neutral-950 border-2 border-hot-pink rounded-full transition-all hover:scale-105;
+}
+
+.Technologies_iconWrapper {
+  @apply w-[1.2rem] h-[1.2rem] md:w-[1.5rem] md:h-[1.5rem] flex items-center justify-center drop-shadow-[0_0_1px_rgba(255,255,255,0.4)];
+}
+
+.Technologies_label {
+  @apply text-[0.9rem] md:text-[1.1rem] font-bold text-neutral-300 tracking-wider;
+}
+
+.Technologies_animateMarquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.Technologies_animateMarqueeReverse {
+  animation: marquee-reverse var(--duration) linear infinite;
+}

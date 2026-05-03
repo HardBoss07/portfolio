@@ -1,0 +1,9 @@
+@reference "../../../app/globals.css";
+
+.ProjectVideo_wrapper {
+  @apply w-full aspect-video mb-[2rem] border-2 border-hot-pink rounded-[0.5rem] overflow-hidden bg-black;
+}
+
+.ProjectVideo_iframe {
+  @apply w-full h-full border-0;
+}

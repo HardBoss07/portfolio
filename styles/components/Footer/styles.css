@@ -1,0 +1,17 @@
+@reference "../../../app/globals.css";
+
+.Footer_container {
+  @apply border-t-2 border-hot-pink py-[3rem] px-[5vw] mt-auto text-hot-pink text-center font-bold;
+}
+
+.Footer_copyright {
+  @apply text-2xl;
+}
+
+.Footer_linksContainer {
+  @apply flex justify-center gap-6 mt-4 text-lg;
+}
+
+.Footer_legalLink {
+  @apply hover:text-white underline transition-colors;
+}

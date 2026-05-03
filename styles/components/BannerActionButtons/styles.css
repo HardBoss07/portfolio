@@ -1,0 +1,17 @@
+@reference "../../../app/globals.css";
+
+.BannerActionButtons_container {
+  @apply flex flex-col sm:flex-row gap-4 justify-end mt-4;
+}
+
+.BannerActionButtons_buttonBase {
+  @apply border-2 border-hot-pink px-6 py-2 rounded-full text-lg transition-colors;
+}
+
+.BannerActionButtons_secondaryButton {
+  @apply hover:bg-hot-pink/10;
+}
+
+.BannerActionButtons_primaryButton {
+  @apply bg-hot-pink text-black font-bold hover:bg-black hover:text-hot-pink;
+}

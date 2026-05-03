@@ -1,0 +1,9 @@
+@reference "../../../app/globals.css";
+
+.ContactItem_contactLink {
+  @apply inline-flex items-center justify-start gap-2 no-underline text-inherit;
+}
+
+.ContactItem_label {
+  @apply text-inherit;
+}

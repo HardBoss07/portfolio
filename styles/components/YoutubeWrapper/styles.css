@@ -1,0 +1,13 @@
+@reference "../../../app/globals.css";
+
+.YoutubeWrapper_placeholder {
+  @apply flex flex-col items-center justify-center bg-black border-2 border-t-0 text-center p-6 min-h-[300px];
+}
+
+.YoutubeWrapper_notice {
+  @apply text-xl mb-4;
+}
+
+.YoutubeWrapper_acceptButton {
+  @apply border-2 border-hot-pink px-6 py-2 rounded-full text-xl transition-colors hover:bg-hot-pink hover:text-black;
+}

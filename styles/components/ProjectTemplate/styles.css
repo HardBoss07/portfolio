@@ -1,0 +1,31 @@
+@reference "../../../app/globals.css";
+
+.ProjectTemplate_sectionHeader {
+  @apply flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-hot-pink pb-[0.5rem] mb-[1.5rem] gap-[1rem];
+}
+
+.ProjectTemplate_sectionTitle {
+  @apply mb-0 border-0 pb-0;
+}
+
+.ProjectTemplate_imageContainer {
+  @apply w-full rounded-[0.5rem] overflow-hidden border-2 border-neutral-800 my-[2rem] transition-colors hover:border-hot-pink/40;
+}
+
+.ProjectTemplate_projectImage {
+  @apply rounded-lg shadow-lg;
+}
+
+.ProjectTemplate_description {
+  @apply mt-2;
+}
+
+.ProjectTemplate_demoHeader {
+  @apply mt-8;
+}
+
+@media (width < 50rem) {
+  .ProjectTemplate_sectionHeader {
+    @apply basis-1/2;
+  }
+}

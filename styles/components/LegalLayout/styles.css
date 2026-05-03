@@ -1,0 +1,13 @@
+@reference "../../../app/globals.css";
+
+.LegalLayout_container {
+  @apply min-h-screen pt-32 pb-16 px-4;
+}
+
+.LegalLayout_contentWrapper {
+  @apply max-w-4xl mx-auto border-2 border-hot-pink p-8 bg-black shadow-2xl;
+}
+
+.LegalLayout_contentBody {
+  @apply space-y-12;
+}
