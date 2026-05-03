@@ -56,7 +56,7 @@
   }
 
   .contact {
-    @apply flex flex-col gap-[0.5rem] mb-[1.5rem] text-[clamp(1rem,2.5vw,1.25rem)] text-neutral-400;
+    @apply flex flex-col gap-[0.5rem] mb-[1.5rem] text-[clamp(1rem,2.5vw,1.25rem)];
   }
 
   .project-image-container {
