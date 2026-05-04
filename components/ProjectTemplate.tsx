@@ -1,9 +1,7 @@
 import Image from "next/image";
-import RepositoryButton from "./RepositoryButton";
-import DownloadButton from "./DownloadButton";
-import LiveDemoButton from "./LiveDemoButton";
 import ProjectVideo from "./ProjectVideo";
 import { ProjectMetadata } from "@/types/project";
+import ProjectButton from "./UI/ProjectButton";
 
 interface ProjectTemplateProps {
   metadata: ProjectMetadata;
@@ -18,7 +16,7 @@ export default function ProjectTemplate({
     <main>
       <div className="result-header">
         <h1>{metadata.title}</h1>
-        <RepositoryButton link={metadata.repoLink} />
+        <ProjectButton link={metadata.repoLink} type="repository" />
       </div>
       <p>{metadata.intro}</p>
 
@@ -40,7 +38,7 @@ export default function ProjectTemplate({
         <>
           <div className="result-header">
             <h1>Try it out yourself!</h1>
-            <DownloadButton link={metadata.downloadLink} />
+            <ProjectButton link={metadata.downloadLink} type="download" />
           </div>
           <p className="mt-2">
             {metadata.downloadText ||
@@ -53,7 +51,7 @@ export default function ProjectTemplate({
         <>
           <div className="result-header">
             <h1>Live Demonstration</h1>
-            <LiveDemoButton link={metadata.liveDemoLink} />
+            <ProjectButton link={metadata.liveDemoLink} type="liveDemo" />
           </div>
           <p className="mt-2">
             {metadata.liveDemoText ||
