@@ -1,5 +1,5 @@
 import { getAllProjects } from "@/lib/projects";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./project/ProjectCard";
 
 const FEATURED_SLUGS = ["wordle-bot", "ts-client-portfolio", "auto-ocr"];
 

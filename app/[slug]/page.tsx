@@ -1,8 +1,8 @@
-import ProjectTemplate from "@/components/ProjectTemplate";
+import ProjectTemplate from "@/components/project/ProjectTemplate";
 import { getProjectBySlug } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Code from "@/components/Code";
+import Code from "@/components/project/Code";
 import { Metadata } from "next";
 
 interface PageProps {

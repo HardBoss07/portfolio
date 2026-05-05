@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
-import CookieConsent from "@/components/CookieConsent";
+import CookieConsent from "@/components/cookie-consent/CookieConsent";
 import Header from "@/components/Header";
 import {
   jsonLd,
@@ -11,7 +11,7 @@ import {
   twitter,
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
-import VercelAnalytics from "@/components/VercelAnalytics";
+import VercelAnalytics from "@/components/cookie-consent/VercelAnalytics";
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-roboto-slab",
