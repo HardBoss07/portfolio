@@ -7,6 +7,9 @@ portfolio/
 │   │   └── page.tsx
 │   ├── contact/
 │   │   └── page.tsx
+│   ├── datenschutz/
+│   ├── legal/
+│   │   └── page.tsx
 │   ├── projects/
 │   │   └── page.tsx
 │   ├── favicon.ico
@@ -14,20 +17,32 @@ portfolio/
 │   ├── layout.tsx
 │   └── page.tsx
 ├── components/
-│   ├── Code.tsx
-│   ├── CookieConsent.tsx
-│   ├── DownloadButton.tsx
+│   ├── UI/
+│   │   └── ProjectButton.tsx
+│   ├── contact/
+│   │   ├── ContactIcon.tsx
+│   │   └── ContactItem.tsx
+│   ├── cookie-consent/
+│   │   ├── BannerActionButtons.tsx
+│   │   ├── BannerOverlay.tsx
+│   │   ├── CookieConsent.tsx
+│   │   ├── PreferenceToggle.tsx
+│   │   └── VercelAnalytics.tsx
+│   ├── legal/
+│   │   ├── LegalLayout.tsx
+│   │   ├── LegalSection.tsx
+│   │   └── LegalTabs.tsx
+│   ├── project/
+│   │   ├── Code.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── ProjectTemplate.tsx
+│   │   ├── ProjectVideo.tsx
+│   │   └── YoutubeWrapper.tsx
 │   ├── Experience.tsx
 │   ├── Featured.tsx
 │   ├── Footer.tsx
 │   ├── Header.tsx
-│   ├── LiveDemoButton.tsx
-│   ├── ProjectCard.tsx
-│   ├── ProjectTemplate.tsx
-│   ├── ProjectVideo.tsx
-│   ├── RepositoryButton.tsx
-│   ├── Technologies.tsx
-│   └── YoutubeWrapper.tsx
+│   └── Technologies.tsx
 ├── content/
 │   └── projects/
 │       ├── asm-tic-tac-toe.mdx
@@ -43,7 +58,11 @@ portfolio/
 │       ├── ts-barcode.mdx
 │       ├── ts-client-portfolio.mdx
 │       └── wordle-bot.mdx
+├── hooks/
+│   └── useConsent.ts
 ├── lib/
+│   ├── consts.ts
+│   ├── legal-content.ts
 │   ├── projects.ts
 │   ├── seo_metadata.ts
 │   └── technologies.ts

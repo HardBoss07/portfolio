@@ -44,11 +44,7 @@ export default function Contact() {
           icon="instagram"
         />
 
-        <ContactItem
-          url="https://discord.com"
-          label="@m4tt3o"
-          icon="discord"
-        />
+        <ContactItem url="https://discord.com" label="@m4tt3o" icon="discord" />
         <ContactItem
           url="https://steamcommunity.com/id/m4tt3o_woof/"
           label="@m4tt3o_woof"
