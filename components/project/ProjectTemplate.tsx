@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ProjectVideo from "./ProjectVideo";
+import ProjectVideo from "@/components/project/ProjectVideo";
 import { ProjectMetadata } from "@/types/project";
-import ProjectButton from "./UI/ProjectButton";
+import ProjectButton from "../UI/ProjectButton";
 
 interface ProjectTemplateProps {
   metadata: ProjectMetadata;
