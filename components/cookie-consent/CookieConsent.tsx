@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useConsent, ConsentState } from "@/hooks/useConsent";
-import { BannerOverlay } from "./cookie-consent/BannerOverlay";
-import { BannerActionButtons } from "./cookie-consent/BannerActionButtons";
-import { PreferenceToggle } from "./cookie-consent/PreferenceToggle";
+import { BannerOverlay } from "./BannerOverlay";
+import { BannerActionButtons } from "./BannerActionButtons";
+import { PreferenceToggle } from "./PreferenceToggle";
 
 type Language = "DE" | "EN";
 
