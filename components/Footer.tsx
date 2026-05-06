@@ -11,15 +11,15 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t-2 py-8">
+    <footer className="border-t-2 py-xl">
       <p className="text-2xl text-center">
         © {currentYear} - Matteo Bosshard <br />
         All Rights Reserved.
       </p>
-      <div className="flex justify-center gap-6 mt-4 text-lg">
+      <div className="flex justify-center gap-lg mt-md text-lg">
         <Link
           href="/legal"
-          className="hover:text-[#F207A8] underline transition-colors"
+          className="hover:text-hot-pink underline decoration-hot-pink/30 hover:decoration-hot-pink transition-all duration-300 ease-out"
         >
           Legal Notice & Privacy Policy
         </Link>

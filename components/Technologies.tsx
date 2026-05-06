@@ -14,8 +14,8 @@ export default function Technologies() {
   const modifiers = [1, 1.3, 1.15]; // Speed multipliers for each row
 
   return (
-    <div className="relative w-full overflow-hidden py-[1rem] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-      <div className="flex flex-col gap-y-[0.75rem]">
+    <div className="relative w-full overflow-hidden py-md [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+      <div className="flex flex-col gap-y-sm">
         {rows.map((row, rowIndex) => {
           const duration = `${row.length * BASE_DURATION_PER_ITEM * modifiers[rowIndex % modifiers.length]}s`;
           const isReverse = rowIndex % 2 === 0;
@@ -34,12 +34,12 @@ export default function Technologies() {
               }
             >
               <div
-                className={`flex shrink-0 items-center gap-x-[1.5rem] px-[0.75rem] ${animationClass}`}
+                className={`flex shrink-0 items-center gap-x-lg px-sm ${animationClass}`}
               >
                 {row.concat(row).map(({ label, icon: Icon }, idx) => (
                   <div
                     key={`${label}-${idx}`}
-                    className="flex flex-row items-center gap-[0.6rem] pl-[0.75rem] pr-[1.25rem] py-[0.15rem] bg-neutral-950 border-2 border-[#F207A8] rounded-full transition-all hover:scale-105"
+                    className="flex flex-row items-center gap-xs pl-sm pr-md py-xs bg-neutral-900/50 border-2 border-hot-pink rounded-pill transition-all duration-300 ease-out hover:scale-105 hover:bg-neutral-900 active:scale-95"
                   >
                     <div className="w-[1.2rem] h-[1.2rem] md:w-[1.5rem] md:h-[1.5rem] flex items-center justify-center drop-shadow-[0_0_1px_rgba(255,255,255,0.4)]">
                       <Icon />

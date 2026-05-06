@@ -20,10 +20,10 @@ export default function ProjectButton({ link, type }: ButtonProps) {
       href={`https://github.com/HardBoss07/${link}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="ml-auto flex items-center justify-center gap-2 rounded-full border-2 border-current bg-[#F207A8] px-6 py-0 text-2xl text-left text-black transition-colors hover:bg-black hover:text-[#F207A8] w-[13rem]"
+      className="ml-auto flex items-center justify-center gap-sm rounded-pill border-2 border-hot-pink bg-hot-pink px-lg py-1 text-xl text-left text-black transition-all duration-300 ease-out hover:bg-black hover:text-hot-pink w-[13rem] hover:scale-[1.02] active:scale-[0.98]"
     >
-      <span>{label}</span>
-      <ExternalLink />
+      <span className="font-bold">{label}</span>
+      <ExternalLink size={20} />
     </Link>
   );
 }
