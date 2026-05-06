@@ -1,6 +1,6 @@
 @layer base {
   body {
-    /* Brighter neutral text for better readability */
+    /* Tinted neutrals for better brand cohesion */
     @apply bg-black text-neutral-300 font-['Roboto_Slab'] font-medium min-h-screen overflow-x-hidden;
   }
 
@@ -10,26 +10,33 @@
   h4,
   h5,
   h6 {
-    @apply text-hot-pink font-bold leading-tight;
+    @apply text-hot-pink font-bold leading-[1.1] tracking-tight;
   }
 
   h1 {
-    @apply text-[clamp(2.5rem,8vw,4.5rem)] mb-[1.5rem] border-b-2 border-hot-pink pb-[0.5rem];
+    /* Fluid typography with tighter tracking for large headlines */
+    @apply text-[clamp(2.5rem,10vw,4.5rem)] mb-lg border-b-2 border-hot-pink pb-xs;
   }
 
   h2 {
-    @apply text-[clamp(1.75rem,5vw,3rem)] mb-[1rem];
+    @apply text-[clamp(1.75rem,6vw,3rem)] mb-md mt-xl;
   }
 
   h3 {
-    @apply text-[clamp(1.1rem,3vw,1.5rem)] mb-[0.75rem];
+    @apply text-[clamp(1.25rem,4vw,1.75rem)] mb-sm mt-lg;
   }
 
   p {
-    @apply text-[clamp(1rem,2vw,1.25rem)] leading-relaxed mb-[1.5rem] block;
+    /* Better line-height and max-width for readability */
+    @apply text-[clamp(1rem,2vw,1.125rem)] leading-relaxed mb-lg;
   }
 
   a {
-    @apply transition-all duration-300 ease-in-out decoration-hot-pink/30 hover:decoration-hot-pink;
+    @apply transition-all duration-300 ease-out decoration-hot-pink/30 hover:decoration-hot-pink hover:text-hot-pink;
+  }
+
+  /* Selection style for brand cohesion */
+  ::selection {
+    @apply bg-hot-pink/30 text-white;
   }
 }
