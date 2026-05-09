@@ -43,3 +43,5 @@ next-env.d.ts
 # IDEs and text editors
 .idea
 .vscode
+
+design_reference
