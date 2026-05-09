@@ -15,15 +15,21 @@ export default function ProjectButton({ link, type }: ButtonProps) {
       : type === "download"
         ? "Download"
         : "Live Demo";
+
+  const href =
+    link.startsWith("http") || link.startsWith("/")
+      ? link
+      : `https://github.com/HardBoss07/${link}`;
+
   return (
     <Link
-      href={`https://github.com/HardBoss07/${link}`}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="ml-auto flex items-center justify-center gap-sm rounded-pill border-2 border-hot-pink bg-hot-pink px-lg py-1 text-xl text-left text-black transition-all duration-300 ease-out hover:bg-black hover:text-hot-pink w-[13rem] hover:scale-[1.02] active:scale-[0.98]"
+      className="inline-flex items-center justify-center gap-2 rounded-pill bg-primary-container text-on-primary-container px-6 py-2 text-label-mono uppercase font-bold transition-all hover:brightness-110 active:scale-95"
     >
-      <span className="font-bold">{label}</span>
-      <ExternalLink size={20} />
+      <span>{label}</span>
+      <ExternalLink size={18} />
     </Link>
   );
 }

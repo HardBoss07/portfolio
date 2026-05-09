@@ -13,10 +13,12 @@ export default async function Featured() {
   if (featuredProjects.length === 0) return null;
 
   return (
-    <section className="featured-projects-section">
-      <h1>Featured Projects</h1>
-      <div className="projects-grid">
-        {featuredProjects.map((project) => {
+    <section className="section-padding" id="work">
+      <h2 className="border-l-4 border-primary pl-4 uppercase mb-gap-md">
+        Selected Works
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-gap-md">
+        {featuredProjects.map((project, index) => {
           if (!project) return null;
 
           return (
@@ -26,6 +28,7 @@ export default async function Featured() {
               description={project.description}
               lang={project.techStack || "Unknown"}
               link={project.slug}
+              index={index + 1}
             />
           );
         })}
