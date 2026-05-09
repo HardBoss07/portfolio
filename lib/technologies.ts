@@ -35,7 +35,6 @@ export const technologies: Technology[] = [
   { label: "TypeScript", icon: TypescriptOriginal },
   { label: "Rust", icon: RustOriginal },
 
-
   // --- Frameworks & Libraries ---
   { label: "Next.js", icon: NextjsOriginal },
   { label: "Spring", icon: SpringOriginal },

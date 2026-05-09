@@ -65,7 +65,12 @@
     /* Font Families - satisfying the compiler with fallbacks */
     /* Next.js will override these variables at runtime via classes on the body */
     --font-headline: var(--font-ibm-plex-serif, ui-serif, serif);
-    --font-body: var(--font-hanken-grotesk, ui-sans-serif, system-ui, sans-serif);
+    --font-body: var(
+      --font-hanken-grotesk,
+      ui-sans-serif,
+      system-ui,
+      sans-serif
+    );
     --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
   }
 }

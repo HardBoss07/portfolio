@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useConsent, ConsentState } from "@/hooks/useConsent";
-import { BannerOverlay } from "./BannerOverlay";
-import { BannerActionButtons } from "./BannerActionButtons";
-import { PreferenceToggle } from "./PreferenceToggle";
+import { BannerOverlay } from "@/components/cookie-consent/BannerOverlay";
+import { BannerActionButtons } from "@/components/cookie-consent/BannerActionButtons";
+import { PreferenceToggle } from "@/components/cookie-consent/PreferenceToggle";
 
 type Language = "DE" | "EN";
 
@@ -102,11 +102,18 @@ export default function CookieConsent() {
     <BannerOverlay activeLang={lang} onLanguageChange={setLang}>
       {!showSettings ? (
         <>
-          <h2 className="text-headline-h2 font-bold mb-4 uppercase">{t.title}</h2>
-          <p className="text-body-md mb-6 leading-relaxed text-text-secondary">{t.description}</p>
+          <h2 className="text-headline-h2 font-bold mb-4 uppercase">
+            {t.title}
+          </h2>
+          <p className="text-body-md mb-6 leading-relaxed text-text-secondary">
+            {t.description}
+          </p>
           <p className="text-label-mono mb-8 text-text-secondary/70">
             {t.moreInfo}{" "}
-            <Link href="/legal" className="text-primary underline hover:text-primary-container">
+            <Link
+              href="/legal"
+              className="text-primary underline hover:text-primary-container"
+            >
               {t.legalNotice}
             </Link>
             .
@@ -120,7 +127,9 @@ export default function CookieConsent() {
         </>
       ) : (
         <>
-          <h2 className="text-headline-h2 font-bold mb-6 uppercase">{t.settingsTitle}</h2>
+          <h2 className="text-headline-h2 font-bold mb-6 uppercase">
+            {t.settingsTitle}
+          </h2>
           <div className="space-y-6 mb-8">
             <PreferenceToggle
               label={t.catNecessary}

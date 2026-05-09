@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ContactIcon, IconName } from "./ContactIcon";
+import { ContactIcon, IconName } from "@/components/contact/ContactIcon";
 import { ArrowRight } from "lucide-react";
 
 export interface ContactItemProps {

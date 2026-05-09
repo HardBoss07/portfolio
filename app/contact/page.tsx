@@ -33,8 +33,9 @@ export default function Contact() {
             </div>
             <p className="text-body-lg max-w-lg text-text-secondary text-wrap-balance">
               Pushing the boundaries of the open web one pixel at a time. If
-              you&apos;re interested, shoot me a message with your inquiry on one
-              of the chosen methods. I will try to respond as quickly as possible.
+              you&apos;re interested, shoot me a message with your inquiry on
+              one of the chosen methods. I will try to respond as quickly as
+              possible.
             </p>
           </div>
 

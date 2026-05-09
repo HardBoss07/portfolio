@@ -80,7 +80,10 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-gap-lg space-y-gap-md animate-entry stagger-3" id="about">
+      <section
+        className="py-gap-lg space-y-gap-md animate-entry stagger-3"
+        id="about"
+      >
         <h2 className="border-l-4 border-primary pl-4 uppercase">About Me</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-gap-md items-start">
           <div className="space-y-4">
@@ -106,9 +109,9 @@ export default function Home() {
             </p>
             <p className="text-wrap-balance">
               My goal is to continuously improve as a developer, and this space
-              reflects that ongoing journey. Whether you&apos;re a fellow
-              coder, a potential collaborator, an employer or just curious,
-              feel free to explore and see what I&apos;ve been working on!
+              reflects that ongoing journey. Whether you&apos;re a fellow coder,
+              a potential collaborator, an employer or just curious, feel free
+              to explore and see what I&apos;ve been working on!
             </p>
           </div>
         </div>
@@ -135,7 +138,9 @@ export default function Home() {
             href="/contact"
             className="flex justify-between items-center p-6 bg-surface-variant/10 border-2 border-outline-variant hover:border-primary transition-all duration-300 ease-out-expo group active:scale-[0.98]"
           >
-            <span className="text-label-mono font-bold uppercase">START PROJECT</span>
+            <span className="text-label-mono font-bold uppercase">
+              START PROJECT
+            </span>
             <span className="icon-align">
               <ArrowRight className="text-primary group-hover:translate-x-2 transition-transform duration-300 ease-out-expo" />
             </span>
@@ -146,7 +151,9 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="text-label-mono font-bold uppercase">LINKEDIN CONNECT</span>
+            <span className="text-label-mono font-bold uppercase">
+              LINKEDIN CONNECT
+            </span>
             <span className="icon-align">
               <ArrowUpRight className="text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 ease-out-expo" />
             </span>

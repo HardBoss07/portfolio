@@ -1,4 +1,4 @@
-import YouTubeWrapper from "./YoutubeWrapper";
+import YouTubeWrapper from "@/components/project/YoutubeWrapper";
 
 interface ProjectVideoProps {
   youtubeId: string;

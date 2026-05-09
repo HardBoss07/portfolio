@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import CookieConsent from "@/components/cookie-consent/CookieConsent";
 import Header from "@/components/Header";
@@ -12,7 +11,11 @@ import {
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
 import VercelAnalytics from "@/components/cookie-consent/VercelAnalytics";
-import { IBM_Plex_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import {
+  IBM_Plex_Serif,
+  Hanken_Grotesk,
+  JetBrains_Mono,
+} from "next/font/google";
 
 const ibmPlexSerif = IBM_Plex_Serif({
   variable: "--font-ibm-plex-serif",

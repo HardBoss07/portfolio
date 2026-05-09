@@ -7,7 +7,12 @@
     overflow-wrap: break-word;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-headline;
     text-wrap: balance;
   }
@@ -54,19 +59,19 @@
     letter-spacing: -0.01em;
     font-weight: 600;
   }
-  
+
   .text-body-lg {
     font-size: 1.125rem;
     line-height: 1.6;
     font-weight: 400;
   }
-  
+
   .text-body-md {
     font-size: 1rem;
     line-height: 1.5;
     font-weight: 400;
   }
-  
+
   .text-label-mono {
     @apply font-mono text-[0.875rem] leading-none tracking-[0.05em] font-medium;
   }
