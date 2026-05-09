@@ -1,42 +1,80 @@
 @layer base {
   body {
-    /* Tinted neutrals for better brand cohesion */
-    @apply bg-black text-neutral-300 font-['Roboto_Slab'] font-medium min-h-screen overflow-x-hidden;
+    @apply bg-background text-text-primary font-body antialiased min-h-[100dvh] overflow-x-hidden selection:bg-primary/30 selection:text-white;
+    font-size: 1rem;
+    line-height: 1.5;
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-hot-pink font-bold leading-[1.1] tracking-tight;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+    text-wrap: balance;
   }
 
   h1 {
-    /* Fluid typography with tighter tracking for large headlines */
-    @apply text-[clamp(2.5rem,10vw,4.5rem)] mb-lg border-b-2 border-hot-pink pb-xs;
+    @apply text-[clamp(2.5rem,8vw,4.5rem)] font-bold leading-[1.1] tracking-[-0.02em];
   }
 
   h2 {
-    @apply text-[clamp(1.75rem,6vw,3rem)] mb-md mt-xl;
-  }
-
-  h3 {
-    @apply text-[clamp(1.25rem,4vw,1.75rem)] mb-sm mt-lg;
+    @apply text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-[1.2] tracking-[-0.01em];
   }
 
   p {
-    /* Better line-height and max-width for readability */
-    @apply text-[clamp(1rem,2vw,1.125rem)] leading-relaxed mb-lg;
+    @apply leading-relaxed text-text-secondary max-w-[70ch];
+    font-size: 1rem;
   }
 
   a {
-    @apply transition-all duration-300 ease-out decoration-hot-pink/30 hover:decoration-hot-pink hover:text-hot-pink;
+    @apply transition-all duration-200;
+    transition-timing-function: var(--ease-out-quart);
   }
 
-  /* Selection style for brand cohesion */
-  ::selection {
-    @apply bg-hot-pink/30 text-white;
+  button {
+    @apply transition-all duration-150 active:scale-[0.97];
+    transition-timing-function: var(--ease-out-quart);
+  }
+}
+
+@layer utilities {
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+
+  .text-headline-h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .text-headline-h2 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  
+  .text-body-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  
+  .text-body-md {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  
+  .text-label-mono {
+    @apply font-mono text-[0.875rem] leading-none tracking-[0.05em] font-medium;
+  }
+
+  /* Optical alignment helper */
+  .icon-align {
+    display: inline-flex;
+    align-items: center;
+    transform: translateY(-0.5px);
   }
 }

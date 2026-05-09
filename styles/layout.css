@@ -1,56 +1,15 @@
-@layer base {
-  footer {
-    @apply py-xl px-[5vw] border-t-2 border-hot-pink mt-huge text-hot-pink text-center font-bold;
-  }
-
-  /* Specific paragraph spacing from original - refined with tokens */
-  main > p:first-of-type {
-    @apply mt-md;
-  }
-}
-
 @layer components {
   main {
-    @apply w-[92vw] max-w-[75rem] mx-auto min-h-[80vh] flex flex-col py-lg;
-    
-    /* Subtle entry animation */
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply w-container-width max-w-container-max mx-auto min-h-screen pt-28 md:pt-40 pb-gap-lg;
+  }
 
-    @starting-style {
-      opacity: 0;
-      transform: translateY(1rem);
-    }
+  footer {
+    @apply w-full py-gap-md px-[4vw] flex flex-col md:flex-row justify-between items-center gap-gap-sm bg-surface-dim border-t-2 border-primary mt-gap-lg;
   }
 }
 
-/* Fluid responsive adjustments using rem-based width */
-@media (width < 50rem) {
-  header,
-  .result-header {
-    @apply basis-1/2;
-  }
-
-  header div {
-    @apply grid grid-cols-2 gap-md m-0;
-  }
-
-  header div a:last-child {
-    @apply text-left w-full;
-  }
-
-  header a {
-    @apply w-full text-xl;
-  }
-}
-
-@media (width < 30rem) {
-  header div {
-    @apply grid grid-cols-2 gap-sm m-0;
-  }
-
-  header a {
-    @apply text-base;
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-gap-md;
   }
 }

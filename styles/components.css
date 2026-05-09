@@ -1,80 +1,53 @@
 @layer components {
-  header {
-    @apply p-md flex items-center justify-between border-b-2 mb-xl border-hot-pink;
+  .max-w-container-max {
+    max-width: var(--spacing-container-max);
+  }
+
+  .rounded-pill {
+    border-radius: var(--radius-pill);
+  }
+
+  /* Section Styles */
+  .section-padding {
+    @apply py-gap-lg;
+  }
+
+  /* Card Styles */
+  .card-brutalist {
+    @apply bg-surface-variant/10 border-2 border-outline-variant p-8 transition-all duration-300 ease-out-expo active:scale-[0.98];
+    @apply hover:border-primary hover:shadow-[0_0_30px_rgba(255,71,155,0.15)] hover:bg-surface-variant/20;
     
-    /* Subtle entry animation */
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1), transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(-0.5rem);
-    }
+    /* Hardware acceleration */
+    will-change: transform, border-color, box-shadow;
   }
 
-  header div {
-    @apply flex items-center gap-x-md grow;
+  /* Marquee Styles */
+  .marquee-container {
+    @apply w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-bright py-4 border-y-2 border-outline-variant;
   }
 
-  header a {
-    @apply text-xl border-2 border-current px-lg py-1 rounded-pill transition-all duration-300 ease-out w-48 md:w-40 text-hot-pink;
-    @apply hover:bg-hot-pink hover:text-black hover:scale-[1.02] active:scale-[0.98];
-  }
-
-  header div a:last-child {
-    @apply ml-auto text-right transition-all duration-300 ease-out bg-hot-pink text-black border-hot-pink;
-    @apply hover:bg-black hover:text-hot-pink hover:border-hot-pink hover:scale-[1.02] active:scale-[0.98];
-  }
-
-  .result-header {
-    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-hot-pink pb-xs mb-lg gap-md;
-  }
-
-  .result-header h1 {
-    @apply mb-0 border-0 pb-0;
-  }
-
-  .result {
-    @apply p-lg border-2 border-neutral-800 rounded-md mb-xl bg-neutral-900/10 backdrop-blur-sm transition-all duration-300 ease-out;
-    @apply hover:border-hot-pink/40 hover:bg-neutral-900/20;
-  }
-
-  .project-card {
-    @apply p-lg border-2 border-neutral-800 rounded-md mb-lg bg-neutral-900/10 transition-all duration-300 ease-out;
-    @apply hover:border-hot-pink/40 hover:bg-neutral-900/20 hover:shadow-[0_0.5rem_2rem_-1rem_rgba(242,7,168,0.2)] hover:scale-[1.01] active:scale-[0.99];
-  }
-
-  .project-card-header {
-    @apply flex flex-col sm:flex-row justify-between items-start mb-sm gap-xs;
-  }
-
-  .project-card h2 {
-    @apply mb-0;
-  }
-
-  .project-card h3 {
-    @apply mb-0 text-neutral-400 font-normal italic sm:text-right;
-  }
-
+  /* Video Wrapper */
   .video-wrapper {
-    @apply w-full aspect-video mb-xl border-2 border-hot-pink rounded-md overflow-hidden bg-black;
+    @apply w-full aspect-video mb-gap-lg border-2 border-primary rounded-xl overflow-hidden bg-black;
   }
 
-  iframe {
+  .video-wrapper iframe {
     @apply w-full h-full border-0;
   }
 
-  .code-wrapper {
-    @apply text-[clamp(0.8rem,1.5vw,1rem)] rounded-md border-2 border-neutral-800 overflow-hidden my-lg;
+  /* Page Entry Animation */
+  .animate-entry {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
   }
 
-  .contact {
-    @apply flex flex-col gap-xs mb-lg text-[clamp(1rem,2.5vw,1.25rem)];
-  }
-
-  .project-image-container {
-    @apply w-full rounded-md overflow-hidden border-2 border-neutral-800 my-xl transition-all duration-300 ease-out;
-    @apply hover:border-hot-pink/40 hover:scale-[1.01];
-  }
+  .stagger-1 { transition-delay: 50ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 150ms; }
 }
