@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContactIcon, IconName } from "./ContactIcon";
+import { ArrowRight } from "lucide-react";
 
 export interface ContactItemProps {
   url: string;
@@ -13,17 +14,18 @@ export default function ContactItem({ url, label, icon }: ContactItemProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: "8px",
-        textDecoration: "none",
-        color: "inherit",
-      }}
+      className="flex justify-between items-center p-6 bg-surface-variant/20 border-2 border-outline-variant hover:border-primary transition-colors group w-full"
     >
-      <ContactIcon name={icon} size={20} strokeWidth={2} />
-      <span>{label}</span>
+      <div className="flex items-center gap-4">
+        <ContactIcon
+          name={icon}
+          size={24}
+          strokeWidth={2}
+          className="text-primary"
+        />
+        <span className="text-label-mono font-bold uppercase">{label}</span>
+      </div>
+      <ArrowRight className="text-primary group-hover:translate-x-2 transition-transform duration-300" />
     </Link>
   );
 }
