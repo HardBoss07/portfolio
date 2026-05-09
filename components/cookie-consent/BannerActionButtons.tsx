@@ -19,19 +19,19 @@ export function BannerActionButtons({
     <div className="flex flex-col sm:flex-row gap-4 justify-end mt-4">
       <button
         onClick={onShowSettings}
-        className="border-2 border-[#F207A8] px-6 py-2 rounded-full text-lg transition-colors hover:bg-[#F207A8]/10"
+        className="border-2 border-outline-variant px-6 py-2 rounded-pill text-label-mono font-bold transition-all hover:border-primary hover:text-primary active:scale-95"
       >
         {labels.settings}
       </button>
       <button
         onClick={onRejectAll}
-        className="border-2 border-[#F207A8] px-6 py-2 rounded-full text-lg transition-colors hover:bg-[#F207A8]/10"
+        className="border-2 border-outline-variant px-6 py-2 rounded-pill text-label-mono font-bold transition-all hover:border-primary hover:text-primary active:scale-95"
       >
         {labels.reject}
       </button>
       <button
         onClick={onAcceptAll}
-        className="border-2 border-[#F207A8] px-6 py-2 rounded-full bg-[#F207A8] text-black text-lg font-bold transition-colors hover:bg-black hover:text-[#F207A8]"
+        className="bg-primary text-on-primary px-8 py-2 rounded-pill text-label-mono uppercase font-bold active:scale-95 transition-transform hover:brightness-110"
       >
         {labels.accept}
       </button>

@@ -102,11 +102,11 @@ export default function CookieConsent() {
     <BannerOverlay activeLang={lang} onLanguageChange={setLang}>
       {!showSettings ? (
         <>
-          <h2 className="text-2xl font-bold mb-4">{t.title}</h2>
-          <p className="text-lg mb-6 leading-relaxed">{t.description}</p>
-          <p className="text-sm mb-8 opacity-80">
+          <h2 className="text-headline-h2 font-bold mb-4 uppercase">{t.title}</h2>
+          <p className="text-body-md mb-6 leading-relaxed text-text-secondary">{t.description}</p>
+          <p className="text-label-mono mb-8 text-text-secondary/70">
             {t.moreInfo}{" "}
-            <Link href="/legal" className="underline hover:text-white">
+            <Link href="/legal" className="text-primary underline hover:text-primary-container">
               {t.legalNotice}
             </Link>
             .
@@ -120,7 +120,7 @@ export default function CookieConsent() {
         </>
       ) : (
         <>
-          <h2 className="text-2xl font-bold mb-6">{t.settingsTitle}</h2>
+          <h2 className="text-headline-h2 font-bold mb-6 uppercase">{t.settingsTitle}</h2>
           <div className="space-y-6 mb-8">
             <PreferenceToggle
               label={t.catNecessary}
@@ -148,13 +148,13 @@ export default function CookieConsent() {
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mt-4">
             <button
               onClick={() => setShowSettings(false)}
-              className="text-lg underline hover:text-white"
+              className="text-label-mono font-bold text-text-secondary hover:text-primary transition-colors"
             >
               {t.btnBack}
             </button>
             <button
               onClick={handleSaveSettings}
-              className="border-2 border-[#F207A8] px-6 py-2 rounded-full bg-[#F207A8] text-black text-lg font-bold transition-colors hover:bg-black hover:text-[#F207A8] w-full sm:w-auto"
+              className="bg-primary text-on-primary px-8 py-2 rounded-pill text-label-mono uppercase font-bold active:scale-95 transition-transform hover:brightness-110 w-full sm:w-auto"
             >
               {t.btnSave}
             </button>

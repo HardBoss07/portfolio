@@ -5,18 +5,18 @@ type LegalTabsProps = {
 
 export function LegalTabs({ activeLocale, onLocaleChange }: LegalTabsProps) {
   return (
-    <div className="flex gap-8 border-b-2 border-[#F207A8]/30 mb-12">
+    <div className="flex gap-4 mb-12">
       {(["DE", "EN"] as const).map((locale) => (
         <button
           key={locale}
           onClick={() => onLocaleChange(locale)}
-          className={`pb-2 text-xl font-bold transition-all ${
+          className={`px-6 py-2 rounded-pill text-label-mono font-bold transition-all active:scale-95 ${
             activeLocale === locale
-              ? "text-[#F207A8] border-b-4 border-[#F207A8]"
-              : "text-gray-500 hover:text-white"
+              ? "bg-primary text-on-primary"
+              : "border-2 border-outline-variant text-text-secondary hover:border-primary hover:text-primary"
           }`}
         >
-          {locale === "DE" ? "Deutsch" : "English"}
+          {locale === "DE" ? "DEUTSCH" : "ENGLISH"}
         </button>
       ))}
     </div>
