@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Copyright } from "lucide-react";
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState<number | null>(null);
@@ -11,17 +12,36 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t-2 py-xl">
-      <p className="text-2xl text-center">
-        © {currentYear} - Matteo Bosshard <br />
-        All Rights Reserved.
-      </p>
-      <div className="flex justify-center gap-lg mt-md text-lg">
+    <footer className="w-full py-gap-md px-[4vw] flex flex-col md:flex-row justify-between items-center gap-gap-sm bg-surface-dim border-t-2 border-primary mt-gap-lg">
+      <div className="text-text-primary font-bold text-label-mono">
+        M4TT3O.DEV
+      </div>
+      <div className="text-label-mono text-text-secondary flex items-center gap-2 text-center">
+        <Copyright size={14} className="inline-block" />
+        <span>{currentYear} ALL RIGHTS RESERVED.</span>
+      </div>
+      <div className="flex gap-gap-md">
         <Link
           href="/legal"
-          className="hover:text-hot-pink underline decoration-hot-pink/30 hover:decoration-hot-pink transition-all duration-300 ease-out"
+          className="text-label-mono text-text-secondary hover:text-primary transition-colors"
         >
-          Legal Notice & Privacy Policy
+          Legal
+        </Link>
+        <Link
+          href="https://github.com/HardBoss07"
+          className="text-label-mono text-text-secondary hover:text-primary transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </Link>
+        <Link
+          href="https://linkedin.com/in/matteo-bosshard"
+          className="text-label-mono text-text-secondary hover:text-primary transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
         </Link>
       </div>
     </footer>

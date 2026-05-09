@@ -12,9 +12,23 @@ import {
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
 import VercelAnalytics from "@/components/cookie-consent/VercelAnalytics";
+import { IBM_Plex_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 
-const robotoSlab = Roboto_Slab({
-  variable: "--font-roboto-slab",
+const ibmPlexSerif = IBM_Plex_Serif({
+  variable: "--font-ibm-plex-serif",
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-hanken-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -60,8 +74,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de-CH">
-      <body className={`${robotoSlab.variable} antialiased`}>
+    <html lang="en">
+      <body
+        className={`${ibmPlexSerif.variable} ${hankenGrotesk.variable} ${jetBrainsMono.variable} antialiased hyphens-auto break-words`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
