@@ -23,18 +23,29 @@ export default async function Projects() {
 
   return (
     <main>
-      <h1>My Projects</h1>
-      <div className="mt-6">
-        {projects.map((project, index: number) => (
-          <ProjectCard
-            key={index}
-            title={project.title}
-            description={project.description}
-            lang={project.techStack}
-            link={project.slug}
-          />
-        ))}
-      </div>
+      <section className="section-padding">
+        <div className="inline-block border-b-4 border-primary pb-2 mb-gap-md">
+          <h1 className="uppercase">MY PROJECTS</h1>
+        </div>
+        <p className="text-body-lg max-w-2xl mb-gap-lg">
+          A comprehensive collection of my technical explorations, academic
+          assignments, and personal tools. Each project represents a milestone
+          in my journey as a developer.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gap-md">
+          {projects.map((project, index: number) => (
+            <ProjectCard
+              key={project.slug}
+              title={project.title}
+              description={project.description}
+              lang={project.techStack || "Unknown"}
+              link={project.slug}
+              index={index + 1}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

@@ -11,16 +11,20 @@ export default function YouTubeWrapper({
   if (consent.externalMedia) return <>{children}</>;
 
   return (
-    <div className="video-wrapper flex flex-col items-center justify-center bg-black border-2 border-t-0 text-center p-6 min-h-[300px]">
-      <p className="text-xl mb-4">
-        Dieses Video erfordert Cookies von Drittanbietern (YouTube).
+    <div className="video-wrapper flex flex-col items-center justify-center bg-surface-dim border-2 border-primary text-center p-8">
+      <p className="text-body-lg font-bold uppercase mb-6 text-text-primary">
+        External Media Required
+      </p>
+      <p className="text-body-md mb-8 text-text-secondary max-w-md">
+        This video requires third-party cookies from YouTube to be displayed.
+        Accepting will enable all external media across the site.
       </p>
 
       <button
-        className="border-2 border-[#F207A8] px-6 py-2 rounded-full text-xl transition-colors hover:bg-[#F207A8] hover:text-black"
+        className="bg-primary text-on-primary px-8 py-3 rounded-pill text-label-mono uppercase font-bold transition-all hover:brightness-110 active:scale-95"
         onClick={() => updateConsent({ externalMedia: true })}
       >
-        Video laden & Cookies akzeptieren
+        Load Video & Accept
       </button>
     </div>
   );
