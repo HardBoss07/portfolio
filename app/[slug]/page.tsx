@@ -2,12 +2,18 @@ import ProjectTemplate from "@/components/project/ProjectTemplate";
 import { getProjectBySlug } from "@/lib/projects";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Code from "@/components/project/Code";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+const Code = dynamic(() => import("@/components/project/Code"), {
+  loading: () => (
+    <pre className="my-4 p-4 bg-[#1E1F22] rounded-lg border border-gray-500 animate-pulse h-32" />
+  ),
+});
 
 const mdxComponents = {
   code: Code,
