@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import Header from "@/components/Header";
 import {
@@ -10,21 +9,12 @@ import {
   twitter,
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
+import ClientConsentWrapper from "@/components/cookie-consent/ClientConsentWrapper";
 import {
   IBM_Plex_Serif,
   Hanken_Grotesk,
   JetBrains_Mono,
 } from "next/font/google";
-
-const CookieConsent = dynamic(
-  () => import("@/components/cookie-consent/CookieConsent"),
-  { ssr: false }
-);
-
-const VercelAnalytics = dynamic(
-  () => import("@/components/cookie-consent/VercelAnalytics"),
-  { ssr: false }
-);
 
 const ibmPlexSerif = IBM_Plex_Serif({
   variable: "--font-ibm-plex-serif",
@@ -96,9 +86,8 @@ export default function RootLayout({
         />
         <Header />
         {children}
-        <CookieConsent />
         <Footer />
-        <VercelAnalytics />
+        <ClientConsentWrapper />
       </body>
     </html>
   );
