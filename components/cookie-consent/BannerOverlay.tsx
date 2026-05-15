@@ -22,7 +22,7 @@ export function BannerOverlay({
               className={`text-label-mono font-bold transition-all ${
                 activeLang === lang
                   ? "text-primary scale-110"
-                  : "text-text-secondary opacity-50 hover:opacity-100"
+                  : "text-on-surface-variant hover:text-primary"
               }`}
             >
               {lang}

@@ -92,6 +92,7 @@ export default function Header() {
             <button
               onClick={closeMenu}
               className="text-primary p-2 -ml-2 active:scale-90 transition-all duration-150"
+              aria-label="Close Menu"
             >
               <X size={32} />
             </button>
