@@ -1,16 +1,49 @@
 import type { NextConfig } from "next";
 
+const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com;
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data: i.ytimg.com;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-src 'self' https://www.youtube.com;
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+  .replace(/\s{2,}/g, " ")
+  .trim();
+
 const nextConfig: NextConfig = {
-  /*cacheComponents: true,
-  cacheLife: {
-    "stale-while-revalidate": {
-      stale: 3600,
-      revalidate: 60,
-      expire: 86400,
-    },
-  },*/
   images: {
     minimumCacheTTL: 31536000,
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader,
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
   },
   turbopack: {
     rules: {

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import CookieConsent from "@/components/cookie-consent/CookieConsent";
 import Header from "@/components/Header";
 import {
   jsonLd,
@@ -10,12 +10,21 @@ import {
   twitter,
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
-import VercelAnalytics from "@/components/cookie-consent/VercelAnalytics";
 import {
   IBM_Plex_Serif,
   Hanken_Grotesk,
   JetBrains_Mono,
 } from "next/font/google";
+
+const CookieConsent = dynamic(
+  () => import("@/components/cookie-consent/CookieConsent"),
+  { ssr: false }
+);
+
+const VercelAnalytics = dynamic(
+  () => import("@/components/cookie-consent/VercelAnalytics"),
+  { ssr: false }
+);
 
 const ibmPlexSerif = IBM_Plex_Serif({
   variable: "--font-ibm-plex-serif",
