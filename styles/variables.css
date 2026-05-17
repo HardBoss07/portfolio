@@ -1,95 +1,95 @@
 @theme {
-    /* Brand Colors - OKLCH for perceptual uniformity */
-    --color-primary: oklch(65% 0.25 335);
-    --color-on-primary: #000000;
-    --color-primary-container: #ff479b;
-    --color-on-primary-container: #000000;
+  /* Brand Colors - OKLCH for perceptual uniformity */
+  --color-primary: oklch(65% 0.25 335);
+  --color-on-primary: #000000;
+  --color-primary-container: #ff479b;
+  --color-on-primary-container: #000000;
 
-    --color-secondary: #cec4c8;
-    --color-on-secondary: #352f32;
-    --color-secondary-container: #504a4d;
-    --color-on-secondary-container: #c3b9bd;
+  --color-secondary: #cec4c8;
+  --color-on-secondary: #352f32;
+  --color-secondary-container: #504a4d;
+  --color-on-secondary-container: #c3b9bd;
 
-    --color-surface: oklch(12% 0.01 335);
-    --color-surface-dim: #1f0e14;
-    --color-surface-bright: #48343a;
-    --color-surface-variant: #432f35;
-    --color-on-surface: #fadbe3;
-    --color-on-surface-variant: #e3bcc7;
+  --color-surface: oklch(12% 0.01 335);
+  --color-surface-dim: #1f0e14;
+  --color-surface-bright: #48343a;
+  --color-surface-variant: #432f35;
+  --color-on-surface: #fadbe3;
+  --color-on-surface-variant: #e3bcc7;
 
-    --color-surface-container-lowest: #19090f;
-    --color-surface-container-low: #28171c;
-    --color-surface-container: #2c1a20;
-    --color-surface-container-high: #38252b;
-    --color-surface-container-highest: #432f35;
+  --color-surface-container-lowest: #19090f;
+  --color-surface-container-low: #28171c;
+  --color-surface-container: #2c1a20;
+  --color-surface-container-high: #38252b;
+  --color-surface-container-highest: #432f35;
 
-    --color-background: oklch(8% 0.01 335);
-    --color-on-background: #fadbe3;
+  --color-background: oklch(8% 0.01 335);
+  --color-on-background: #fadbe3;
 
-    --color-outline: #ab8792;
-    --color-outline-variant: #5b3f48;
+  --color-outline: #ab8792;
+  --color-outline-variant: #5b3f48;
 
-    --color-text-primary: oklch(100% 0 0);
-    --color-text-secondary: oklch(80% 0.01 335);
-    --color-accent-muted: oklch(40% 0.12 335);
+  --color-text-primary: oklch(100% 0 0);
+  --color-text-secondary: oklch(80% 0.01 335);
+  --color-accent-muted: oklch(40% 0.12 335);
 
-    /* Font Families */
-    --font-headline: var(--font-headline);
-    --font-body: var(--font-body);
-    --font-mono: var(--font-mono);
+  /* Font Families */
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 
-    /* Spacing Scale */
-    --spacing-container-max: 75rem;
-    --spacing-container-width: 92vw;
-    --spacing-base-unit: 8px;
-    --spacing-gap-sm: 1rem;
-    --spacing-gap-md: 2rem;
-    --spacing-gap-lg: 4rem;
+  /* Spacing Scale */
+  --spacing-container-max: 75rem;
+  --spacing-container-width: 92vw;
+  --spacing-base-unit: 8px;
+  --spacing-gap-sm: 1rem;
+  --spacing-gap-md: 2rem;
+  --spacing-gap-lg: 4rem;
 
-    /* Radius Tokens */
-    --radius-sm: 0.25rem;
-    --radius-DEFAULT: 0.5rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
-    --radius-pill: 9999px;
+  /* Radius Tokens */
+  --radius-sm: 0.25rem;
+  --radius-DEFAULT: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 9999px;
 
-    /* Premium Easing Curves */
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-    --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  /* Premium Easing Curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
 }
 
 @layer base {
-    :root {
-        /* Font Families - satisfying the compiler with fallbacks */
-        /* Next.js will override these variables at runtime via classes on the body */
-        --font-headline: var(--font-ibm-plex-serif, ui-serif, serif);
-        --font-body: var(
-            --font-hanken-grotesk,
-            ui-sans-serif,
-            system-ui,
-            sans-serif
-        );
-        --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
-    }
+  :root {
+    /* Font Families - satisfying the compiler with fallbacks */
+    /* Next.js will override these variables at runtime via classes on the body */
+    --font-headline: var(--font-ibm-plex-serif, ui-serif, serif);
+    --font-body: var(
+      --font-hanken-grotesk,
+      ui-sans-serif,
+      system-ui,
+      sans-serif
+    );
+    --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
+  }
 }
 
 @keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @layer utilities {
-    .animate-marquee {
-        animation: marquee 80s linear infinite;
-    }
+  .animate-marquee {
+    animation: marquee 80s linear infinite;
+  }
 
-    .perspective-1000 {
-        perspective: 1000px;
-    }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
