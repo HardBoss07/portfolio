@@ -23,7 +23,7 @@
 
   /* Marquee Styles */
   .marquee-container {
-    @apply w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-bright py-4 border-y-2 border-outline-variant;
+    @apply w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-bright;
   }
 
   /* Video Wrapper */

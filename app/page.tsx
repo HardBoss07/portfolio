@@ -75,9 +75,7 @@ export default function Home() {
       </section>
 
       {/* Tech Marquee */}
-      <section className="w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-bright py-4 border-y-2 border-outline-variant my-gap-lg animate-entry stagger-3">
-        <Technologies />
-      </section>
+      <Technologies />
 
       {/* About Section */}
       <section
