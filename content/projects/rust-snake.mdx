@@ -1,7 +1,7 @@
 ---
 title: Snake
-description: A recreation of the iconic Snake game in Rust, exploring modern syntax and graphics libraries.
-intro: I created this project in order to learn the modern programming language Rust. For this, I recreated the iconic game Snake. I was able to familiarize myself with the principles of Rust and its syntax. I use a minimal graphics library to get a graphics interface, instead of just a console application.
+description: "A recreation of the iconic Snake game in Rust, exploring modern syntax and graphics libraries."
+intro: "I built this recreation of the classic Snake game to immerse myself in the Rust ecosystem and its unique approach to memory safety and performance. By moving beyond a simple console application to a graphical interface, I explored the minifb library for window management and pixel-buffer rendering. This project served as a foundation for understanding game loops, entity management, and the power of Rust's VecDeque for modeling dynamic structures."
 repoLink: rust-snake
 techStack: Rust
 downloadLink: rust-snake/releases/latest
@@ -9,9 +9,9 @@ downloadText: If you want to try this app out for yourself, click on the downloa
 videoYoutubeId: tzuUV8q-_Yw
 ---
 
-## Game Struct
+## Architectural Backbone: The Game Struct
 
-Here I created a Game struct with a new() function. This struct is the primary object that contains all the game logic. The new() function can be used to start a new game window, but it is only used during the initial setup.
+The entire application state is encapsulated within a central **Game** struct. This structure manages the pixel buffer, window instance, and the snake's state. I implemented a **new()** function to handle the initial setup, including creating a window with specific dimensions (**600x400**) and initializing the rendering buffer with a default black color. This modular design allows for clear separation between the game's data and its execution logic.
 
 ```rust
 struct Game {
@@ -31,7 +31,7 @@ impl Game {
         let height = 400;
         let window = Window::new("Snake", width, height, WindowOptions::default())
             .expect("Failed to create window");
-        let buffer = vec![0x000000; width * height];
+        let buffer = vec![0x000000; width * height]; // Initializing with black
         Game {
             window,
             width,
@@ -46,65 +46,62 @@ impl Game {
 }
 ```
 
-## Game::run() Function
+## Responsive Game Loop
 
-This is the run() function. This function handles the entire game loop. First, it checks whether the player is pressing the spacebar while the game hasn't started yet. If this happens, the game is initialized and proceeds to the next if statement. In this next block, the player's input is processed, then the next position is calculated, then it checks whether a cookie has been collected (to grow the snake), and finally, the buffer is updated to render the next position. If the player loses by running into a wall or into themselves, a new snake is created using Snake::new(). You can exit the game at any time using the Escape key.
+The **run()** function implements a synchronized game loop that manages the transition between game states. It handles high-frequency input detection and updates the world state based on a defined tick rate (**150ms**). The loop is designed to be highly responsive, allowing users to start the game with the **Spacebar**, navigate with directional keys, and exit instantly with the **Escape** key. When a collision is detected, the game state is reset, demonstrating robust error and state recovery.
 
 ```rust
 fn run(&mut self) {
     while self.window.is_open() {
-        if self.window.is_key_down(Key::Space) && self.has_started == false {
+        // Start game on Spacebar press
+        if self.window.is_key_down(Key::Space) && !self.has_started {
             self.reset_buffer();
             self.has_started = true;
-            let head = *self.snake.body.front().unwrap();
-            self.set_cell_color(head[0], head[1], self.snake.color);
-            self.set_cell_color(self.cookie_pos[0], self.cookie_pos[1], 0xF59B42);
             self.update();
         }
-        if self.has_started == true {
+
+        if self.has_started {
             self.capture_input(150);
             self.calculate_next_position();
             self.cookie_check();
             let head = *self.snake.body.front().unwrap();
             self.set_cell_color(head[0], head[1], self.snake.color);
+        } else {
+            self.snake = Snake::new(); // Ready for a new run
         }
-        if !self.has_started {
-            self.snake = Snake::new();
-        }
-        self.update();
-        if self.window.is_key_down(Key::Escape) {
-            break;
-        }
+
+        self.update(); // Push pixel buffer to window
+        if self.window.is_key_down(Key::Escape) { break; }
     }
 }
 ```
 
-## Snake Struct
+## Modeling the Snake with VecDeque
 
-Here I created a complex data type, a struct, that stores the data related to the snake. I also created a new() function that can be called to create a new snake, similar to a constructor in a Java program.
+To handle the snake's movement and growth efficiently, I used a **VecDeque** to represent its body segments. This allows for **O(1)** operations when adding a new head and removing the tail during movement. When the snake consumes a "cookie," the tail removal is skipped, causing the snake to grow. This use of specialized data structures ensures that the game remains performant even as the snake spans across the entire grid.
 
 ```rust
 struct Snake {
     color: u32,
-    body: VecDeque<[usize; 2]>,
+    body: VecDeque<[usize; 2]>, // Efficient head/tail manipulation
     direction: u8,
     length: usize,
 }
 
 impl Snake {
     fn new() -> Self {
-        let color = 0xFF73F1;
-        let direction = 0;
-        let snake_length = 5;
-        let starting_position: [usize; 2] = [10, 12];
         let mut snake_body = VecDeque::new();
-        snake_body.push_front(starting_position);
+        snake_body.push_front([10, 12]); // Initial starting position
         Snake {
-            color: color,
+            color: 0xFF73F1, // Signature pink color
             body: snake_body,
-            direction: direction,
-            length: snake_length,
+            direction: 0,
+            length: 5,
         }
     }
 }
 ```
+
+## Visual Rendering and Memory Safety
+
+The project utilizes direct pixel manipulation to render the game world. By calculating the exact indices in the **buffer** vector based on the snake's grid coordinates and the **cell_size**, I created a custom rendering engine. Rust's strict ownership rules ensured that I didn't encounter memory leaks or buffer overflows during these low-level operations, making the final game both stable and efficient.
