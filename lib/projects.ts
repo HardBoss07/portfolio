@@ -6,6 +6,7 @@ import { ProjectMetadata, ProjectData } from "@/types/project";
 const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
 
 const PROJECT_ORDER = [
+  "serverless-runner",
   "wordle-bot",
   "ts-client-portfolio",
   "cord-path",
