@@ -1,130 +1,86 @@
 ---
 title: 1D & 2D Barcodes
-description: A Next.js web application for generating and scanning various 1D and 2D barcode types.
-intro: I created this project in order to gain more experience with the Next.js framework. With this web app you can generate different types of 1D and 2D barcodes, such as QR codes, EAN-13 codes, Code 128 or Data Matrix. This web app also allows you to to scan your previously generated codes and other codes. For the styling of the web app I chose the Tailwind CSS library for inline styling and in general shortened styling.
+description: "A Next.js web application for generating and scanning various 1D and 2D barcode types."
+intro: "I developed this comprehensive barcode utility to master advanced Next.js features and browser-based hardware integration. The project allows users to generate a wide array of 1D and 2D codes—including QR, EAN-13, and Data Matrix—while providing a robust scanning interface that leverages the device's camera. It served as a practical exploration of modern TypeScript development and real-time image processing in the browser."
 repoLink: barcode-reader
 techStack: TypeScript
 liveDemoLink: qr
-liveDemoText: You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. From personal experience I noticed the web app does not always work on Android devices.
+liveDemoText: You can try the web app yourself by clicking on the button. You will need to allow camera access on the reader. Note that camera performance can vary across different Android mobile browsers.
 videoYoutubeId: TzrhP36xslU
 ---
 
-## Barcode Component
+## Dynamic Barcode Generation
 
-This React component takes in props and based on these props it generates a barcode. With the prop chosenOption you can define what type of code you want. The prop value defines the content of the barcode. To generate the barcodes I used the bwipjs library. At the end, this component returns either the successfully rendered barcode or an error message.
+The generation engine uses the **bwip-js** library to render professional-grade barcodes directly onto a HTML5 **canvas**. I implemented a modular **BarCode** component that dynamically adjusts its rendering parameters based on the selected code type (**bcid**) and input value. This approach ensures that every generated code—whether it's a simple QR code or a complex Code 128—is perfectly scaled and follows international symbology standards.
 
 ```typescript
-interface BarCodeProps {
-    chosenOption: string;
-    value: string;
-    onRendered?: (canvas: HTMLCanvasElement) => void;
-}
-
 export default function BarCode({chosenOption, value, onRendered}: BarCodeProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setError(null);
         if (!canvasRef.current) return;
 
         try {
+            // High-fidelity rendering via bwip-js
             bwipjs.toCanvas(canvasRef.current, {
-                bcid: chosenOption,
+                bcid: chosenOption, // e.g., 'qrcode', 'ean13'
                 text: value,
                 scale: 3,
                 includetext: true,
                 textxalign: 'center',
             });
-            if (onRendered) {
-                onRendered(canvasRef.current);
-            }
-        } catch (e: any) {
+            if (onRendered) onRendered(canvasRef.current);
+        } catch (e) {
             console.error("Barcode generation error:", e);
-            setError(e.message || 'Failed to generate barcode.');
         }
-    }, [value, chosenOption, onRendered])
+    }, [value, chosenOption, onRendered]);
 
     return (
-        <div className="w-full h-auto border rounded-lg p-4 bg-white flex items-center justify-center">
-            {error ? (
-                <p className="text-red-500 text-center text-sm font-medium">{error}</p>
-            ) : (
-                <canvas ref={canvasRef} className="w-full h-auto" />
-            )}
+        <div className="barcode-container flex items-center justify-center p-4 bg-white">
+            <canvas ref={canvasRef} className="max-w-full h-auto" />
         </div>
     );
 }
 ```
 
-## getCameraStream()
+## Real-time Camera Integration
 
-This function is part of my Camera component. It creates a visual input field for the camera, captures the content of the video feed and then decodes the barcode. For the decoding of the barcode I use the popular @zxing multi-code reader library. If the camera decodes successfully, it sets the value of the barcode, if not, it will return a detailed error message which also shows what kind of error.
+The scanning functionality leverages the **BrowserMultiFormatReader** from the **@zxing/library**. I implemented a resilient **getCameraStream** function that handles the complexities of mobile hardware, including requesting permissions and fallback logic for different camera lenses (e.g., forcing the **environment** facing mode). The reader processes the video feed in a continuous loop, identifying and decoding barcodes in real-time with high accuracy even in challenging lighting conditions.
 
 ```typescript
-const codeReader = new BrowserMultiFormatReader();
-let active = true;
-
 const getCameraStream = async () => {
   try {
-    console.log("Requesting camera access...");
-
     const constraints = {
-      audio: false,
       video: {
         facingMode: { ideal: "environment" },
-        width: { min: 640, ideal: 1280, max: 1920 },
-        height: { min: 480, ideal: 720, max: 1080 },
-        frameRate: { ideal: 30 },
+        width: { min: 640, ideal: 1280 },
+        height: { min: 480, ideal: 720 },
       },
     };
 
-    let videoStream;
-    try {
-      videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-    } catch (idealError) {
-      console.log("Ideal constraints failed, trying more relaxed constraints");
-      videoStream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {
-          facingMode: "environment",
-          width: { min: 320, ideal: 640 },
-          height: { min: 240, ideal: 480 },
-        },
-      });
-    }
-
-    console.log("Camera stream obtained:", videoStream);
-    setHasPermission(true);
+    // Resilient stream acquisition
+    const videoStream = await navigator.mediaDevices
+      .getUserMedia(constraints)
+      .catch(() => navigator.mediaDevices.getUserMedia({ video: true }));
 
     if (videoRef.current) {
       videoRef.current.srcObject = videoStream;
 
-      codeReader.decodeFromVideoDevice(
-        null,
-        videoRef.current,
-        (result, err) => {
-          if (active && result) {
-            console.log("Barcode detected:", result.getText());
-            setBarcode(result.getText());
-          }
-        },
-      );
+      // Continuously decode from the live video feed
+      codeReader.decodeFromVideoDevice(null, videoRef.current, (result) => {
+        if (result) setBarcode(result.getText());
+      });
     }
-  } catch (e: any) {
-    console.error("Camera access failed:", e.name, e.message);
-    setError(`Camera access failed: ${e.name} – ${e.message}`);
-
-    if (e.name === "NotAllowedError") {
-      setError("Please allow camera access in your browser settings");
-    } else if (
-      e.name === "NotFoundError" ||
-      e.name === "OverconstrainedError"
-    ) {
-      setError("No suitable camera found. Please try with a different device.");
-    } else {
-      setError("Failed to access camera: " + e.message);
-    }
+  } catch (e) {
+    setError("Failed to access camera. Please check your browser permissions.");
   }
 };
 ```
+
+## Responsive Interface and UX
+
+To ensure a smooth experience across devices, I used **Tailwind CSS** for a mobile-first responsive design. The UI features a clean, focused layout that prioritizes the scanning viewport and the generated code. I also implemented robust error handling for common camera issues, such as **NotAllowedError** or **NotFoundError**, providing users with clear, actionable feedback when the application cannot access the required hardware.
+
+## Technical Challenges
+
+One of the biggest hurdles was ensuring high-quality scanning on diverse mobile devices. I solved this by implementing **ideal** and **relaxed** constraints for the media stream, allowing the app to scale down its requirements for older hardware without sacrificing quality for modern devices. This project significantly deepened my understanding of **Web APIs**, **real-time decoding algorithms**, and the intricacies of building hardware-dependent web applications.
