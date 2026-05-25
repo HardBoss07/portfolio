@@ -1,161 +1,88 @@
 ---
 title: Portfolio Leonie Bosshard
-description: A professional, dynamic portfolio for a photography and design client, built with Next.js.
-intro: This is a professional portfolio created with Next.js portraying my client, Leonie Bosshard, and her professional work in photography, graphic design, and more.
+description: "A professional, dynamic portfolio for a photography and design client, built with Next.js."
+intro: "I developed this professional portfolio for Leonie Bosshard, a photographer and graphic designer, to showcase her diverse body of work with high visual fidelity. Built with Next.js and TypeScript, the platform features a dynamic project management system, custom-built UI components for skill visualization, and a highly responsive design that prioritizes her artistic content. This project was an exercise in delivering a 'production-ready' product with a focus on client-specific branding and UX."
 repoLink: leonie-bosshard-portfolio
 techStack: TypeScript
 liveDemoLink: leoniebosshard
-liveDemoText: You can view her portfolio by clicking the button and potentially hire her for your next photography needs.
+liveDemoText: You can explore the live portfolio to see her professional photography and design work in action.
 ---
 
-## Dynamic Project Card Generation
+## Dynamic Project Engine
 
-With this strongly typed export of projects, the frontend dynamically generates project cards by utilizing some of Next.js's core features.
+The portfolio uses a strongly typed project engine to generate interactive project cards. By centralizing the project metadata in a **projects** array, the frontend can dynamically render diverse categories—from **Graphic Design** to **Photography**—using a unified **ProjectCard** component. This architecture allows for effortless updates and ensures that new work can be added to the portfolio by simply updating a single configuration file.
 
 ```typescript
-const suffix: string = "/projects/";
-const graphicDesign: string = `${suffix}graphic-design/#`;
-const photography: string = `${suffix}photography/#`;
-const uiUxInterface: string = `${suffix}ui-ux-interface/#`;
-const analogProjects: string = `${suffix}analog-projects/#`;
-
+// Centralized project metadata
 export const projects: ProjectCardProps[] = [
   {
     coverImage: projectImages.graphicDesign[0].src,
     name: "Poster Design",
     category: "Graphic Design",
-    url: `${graphicDesign}posters`,
+    url: "/projects/graphic-design/#posters",
   },
   {
     coverImage: projectImages.mora[0].src,
     name: "Brand Concept: mora",
     category: "Graphic Design",
-    url: `${graphicDesign}brand-concept`,
+    url: "/projects/graphic-design/#brand-concept",
   },
   {
     coverImage: projectImages.redentApp[0].src,
     name: "Re:Dent App",
     category: "UX / UI Interface",
-    url: `${uiUxInterface}redent-app`,
-  },
-  {
-    coverImage: projectImages.kaosKomplett[0].src,
-    name: "Kaos Komplett",
-    category: "Analoge Projekte",
-    url: `${analogProjects}kaos-komplett`,
+    url: "/projects/ui-ux-interface/#redent-app",
   },
 ];
 ```
 
-## Custom Speedometer Icon
+## Custom Skill Visualization
 
-This component generates a speedometer icon with a specified tool in the center and a skill indicator on a 0-100 scale that dynamically changes based on the value.
+To display the client's proficiency in various tools, I built a custom **SkillIndicator** component. Instead of using standard progress bars, I designed a circular "speedometer" using **SVG** and **CSS transitions**. The component calculates the **stroke-dashoffset** based on the skill level (0-100), creating a smooth animated fill effect. It also includes an intelligent icon renderer that supports both standard images and custom SVG icons like **Figma** or **Adobe** branding.
 
 ```typescript
-const SkillIndicator: React.FC<SkillIndicatorComponentProps> = ({
-  icon,
-  skill,
-  className,
-}) => {
+const SkillIndicator: React.FC<Props> = ({ icon, skill }) => {
   const radius = 40;
   const circumference = 2 * Math.PI * radius;
+  // Calculate visual offset based on skill percentage
   const offset = circumference - (skill / 100) * circumference;
 
-  const renderIcon = () => {
-    if (icon.startsWith("Adobe")) {
-      const toolName = icon.replace("Adobe ", "").replace(" ", "") as AdobeTool;
-      return <AdobeIcon tool={toolName} size={32} />;
-    }
-
-    if (icon === "Figma") {
-      return <Figma className="w-8 h-8 text-primary-text" />;
-    }
-
-    return <span className="text-white text-[0.625rem] uppercase">Icon</span>;
-  };
-
   return (
-    <div className={cn("flex flex-col items-center", className)}>
+    <div className="skill-indicator flex flex-col items-center">
       <div className="relative w-24 h-24">
         <svg className="w-full h-full" viewBox="0 0 100 100">
-          <circle
-            className="stroke-neutral-800"
-            strokeWidth="8"
-            fill="transparent"
-            r={radius}
-            cx="50"
-            cy="50"
-          />
-          <circle
-            className="stroke-primary-accent"
-            strokeWidth="8"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            fill="transparent"
-            r={radius}
-            cx="50"
-            cy="50"
-            transform="rotate(-90 50 50)"
-          />
+          <circle className="stroke-neutral-800" strokeWidth="8" r={radius} cx="50" cy="50" />
+          <circle className="stroke-primary-accent" strokeWidth="8"
+                  strokeDasharray={circumference} strokeDashoffset={offset}
+                  strokeLinecap="round" transform="rotate(-90 50 50)" />
         </svg>
-
-        <div className="absolute inset-0 flex items-center justify-center">
-          {renderIcon()}
-        </div>
+        <div className="absolute inset-0 flex items-center justify-center">{renderIcon(icon)}</div>
       </div>
-
-      <span className="mt-2 text-primary-accent text-lg font-bold">
-        {skill}%
-      </span>
-
-      <span className="text-primary-text font-bold text-md capitalize">
-        {icon}
-      </span>
+      <span className="mt-2 text-primary-accent font-bold">{skill}%</span>
     </div>
   );
 };
-
-export default SkillIndicator;
 ```
 
-## Modifiable Headshot component
+## Modular and Responsive UI Components
 
-This component returns a headshot image with dynamic styling passed via parameters. The styling follows the modern standard of merging styles defined inside the component with those passed in as parameters by utilizing a cn utility function.
+The site features a library of reusable UI components, such as the **Headshot** component, which leverages the **Tailwind cn utility** for dynamic styling. By passing parameters for corner roundness and additional classes, the component can adapt its appearance across different pages while maintaining a consistent base style. This modular approach significantly reduced code duplication and ensured a cohesive visual language throughout the entire application.
 
 ```typescript
-import Image from "next/image";
-import { cn } from "@/lib/utils/cn";
-import { HeadshotProps } from "@/types/headshot";
-
-const Headshot = ({
-  topLeft,
-  topRight,
-  bottomLeft,
-  bottomRight,
-  className,
-}: HeadshotProps) => {
+const Headshot = ({ topLeft, topRight, bottomLeft, bottomRight, className }: Props) => {
   return (
-    <div
-      className={cn(
+    <div className={cn(
         "relative overflow-hidden",
         topLeft ? "rounded-tl-full" : "rounded-tl-xl",
         topRight ? "rounded-tr-full" : "rounded-tr-xl",
-        bottomLeft ? "rounded-bl-full" : "rounded-bl-xl",
-        bottomRight ? "rounded-br-full" : "rounded-br-xl",
-        className,
-      )}
-    >
-      <Image
-        src="/images/headshot.avif"
-        alt="Headshot"
-        fill
-        priority
-        className="object-cover transition-all duration-300 bg-neutral-800"
-      />
+        className // Merged with component defaults
+      )}>
+      <Image src="/images/headshot.avif" alt="Leonie Bosshard" fill priority className="object-cover" />
     </div>
   );
 };
-
-export default Headshot;
 ```
+
+## Technical Implementation Details
+
+The project utilizes **Next.js's** image optimization for fast loading times and **Framer Motion** for subtle entrance animations. By strictly typing all components and data structures with **TypeScript**, I ensured a highly stable codebase that was easy to hand over to the client. The final product is a high-performance, SEO-friendly portfolio that effectively bridges the gap between artistic expression and technical excellence.
