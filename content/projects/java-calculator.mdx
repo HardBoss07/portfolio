@@ -1,96 +1,94 @@
 ---
 title: Calculator
-description: A semi-advanced calculator built with JavaFX and CSS, featuring custom calculation logic.
-intro: This is a semi-advanced calculator written in Java and CSS for styling using the JavaFX GUI library.
+description: "A semi-advanced calculator built with JavaFX and CSS, featuring custom calculation logic and theme support."
+intro: "I developed this calculator application using JavaFX to create a polished, modern desktop utility. Beyond basic arithmetic, the project implements a custom parsing engine capable of handling operator precedence (BODMAS/PEMDAS) and features a dynamic UI with support for light and dark themes. This project was an exercise in bridging complex backend logic with a responsive, user-friendly graphical interface."
 repoLink: Simple-Java-Calculator
 techStack: ["Java", "CSS"]
 videoYoutubeId: 8ZWF9i-qoWk
 downloadLink: Simple-Java-Calculator/tree/master/out/artifacts/Calculator_jar
 ---
 
-## Operator Actions
+## Dynamic UI and Theme Management
 
-This snippet shows how the operator buttons are handled. It uses a Map to store the buttons and their corresponding operators, and then iterates through the map to set the action for each button.
+The user interface is built using **JavaFX** and styled with **CSS** to achieve a modern aesthetic. I implemented a robust theme-switching mechanism that allows users to toggle between light and dark modes in real-time. This is achieved by dynamically swapping stylesheet references and updating icon assets without requiring an application restart. The layout uses a **VBox** and **GridPane** architecture to ensure responsiveness across different window sizes.
 
 ```java
-//Operator Button Actions
-Map<Button, String> operatorButtons = new HashMap<>();
-operatorButtons.put(addBtn, "+");
-operatorButtons.put(subtractBtn, "-");
-operatorButtons.put(multiplyBtn, "*");
-operatorButtons.put(divideBtn, "/");
+// Simplified Theme Toggle Logic
+themeToggleBtn.setOnAction(e -> {
+    Scene scene = themeToggleBtn.getScene();
+    scene.getStylesheets().clear();
 
-operatorButtons.forEach((button, operator) ->
-        button.setOnAction(e -> {
-            if (!calc.currentNumber.isEmpty()) {
-                calc.allNumbers.add(calc.currentNumber);
-                calc.currentNumber = "";
-                calc.allOperations.add(operator);
-            } else if (!calc.allOperations.isEmpty()) {
-                calc.allOperations.set(calc.allOperations.size() - 1, operator);
-            } else {
-                calc.allOperations.add(operator);
-            }
-            equationLabel.setText(calc.getCurrentEquation());
-        })
-);
-
-//Negate button
-negateBtn.setOnAction(e -> {
-    if (calc.currentNumber.isEmpty()) {
-        calc.currentNumber += "-";
+    if (isDarkMode) {
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        themeIcon.setImage(new Image(getClass().getResourceAsStream("sun.png")));
     } else {
-        if (calc.currentNumber.charAt(0) == '-') {
-            calc.currentNumber = calc.currentNumber.substring(1);
-        } else {
-            calc.currentNumber = "-" + calc.currentNumber;
-        }
+        scene.getStylesheets().add(getClass().getResource("style-dark.css").toExternalForm());
+        themeIcon.setImage(new Image(getClass().getResourceAsStream("moon.png")));
     }
-    output.setText(calc.getCurrentNumber());
-    equationLabel.setText(calc.getCurrentEquation());
+    isDarkMode = !isDarkMode;
 });
 ```
 
-## Calculation Logic
+## Operator Precedence Logic
 
-The calculation logic handles the order of operations (multiplication and division first, then addition and subtraction). It splits the equation into parts and then iterates through them to perform the calculations.
+The core calculation engine is designed to handle multi-step equations by respecting standard mathematical precedence. Instead of a simple sequential evaluator, I implemented a two-pass algorithm. The first pass handles high-precedence operations (**Multiplication** and **Division**), while the second pass processes **Addition** and **Subtraction**. This ensures that an expression like **2 + 3 \* 4** correctly evaluates to **14** rather than **20**.
 
 ```java
 public void calculateAll() {
-    if (correctNumberAndOperationAmount()) {
+    if (isValidEquation()) {
         try {
             String[] parts = currentEquation.split(" ");
-            System.out.println("Parts: " + Arrays.toString(parts));
 
+            // First Pass: Handling '*' and '/'
             for (int i = 1; i < parts.length; i++) {
                 if (parts[i].equals("*") || parts[i].equals("/")) {
-                    double prevNum = Double.parseDouble(parts[i - 1]);
-                    double nextNum = Double.parseDouble(parts[i + 1]);
-                    double resultPart = 0;
+                    double left = Double.parseDouble(parts[i - 1]);
+                    double right = Double.parseDouble(parts[i + 1]);
+                    double res = parts[i].equals("*") ? left * right : left / right;
 
-                    if (parts[i].equals("*")) {
-                        resultPart = prevNum * nextNum;
-                    } else if (parts[i].equals("/")) {
-                        if (nextNum == 0) {
-                            result = "#ERROR#";
-                            return;
-                        }
-                        resultPart = prevNum / nextNum;
-                    }
+                    if (parts[i].equals("/") && right == 0) throw new ArithmeticException();
 
-                    parts[i - 1] = String.valueOf(resultPart);
-                    for (int j = i; j < parts.length - 2; j++) {
-                        parts[j] = parts[j + 2];
-                    }
+                    // Collapse the processed parts of the array
+                    parts[i - 1] = String.valueOf(res);
+                    System.arraycopy(parts, i + 2, parts, i, parts.length - (i + 2));
                     parts = Arrays.copyOf(parts, parts.length - 2);
                     i--;
                 }
             }
+            // ... second pass for '+' and '-'
         } catch (Exception e) {
-            result = "#ERROR#";
+            this.result = "#ERROR#";
         }
-    } else {
-        result = "#ERROR#";
     }
 }
 ```
+
+## State-Driven Event Handling
+
+To manage complex user interactions like negation, undo operations, and chained calculations, I used a state-driven approach. Each button interaction updates a central **Calculator** state object, which then triggers a UI refresh. I mapped operator buttons to their respective symbols using a **HashMap**, reducing boilerplate code and making the application's action-dispatching logic more maintainable and extensible.
+
+```java
+// Operator Action Mapping
+Map<Button, String> operatorMap = new HashMap<>();
+operatorMap.put(addBtn, "+");
+operatorMap.put(subBtn, "-");
+// ... mapping other operators
+
+operatorMap.forEach((btn, op) ->
+    btn.setOnAction(e -> {
+        if (!calc.currentNumber.isEmpty()) {
+            calc.allNumbers.add(calc.currentNumber);
+            calc.currentNumber = "";
+            calc.allOperations.add(op);
+        } else if (!calc.allOperations.isEmpty()) {
+            // Allow changing the last operator
+            calc.allOperations.set(calc.allOperations.size() - 1, op);
+        }
+        equationLabel.setText(calc.getCurrentEquation());
+    })
+);
+```
+
+## Technical Implementation Details
+
+The application leverages **Maven** for dependency management and follows a clean MVC-lite architecture. I utilized **FXML** for the structural layout while maintaining all styling in external **CSS** files to ensure a clear separation of concerns. This project provided deep insights into **JavaFX event loops**, **regular expression parsing**, and the challenges of building a reliable, stateful desktop application.
