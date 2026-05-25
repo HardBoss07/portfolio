@@ -1,136 +1,106 @@
 ---
 title: To-Do List
-description: A Java desktop application for task management with JSON-based persistence and custom UI.
-intro: This project is a simple To-Do List application written in Java for desktop. It includes the whole lifecycle of an application.
+description: "A Java desktop application for task management with JSON-based persistence and custom UI."
+intro: "I developed this To-Do List application to manage daily tasks with a focus on ease of use and data persistence. The project features a custom JavaFX interface, a flexible task categorization system, and a robust JSON-based save mechanism. By implementing a full application lifecycle—from user input to persistent storage—I explored the challenges of state management and UI responsiveness in a desktop environment."
 repoLink: To-Do-List-Application
 techStack: ["Java", "CSS"]
 videoYoutubeId: MIE_N4qAD_s
 downloadLink: To-Do-List-Application/tree/master/out/artifacts/To_Do_List_jar
 ---
 
-## Main View
+## Dynamic Main View Architecture
 
-The main view of the application is where the user can see all their lists and create new ones. It uses a VBox to arrange the buttons vertically and a ScrollPane to allow the user to scroll through their lists.
+The application's core interface is built using a responsive **JavaFX** layout. I utilized a **VBox** to dynamically arrange task lists and a **ScrollPane** to ensure the UI remains navigable even with a large number of entries. The layout is further refined with custom **CSS** to provide a clean, modern aesthetic. I also implemented interactive popups for creating and deleting lists, ensuring a streamlined workflow for managing multiple task categories.
 
 ```java
-/* Main View */
+/* Main Application View Initialization */
 @Override
 public void start(Stage mainStage) {
     allLists = saveSystem.loadData();
-    // Title label
+
+    // UI Construction
     Label label = new Label("To-Do List App");
     label.getStyleClass().add("title-label");
 
-    // Create List Button
     Button createList = new Button("Create a New List");
     createList.setOnAction(e -> showCreateListPopup(mainStage));
     createList.getStyleClass().add("create-list-button");
 
-    // ScrollPane for the listGroup
+    // Scrollable container for dynamic list entries
     ScrollPane scrollPane = new ScrollPane(listGroup);
     scrollPane.setFitToWidth(true);
     scrollPane.setPannable(true);
     scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-    scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-    // Delete list button
-    Button deleteList = new Button("Delete a List");
-    deleteList.setOnAction(e -> showDeleteListPopup(mainStage));
-    deleteList.getStyleClass().add("delete-list-button");
-
-    // Layout for main stage
     VBox mainVBox = new VBox(10);
-    mainVBox.getChildren().addAll(label, createList, deleteList, scrollPane);
+    mainVBox.getChildren().addAll(label, createList, scrollPane);
 
-    HBox mainHBox = new HBox(20);
-    mainHBox.setPadding(new Insets(0, 0, 0, 10));
-    mainHBox.getChildren().add(mainVBox);
-
-    // Initial Scene setup
-    updateListGroup(mainStage);
-    Scene scene = new Scene(mainHBox, 350, 600);
+    Scene scene = new Scene(mainVBox, 350, 600);
     scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-    mainStage.setTitle("To-Do List App");
     mainStage.setScene(scene);
     mainStage.show();
-
-    mainScene = scene;
 }
 ```
 
-## Save System
+## JSON-Based Persistence Layer
 
-The save system uses the org.json library to save and load the data from a JSON file. This allows the user to keep their data even after closing the application.
+To ensure user data is preserved between sessions, I implemented a robust save system using the **org.json** library. This layer serializes the entire **ToDoList** object graph—including task names, statuses, and categories—into a formatted JSON file. This approach provides a lightweight, human-readable data format that is easy to debug and extend, while also demonstrating the use of file I/O and JSON parsing in Java.
 
 ```java
 public void saveData(List<ToDoList> list) {
-    // Create a JSONArray directly from the list
     JSONArray jsonArray = new JSONArray();
 
-    // Convert each ToDoList object to JSON and add it to the JSONArray
+    // Serialize each ToDoList object to JSON
     for (ToDoList toDoList : list) {
         jsonArray.put(toDoList.toJSON());
     }
 
     try (FileWriter file = new FileWriter(filePath)) {
-        // This will overwrite the file
-        file.write(jsonArray.toString(2)); // Pretty print with an indent factor of 2
-        System.out.println("Data saved to " + filePath);
+        // Pretty-print with 2-space indentation
+        file.write(jsonArray.toString(2));
     } catch (IOException e) {
-        System.err.println("Error saving data: " + e.getMessage());
+        System.err.println("Persistence Error: " + e.getMessage());
     }
 }
 
-// Load data from the file
 public List<ToDoList> loadData() {
+    // ... handles reading file content into a StringBuilder
+    JSONArray jsonArray = new JSONArray(sb.toString());
     List<ToDoList> data = new ArrayList<>();
-
-    try (FileReader fileReader = new FileReader(filePath)) {
-        StringBuilder sb = new StringBuilder();
-        int content;
-        while ((content = fileReader.read()) != -1) {
-            sb.append((char) content); // Build the file content as a string
-        }
-        // Convert the string content to a JSONArray
-        JSONArray jsonArray = new JSONArray(sb.toString());
-        // Convert each JSON object to a ToDoList object and add it to the list
-        for (int i = 0; i < jsonArray.length(); i++) {
-            data.add(ToDoList.fromJSON(jsonArray.getJSONObject(i)));
-        }
+    for (int i = 0; i < jsonArray.length(); i++) {
+        data.add(ToDoList.fromJSON(jsonArray.getJSONObject(i)));
     }
+    return data;
 }
 ```
 
-## ToDoList Logic
+## Task Management and Sorting Logic
 
-The ToDoList class contains all the logic for managing tasks, such as adding, deleting, and sorting tasks. It also updates the completion percentage of the list.
+The **ToDoList** class encapsulates the core business logic, including task addition, deletion, and automated sorting. I implemented a completion tracking system that uses **DecimalFormat** to calculate and display the progress of each list in real-time. The sorting engine allows tasks to be organized by status or category, ensuring that users can easily prioritize their workload. This state-driven logic ensures the UI always accurately reflects the underlying data model.
 
 ```java
 public void updateCompletionPercentage() {
     completedTasks.clear();
     for (Task task : allTasks) {
-        if (task.getTaskStatus() == TaskStatus.COMPLETED) completedTasks.add(task);
+        if (task.getTaskStatus() == TaskStatus.COMPLETED) {
+            completedTasks.add(task);
+        }
     }
+
+    // Real-time progress calculation
+    double rawPercentage = (double) completedTasks.size() / allTasks.size() * 100;
     DecimalFormat df = new DecimalFormat("#.#");
-    completionPercentage = Double.parseDouble(df.format((double) completedTasks.size() / allTasks.size() * 100));
+    completionPercentage = Double.parseDouble(df.format(rawPercentage));
 
     if (Double.isNaN(completionPercentage)) completionPercentage = 0;
 }
 
 public void sortList() {
     SortTasks sortTasks = new SortTasks(this.sortingOptions);
-    if (this.sortingOptions == null) this.sortingOptions = SortingOptions.UNCATEGORIZED;
     displayTaskList = sortTasks.sortTasks(allTasks);
-    System.out.println("Sorted " + allTasks + " to " + displayTaskList + " with " + sortingOptions.toFormattedString());
-}
-
-public void addTask(Task task) {
-    allTasks.add(task);
-    sortList();
-}
-
-public void deleteTask(Task task) {
-    allTasks.remove(task);
-    sortList();
 }
 ```
+
+## Technical Implementation Summary
+
+By combining **JavaFX** for the presentation layer with a **JSON** persistence engine, I created a functional and reliable productivity tool. The project highlighted the importance of clear **Model-View** separation and taught me how to handle complex data structures in Java. Future improvements could include multi-threaded background saving and a more advanced notification system for task deadlines.
