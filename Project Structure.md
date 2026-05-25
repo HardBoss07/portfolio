@@ -7,7 +7,6 @@ portfolio/
 │   │   └── page.tsx
 │   ├── contact/
 │   │   └── page.tsx
-│   ├── datenschutz/
 │   ├── legal/
 │   │   └── page.tsx
 │   ├── projects/
@@ -25,6 +24,7 @@ portfolio/
 │   ├── cookie-consent/
 │   │   ├── BannerActionButtons.tsx
 │   │   ├── BannerOverlay.tsx
+│   │   ├── ClientConsentWrapper.tsx
 │   │   ├── CookieConsent.tsx
 │   │   ├── PreferenceToggle.tsx
 │   │   └── VercelAnalytics.tsx
@@ -54,6 +54,7 @@ portfolio/
 │       ├── java-to-do-list.mdx
 │       ├── project-structure.mdx
 │       ├── rust-snake.mdx
+│       ├── serverless-runner.mdx
 │       ├── tauri-resource-monitor.mdx
 │       ├── ts-barcode.mdx
 │       ├── ts-client-portfolio.mdx
