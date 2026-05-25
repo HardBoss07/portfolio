@@ -1,7 +1,12 @@
 import { getAllProjects } from "@/lib/projects";
 import ProjectCard from "./project/ProjectCard";
 
-const FEATURED_SLUGS = ["serverless-runner", "wordle-bot", "ts-client-portfolio", "auto-ocr"];
+const FEATURED_SLUGS = [
+  "serverless-runner",
+  "wordle-bot",
+  "ts-client-portfolio",
+  "auto-ocr",
+];
 
 export default async function Featured() {
   const allProjects = await getAllProjects();

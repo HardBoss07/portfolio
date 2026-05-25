@@ -4,7 +4,7 @@ import Link from "next/link";
 export type ButtonType = "repository" | "download" | "liveDemo";
 
 export interface ButtonProps {
-  link: string;
+  link?: string;
   type: ButtonType;
 }
 
@@ -15,6 +15,10 @@ export default function ProjectButton({ link, type }: ButtonProps) {
       : type === "download"
         ? "Download"
         : "Live Demo";
+
+  if (!link) {
+    return null;
+  }
 
   const href =
     link.startsWith("http") || link.startsWith("/")
