@@ -1,92 +1,82 @@
 ---
 title: Jokemon
-description: A console-based 2D adventure game in Java, inspired by Pokémon with serializable game states.
-intro: In this project I created a 2D console-based game with Java. The game is inspired by Pokémon but it's really limited regarding gameplay.
-repoLink: jokemon
+description: "A console-based 2D adventure game in Java, inspired by Pokémon with serializable game states and an extensible engine."
+intro: "I developed Jokemon to experiment with building a game engine from scratch using only the Java standard library and console-based rendering. This project features a tile-based world system, persistent game saves via serialization, and a modular architecture for managing entities like buildings and Jokemons. It served as a deep dive into object-oriented design patterns and the use of modern Java features to simplify complex game logic."
+repoLink: JOKEMON-PROJECT
 techStack: Java
 hasImage: true
 ---
 
-## GameState Class
+## Persistent Game State Serialization
 
-The GameState class is used to store all the data related to the current game, such as the player's level, position, and their Jokemons. This class is serializable, which allows it to be saved and loaded from a file.
+To allow players to save and resume their progress, I implemented a comprehensive **GameState** serialization system. By implementing the **Serializable** interface, I could capture the entire world state—including player position, inventory, level, and the individual stats of all Jokemons—into a single binary file. This system ensures that complex object graphs are preserved accurately across different sessions, providing a seamless "Save/Load" experience in a traditionally stateless console environment.
 
 ```java
 public class GameState implements Serializable {
     private int seed;
     private int playerLevel;
     private int playerCoins;
-    private int playerTreats;
-    private int[] playerPosition;
+    private int[] playerPosition; // [x, y] coordinates
     private int playerDirection;
 
     private List<JokemonData> playerJokemons;
-    private List<JokemonData> jokemons;
-    private List<WildJokemonData> wildJokemons;
+    private List<JokemonData> discoveredJokemons;
+    private List<WildJokemonData> activeWildJokemons;
 
-    public GameState(int seed, int playerLevel, int playerCoins, int playerTreats, int[] playerPosition,
+    public GameState(int seed, int playerLevel, int playerCoins, int[] playerPosition,
       int playerDirection, List<JokemonData> jokemons, List<WildJokemonData> wildJokemons) {
-
         this.seed = seed;
         this.playerLevel = playerLevel;
         this.playerCoins = playerCoins;
-        this.playerTreats = playerTreats;
         this.playerPosition = playerPosition;
         this.playerDirection = playerDirection;
-        this.jokemons = jokemons;
-        this.wildJokemons = wildJokemons;
+        this.playerJokemons = jokemons;
+        this.activeWildJokemons = wildJokemons;
     }
 }
 ```
 
-## Building Abstract Class
+## Abstract Building Architecture
 
-The Building class is an abstract class that defines the common properties and methods for all buildings in the game. It uses an enum to define the different building types.
+The world is populated with various interactable structures, all derived from a central **Building** abstract class. This architecture uses polymorphism to manage different building types—such as Medical facilities, Shops, and Houses—while sharing common properties like grid coordinates and ASCII-based design templates. This modular approach makes it trivial to expand the world with new building types by simply extending the base class and overriding the interaction logic.
 
 ```java
 public abstract class Building {
-    // Enum for different building types
-    public enum BuildingType {
-        MEDICAL,
-        SHOP,
-        HOUSE,
-        OUTSIDE
-    }
+    public enum BuildingType { MEDICAL, SHOP, HOUSE, OUTSIDE }
 
-    // Common properties
-    protected int centerX;
-    protected int centerY;
+    protected int centerX, centerY;
     protected BuildingType buildingType;
     protected boolean canEnter;
-    protected char[][] design;
+    protected char[][] design; // ASCII art representation
 
-    // Constructor for the abstract class
-    public Building(int centerX, int centerY, BuildingType buildingType, boolean canEnter, char[][] design) {
+    public Building(int centerX, int centerY, BuildingType type, boolean canEnter, char[][] design) {
         this.centerX = centerX;
         this.centerY = centerY;
-        this.buildingType = buildingType;
+        this.buildingType = type;
         this.canEnter = canEnter;
         this.design = design;
     }
 
-    // Getter for the Design of the abstract class
-    public char[][] getBuildingDesign() {
-        return design;
-    }
+    public char[][] getBuildingDesign() { return design; }
 }
 ```
 
-## Java 21 Feature Demonstration: Pattern Matching for switch
+## Modern Java: Pattern Matching for switch
 
-To verify the syntax highlighting and Java 21 compatibility, here is a snippet using pattern matching for switch, introduced as a standard feature in Java 21.
+To handle the diverse interactions between players and world objects, I utilized **Java 21's pattern matching for switch**. This feature significantly reduces boilerplate by allowing for direct type-checking and extraction within the switch statement. This makes the code for generating building descriptions or handling collision events more readable and less error-prone compared to traditional **instanceof** chains.
 
 ```java
 public String getBuildingDescription(Building building) {
+    // Java 21 feature: Pattern matching for switch
     return switch (building) {
-        case MedicalBuilding m -> "A medical facility located at (" + m.centerX + ", " + m.centerY + ")";
-        case ShopBuilding s -> "A shop where you can buy items";
-        case HouseBuilding h -> "A private residence";
-        default -> "An unknown building type";
+        case MedicalBuilding m -> "A medical facility located at [" + m.centerX + ", " + m.centerY + "]";
+        case ShopBuilding s -> "A bustling shop with rare items in stock.";
+        case HouseBuilding h -> "A quiet residence; the door is locked.";
+        case default -> "An unidentified structure in the distance.";
     };
 }
 ```
+
+## Console Engine and ANSI Rendering
+
+The rendering engine uses **ANSI escape codes** to provide a 2D-like experience in a text-based terminal. By manipulating the cursor position and using specific color codes, I was able to draw a scrollable map and animated character sprites. The game loop operates on a tick-based system, processing user input from the keyboard and updating the world state before re-rendering the relevant sections of the console, ensuring a flicker-free gameplay experience.
