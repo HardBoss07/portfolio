@@ -1,14 +1,14 @@
 ---
 title: Serverless Runner
-description: A high-performance, distributed serverless execution engine built with Rust, Wasmtime, and Kubernetes.
-intro: I built this high-performance serverless execution engine to explore the boundaries of low-latency virtualization and distributed systems. By leveraging WebAssembly for sandboxing and implementing advanced patterns like async micro-batching and module caching, the system achieves over 15,000 requests per second in a Kubernetes environment.
+description: "A high-performance, distributed serverless execution engine built with Rust, Wasmtime, and Kubernetes."
+intro: "I built this high-performance serverless execution engine to explore the boundaries of low-latency virtualization and distributed systems. By leveraging WebAssembly for sandboxing and implementing advanced patterns like async micro-batching and module caching, the system achieves over 15,000 requests per second in a Kubernetes environment."
 repoLink: serverless-runner
 techStack: ["Rust", "Kubernetes"]
 ---
 
 ## Wasm Execution Engine
 
-The core of the platform is a secure, sandboxed execution environment powered by Wasmtime. To prevent malicious or runaway code from affecting the host, I implemented strict resource limits, including memory caps (64MB) and fuel-based instruction metering (100M instructions). The use of memory pipes for `stdin` and `stdout` ensures that communication between the host and the guest is entirely in-memory, minimizing I/O overhead.
+The core of the platform is a secure, sandboxed execution environment powered by **Wasmtime**. To prevent malicious or runaway code from affecting the host, I implemented strict resource limits, including memory caps (**64MB**) and fuel-based instruction metering (**100M instructions**). The use of memory pipes for **stdin** and **stdout** ensures that communication between the host and the guest is entirely in-memory, minimizing I/O overhead.
 
 ```rust
 pub async fn run_wasm(engine: &Engine, module: Module, input: Vec<u8>) -> AppResult<(i32, String)> {
@@ -43,7 +43,7 @@ pub async fn run_wasm(engine: &Engine, module: Module, input: Vec<u8>) -> AppRes
 
 ## Async Micro-Batching
 
-Database persistence is often the hardest bottleneck in high-throughput systems. To overcome this, I decoupled the request path from the database write. Each execution result is dropped into a `tokio::sync::mpsc` channel. A background worker then aggregates these results and flushes them in batches using the PostgreSQL `UNNEST` operator. This allows the system to insert hundreds of records in a single round-trip, drastically reducing the transaction overhead.
+Database persistence is often the hardest bottleneck in high-throughput systems. To overcome this, I decoupled the request path from the database write. Each execution result is dropped into a **tokio::sync::mpsc** channel. A background worker then aggregates these results and flushes them in batches using the PostgreSQL **UNNEST** operator. This allows the system to insert hundreds of records in a single round-trip, drastically reducing the transaction overhead.
 
 ```rust
 async fn flush_batch(pool: &PgPool, batch: &mut Vec<DbMessage>) {
@@ -69,7 +69,7 @@ async fn flush_batch(pool: &PgPool, batch: &mut Vec<DbMessage>) {
 
 ## Module Caching
 
-To eliminate the "Cold Start" problem common in serverless platforms, I implemented a global module cache using `DashMap`. Instead of re-compiling Wasm binaries for every request—which can take 50ms or more—the compiled `wasmtime::Module` is stored in memory. This reduces the instantiation overhead to less than 1ms, transforming a CPU-intensive compilation step into a simple hash map lookup.
+To eliminate the "Cold Start" problem common in serverless platforms, I implemented a global module cache using **DashMap**. Instead of re-compiling Wasm binaries for every request—which can take 50ms or more—the compiled **wasmtime::Module** is stored in memory. This reduces the instantiation overhead to less than 1ms, transforming a CPU-intensive compilation step into a simple hash map lookup.
 
 ```rust
 pub struct AppState {
@@ -91,4 +91,4 @@ let module = if let Some(m) = state.module_cache.get(&function_name) {
 
 ## Performance Results
 
-The final architecture was deployed to a Kubernetes cluster with 32 replicas of the runner service and a sharded PostgreSQL backend. Through intensive benchmarking with `oha`, the system reached a peak throughput of **14,972 RPS** with a P99 latency of only **31.5ms**. This represents a 90x improvement over the initial baseline, demonstrating the power of combining Rust's safety and performance with modern distributed system patterns.
+The final architecture was deployed to a Kubernetes cluster with 32 replicas of the runner service and a sharded PostgreSQL backend. Through intensive benchmarking with **oha**, the system reached a peak throughput of **14,972 RPS** with a P99 latency of only **31.5ms**. This represents a 90x improvement over the initial baseline, demonstrating the power of combining Rust's safety and performance with modern distributed system patterns.
