@@ -1,16 +1,16 @@
 ---
 title: Valentine's Card
-description: An interactive digital Valentine's card showcasing advanced CSS animations and styling.
-intro: This project shows a simple digital Valentine's Day card. I created this project in order to practice my CSS skills, especially CSS animations.
-repoLink: valentines-card
+description: "An interactive digital Valentine's card showcasing advanced CSS animations and styling."
+intro: "I created this interactive Valentine's Day card to push the boundaries of creative CSS and micro-interactions. The project features a custom-styled heart, a procedurally drawn arrow, and a synchronized animation sequence that reveals a hidden letter. It served as a practical exercise in managing complex animation states and leveraging modern CSS properties like clip-path and pseudo-elements for asset-free graphics."
+repoLink: A-SURPRISE-FOR-YOU
 techStack: ["CSS", "HTML", "JavaScript"]
 liveDemoLink: valentines
-liveDemoText: You can try out the app yourself by clicking on the button. After being redirected, press the heart to view the app.
+liveDemoText: You can experience the surprise yourself by clicking the button below. Once redirected, interact with the heart to trigger the reveal sequence.
 ---
 
-## Heart Styling
+## Procedural Heart Styling
 
-The heart is created using CSS only. It uses pseudo-elements :before and :after to create the two circles of the heart and the main div for the square part.
+The heart is constructed entirely through CSS, avoiding external images for maximum performance and scalability. It uses the **:before** and **:after** pseudo-elements to create two overlapping circles atop a rotated square base. By applying a heavy **box-shadow** with a deep pink hue (**#f20044**), I achieved a soft glow effect that adds depth and a "lit from within" appearance to the UI.
 
 ```css
 .heart {
@@ -20,8 +20,6 @@ The heart is created using CSS only. It uses pseudo-elements :before and :after 
   position: relative;
   transform: rotate(-45deg);
   box-shadow: -10px 10px 90px #f20044;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 1px;
   z-index: 1;
 }
 
@@ -32,7 +30,7 @@ The heart is created using CSS only. It uses pseudo-elements :before and :after 
   width: var(--heart-size);
   background: #f20044;
   top: -60%;
-  border-radius: var(--heart-border-radius);
+  border-radius: 50%;
   box-shadow: -10px -10px 90px #f20044;
 }
 
@@ -43,22 +41,16 @@ The heart is created using CSS only. It uses pseudo-elements :before and :after 
   width: var(--heart-size);
   background: #f20044;
   right: -60%;
-  border-radius: var(--heart-border-radius);
+  border-radius: 50%;
   box-shadow: 10px 10px 90px #f20044;
-  transition: transform 0.5s ease-in-out;
 }
 ```
 
-## Animations
+## Synchronized Animation Sequence
 
-The animations are used to make the heart scale and the arrow move. This gives the card a more dynamic feel.
+The interaction is driven by a carefully timed sequence of **CSS Keyframes**. When the user clicks the heart, the arrow shoots from the edge of the screen, hitting the heart and triggering a scaling animation. I used **animation-delay** and **forwards** fill modes to ensure each stage of the reveal—from the arrow impact to the letter fading in—feels intentional and fluid.
 
 ```css
-.animate-arrow {
-  animation: shoot-arrow 1s ease-out forwards;
-  opacity: 1;
-}
-
 @keyframes shoot-arrow {
   0% {
     transform: translate(100vw, 60vh) rotate(var(--arrow-rotation));
@@ -79,8 +71,44 @@ The animations are used to make the heart scale and the arrow move. This gives t
   }
 }
 
+.animate-arrow {
+  animation: shoot-arrow 1s ease-out forwards;
+}
+
 .scale-heart {
   animation: scale-heart 1s ease-in-out forwards;
   animation-delay: 1s;
 }
 ```
+
+## Interactive Logic
+
+The JavaScript layer acts as the orchestrator for the visual timeline. It listens for the initial user interaction and applies CSS classes to trigger the animations in a specific order. To prevent the sequence from being interrupted or replayed incorrectly, the event listener is automatically removed after the first trigger, ensuring a polished, one-time "reveal" experience.
+
+```javascript
+heart.addEventListener(
+  "click",
+  function () {
+    // 0s: Trigger arrow flight
+    arrow.classList.add("animate-arrow");
+
+    // 1s: Heart expands on impact
+    setTimeout(() => {
+      heart.classList.add("scale-heart");
+    }, 1000);
+
+    // 2s+: Reveal hidden letter and text content
+    setTimeout(() => {
+      paper.style.opacity = "1";
+      setTimeout(() => {
+        letterText.style.opacity = "1";
+      }, 1000);
+    }, 2000);
+  },
+  { once: true },
+);
+```
+
+## Creative Design Choices
+
+To enhance the emotional impact, I selected the **Pacifico** cursive font from Google Fonts, which complements the hand-drawn aesthetic of the **clip-path** arrow. The background uses a soft pink (**#ff94bf**) to maintain high contrast with the vibrant heart, while the responsive layout ensures the animations look consistent across mobile and desktop viewports. This project taught me the value of "motion as storytelling" in UI design.
