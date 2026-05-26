@@ -1,23 +1,24 @@
 ---
 title: Tic Tac Toe
-description: A classic Tic Tac Toe game written in x86 Assembly to explore CPU architecture and low-level logic.
-intro: To improve my assembly skills, I have set myself the goal of writing Tic Tac Toe in assembly. I use the emu8086 emulator to test my assembly code. This project helped me a lot to learn more about the internal structure of a CPU. I learned how to use methods and loops in assembly, how to better handle user inputs and error handling in assembly. With this project I also learned how the 32-bit addresses inside a program look like and how to assign values to them.
+description: "A classic Tic Tac Toe game written in x86 Assembly to explore CPU architecture and low-level logic."
+intro: "I developed this Tic Tac Toe implementation in x86 Assembly to gain a deeper understanding of low-level CPU operations and memory management. The project evolved from a 16-bit DOS application using BIOS interrupts to a 64-bit Linux version leveraging modern system calls. Through this process, I mastered register-level logic, stack manipulation, and the intricacies of direct hardware interaction."
 repoLink: assembly-tic-tac-toe
 techStack: Assembly
 videoYoutubeId: astwYXRNOK8
 ---
 
-## Game initialization
+## Dual-Architecture Implementation
 
-Here is the INIT method. This method initializes and declares all needed variables, in order to start the game without encountering any errors.
+The project features two distinct versions: a 16-bit version designed for the **emu8086** emulator and a modern 64-bit version for Linux. The DOS version relies on **INT 10h** for video control and **INT 21h** for standard I/O, while the Linux version uses **SYSCALL** 1 (**sys_write**) and 0 (**sys_read**). This transition allowed me to compare legacy real-mode programming with contemporary protected-mode execution.
 
 ```x86asm
     INIT:         ; init all variables
-    MOV PLAYER, 50
+    MOV PLAYER, 50 ; Set to '2' (ASCII 50)
     MOV MOVES, 0
     MOV DONE, 0
     MOV DR, 0
 
+    ; Initializing board cells with ASCII numbers 1-9
     MOV C1, 49
     MOV C2, 50
     MOV C3, 51
@@ -31,13 +32,13 @@ Here is the INIT method. This method initializes and declares all needed variabl
     JMP PLRCHANGE
 ```
 
-## Checking Rules
+## Win Detection Logic
 
-This is a section of my CHECK method. This method goes over all possible combinations and checks if a Tic Tac Toe has come along somewhere. If that happens it assigns the winner. This method runs after every turn of both players.
+The **CHECK** method is the heart of the game logic, evaluating the board state after every turn. It rigorously compares memory values across eight possible winning combinations (rows, columns, and diagonals). By using conditional jumps like **JNZ** (Jump if Not Zero), the program efficiently branches through validation steps, setting the **DONE** flag to 1 if a victory is detected.
 
 ```x86asm
 CHECK:                  ; 8 possible combinations
-    CHECK1:             ; checking combo 1, 2, 3
+    CHECK1:             ; checking row 1
         MOV AL, C1
         MOV BL, C2
         MOV CL, C3
@@ -51,7 +52,7 @@ CHECK:                  ; 8 possible combinations
         MOV DONE, 1
         JMP BOARD
 
-    CHECK2:             ; checking combo 4, 5, 6
+    CHECK2:             ; checking row 2
         MOV AL, C4
         MOV BL, C5
         MOV CL, C6
@@ -61,55 +62,44 @@ CHECK:                  ; 8 possible combinations
 
         CMP BL, CL
         JNZ CHECK3
-
-        MOV DONE, 1
-        JMP BOARD
-
-    CHECK3:             ; checking combo 7, 8, 9
-        MOV AL, C4
-        MOV BL, C5
-        MOV CL, C6
-
-        CMP AL, BL
-        JNZ CHECK4
-
-        CMP BL, CL
-        JNZ CHECK4
 
         MOV DONE, 1
         JMP BOARD
 ```
 
-## Handling invalid inputs
+## Terminal UI and Input Validation
 
-This here is my TAKEN method. This method makes sure that no invalid inputs are made. If an invalid input is made, it overwrites the last input with an empty line
+To create a seamless user experience, I implemented custom rendering and validation routines. In the 64-bit version, I used **ANSI escape sequences** to clear the screen and position the cursor, mimicking a modern terminal UI. The **TAKEN** method ensures game integrity by preventing players from overwriting occupied cells, providing instant visual feedback before re-prompting for input.
 
 ```x86asm
 TAKEN:
-    DEC MOVES           ; set cursor
-        MOV AH, 4
-        MOV DH, 16
-        MOV DL, 20
-        INT 10h
+    DEC MOVES           ; Adjust move counter
+    ; Set cursor position via BIOS interrupt
+    MOV AH, 4
+    MOV DH, 16
+    MOV DL, 20
+    INT 10h
 
-    LEA DX, TKN         ; cell taken display
+    LEA DX, TKN         ; Display "Cell already taken"
     MOV AH, 9
     INT 21h
 
     MOV AH, 7
-    INT 21h             ; set cursor
-        MOV AH, 2
-        MOV DH, 16
-        MOV DL, 20
-        INT 10h
+    INT 21h             ; Wait for keypress
 
-    LEA DX, EMP         ; empty line to overwrite
+    ; Reset cursor for re-input
+    MOV AH, 2
+    MOV DH, 16
+    MOV DL, 20
+    INT 10h
+
+    LEA DX, EMP         ; Overwrite error message with empty line
     MOV AH, 9
-    INT 21h             ; set cursor
-        MOV AH, 2
-        MOV DH, 16
-        MOV DL, 20
-        INT 10h
+    INT 21h
 
     JMP INPUT
 ```
+
+## Low-Level Challenges
+
+One of the most significant challenges was handling **raw terminal mode** in Linux to capture single-character inputs without requiring the user to press Enter. This required manipulating the **termios** structure via **ioctl** system calls. Learning to manage the stack frame manually and understanding how 32-bit and 64-bit addresses are calculated in real-time was a pivotal moment in my development as a programmer.
