@@ -20,11 +20,17 @@ export default function ProjectButton({ link, type }: ButtonProps) {
     return null;
   }
 
-  const href =
-    link.startsWith("http") || link.startsWith("/")
-      ? link
-      : `https://github.com/HardBoss07/${link}`;
+  const isAbsoluteOrRelative = link.startsWith("http") || link.startsWith("/");
 
+  let href = link;
+
+  if (!isAbsoluteOrRelative) {
+    if (type === "liveDemo") {
+      href = `https://${link}.m4tt3o.dev`;
+    } else {
+      href = `https://github.com/HardBoss07/${link}`;
+    }
+  }
   return (
     <Link
       href={href}
