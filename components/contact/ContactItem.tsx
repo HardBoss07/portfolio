@@ -23,7 +23,7 @@ export default function ContactItem({ url, label, icon }: ContactItemProps) {
           strokeWidth={2}
           className="text-primary"
         />
-        <span className="text-label-mono font-bold uppercase">{label}</span>
+        <span className="text-label-mono font-bold">{label}</span>
       </div>
       <ArrowRight className="text-primary group-hover:translate-x-2 transition-transform duration-300" />
     </Link>
