@@ -63,7 +63,7 @@ export default function Home() {
         <div className="flex-shrink-0 relative">
           <div className="w-64 h-80 md:w-[350px] md:h-[450px] border-4 border-primary rounded-2xl overflow-hidden group transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,176,202,0.2)] bg-surface-dim">
             <Image
-              src="/assets/images/headshot.png"
+              src="/assets/images/headshot.jpeg"
               alt="Matteo Headshot"
               width={450}
               height={550}
