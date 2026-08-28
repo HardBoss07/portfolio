@@ -36,7 +36,7 @@ export default function Footer() {
           GitHub
         </Link>
         <Link
-          href="https://linkedin.com/in/matteo-bosshard"
+          href="https://www.linkedin.com/in/m4tt3o/"
           className="text-label-mono text-text-secondary hover:text-primary transition-colors"
           target="_blank"
           rel="noopener noreferrer"
