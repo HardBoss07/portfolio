@@ -13,16 +13,16 @@
   h4,
   h5,
   h6 {
-    @apply font-headline;
+    @apply font-headline font-extrabold;
     text-wrap: balance;
   }
 
   h1 {
-    @apply text-[clamp(2.5rem,8vw,4.5rem)] font-bold leading-[1.1] tracking-[-0.02em];
+    @apply text-[clamp(3rem,9vw,5.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em];
   }
 
   h2 {
-    @apply text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-[1.2] tracking-[-0.01em];
+    @apply text-[clamp(2rem,6vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-0.02em];
   }
 
   p {
@@ -36,7 +36,7 @@
   }
 
   button {
-    @apply transition-all duration-150 active:scale-[0.97];
+    @apply transition-all duration-150 active:scale-[0.98];
     transition-timing-function: var(--ease-out-quart);
   }
 }
@@ -47,17 +47,17 @@
   }
 
   .text-headline-h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 700;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 800;
   }
 
   .text-headline-h2 {
-    font-size: clamp(1.75rem, 5vw, 3rem);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    font-weight: 600;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 800;
   }
 
   .text-body-lg {

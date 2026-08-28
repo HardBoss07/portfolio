@@ -1,15 +1,15 @@
 @layer components {
   main {
-    @apply w-container-width max-w-container-max mx-auto min-h-screen pt-28 md:pt-40 pb-gap-lg;
+    @apply w-container-width max-w-container-max mx-auto min-h-screen pt-24 md:pt-32 pb-12;
   }
 
   footer {
-    @apply w-full py-gap-md px-[4vw] flex flex-col md:flex-row justify-between items-center gap-gap-sm bg-surface-dim border-t-2 border-primary mt-gap-lg;
+    @apply w-full py-6 px-[4vw] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-dim border-t-2 border-primary mt-12;
   }
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    @apply py-gap-md;
+    @apply py-8;
   }
 }

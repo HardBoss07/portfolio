@@ -9,16 +9,16 @@
 
   /* Section Styles */
   .section-padding {
-    @apply py-gap-lg;
+    @apply py-12 md:py-16;
   }
 
   /* Card Styles */
   .card-brutalist {
-    @apply bg-surface-variant/10 border-2 border-outline-variant p-8 transition-all duration-300 ease-out-expo active:scale-[0.98];
-    @apply hover:border-primary hover:shadow-[0_0_30px_rgba(255,71,155,0.15)] hover:bg-surface-variant/20;
+    @apply bg-surface-container border-2 border-outline-variant p-8 transition-all duration-200 ease-out-expo;
+    @apply hover:border-primary hover:bg-surface-bright;
 
     /* Hardware acceleration */
-    will-change: transform, border-color, box-shadow;
+    will-change: transform, border-color;
   }
 
   /* Marquee Styles */
@@ -28,7 +28,7 @@
 
   /* Video Wrapper */
   .video-wrapper {
-    @apply w-full aspect-video mb-gap-lg border-2 border-primary rounded-xl overflow-hidden bg-black;
+    @apply w-full aspect-video mb-gap-lg border-2 border-primary overflow-hidden bg-black;
   }
 
   .video-wrapper iframe {
