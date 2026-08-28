@@ -10,27 +10,17 @@ import {
 } from "@/lib/seo_metadata";
 import Footer from "@/components/Footer";
 import ClientConsentWrapper from "@/components/cookie-consent/ClientConsentWrapper";
-import {
-  IBM_Plex_Serif,
-  Hanken_Grotesk,
-  JetBrains_Mono,
-} from "next/font/google";
+import { Roboto, Roboto_Mono } from "next/font/google";
 
-const ibmPlexSerif = IBM_Plex_Serif({
-  variable: "--font-ibm-plex-serif",
-  weight: ["400", "600", "700"],
+const roboto = Roboto({
+  variable: "--font-roboto",
+  weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
   display: "swap",
 });
 
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -78,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ibmPlexSerif.variable} ${hankenGrotesk.variable} ${jetBrainsMono.variable} antialiased hyphens-auto break-words`}
+        className={`${roboto.variable} ${robotoMono.variable} antialiased hyphens-auto break-words`}
       >
         <script
           type="application/ld+json"
