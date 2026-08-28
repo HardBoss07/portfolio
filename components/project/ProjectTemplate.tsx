@@ -15,33 +15,37 @@ export default function ProjectTemplate({
   return (
     <main>
       <section className="section-padding">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-4 border-primary pb-8 mb-gap-lg gap-gap-md">
-          <h1 className="uppercase m-0">{metadata.title}</h1>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b-2 border-primary pb-6 mb-8 gap-6">
+          <div>
+            <h1 className="uppercase font-headline font-extrabold text-[clamp(2.5rem,7vw,4.5rem)] leading-none text-white m-0">
+              {metadata.title}
+            </h1>
+          </div>
           <ProjectButton link={metadata.repoLink} type="repository" />
         </div>
-        <p className="text-body-lg mb-gap-lg leading-relaxed">
+        <p className="text-body-lg mb-8 leading-relaxed text-text-secondary max-w-3xl border-l-2 border-primary pl-4 py-1">
           {metadata.intro}
         </p>
 
         {metadata.hasImage && (
-          <div className="w-full border-2 border-outline-variant rounded-xl overflow-hidden mb-gap-lg shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all hover:border-primary">
+          <div className="w-full border-2 border-outline-variant bg-surface-container overflow-hidden mb-8 hover:border-primary transition-colors">
             <Image
               src={`/assets/images/${metadata.slug}.png`}
               alt={`${metadata.title} screenshot`}
               width={1200}
               height={800}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover contrast-110"
               priority
             />
           </div>
         )}
 
-        <div className="space-y-gap-md prose-invert">{children}</div>
+        <div className="space-y-6 prose-invert">{children}</div>
 
         {(metadata.downloadLink || metadata.liveDemoLink) && (
-          <div className="mt-gap-lg space-y-gap-lg">
+          <div className="mt-8 space-y-6">
             {metadata.downloadLink && (
-              <section className="space-y-4">
+              <section className="space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-outline-variant pb-2 gap-4">
                   <h2 className="uppercase m-0 text-headline-h2">Try It Out</h2>
                   <ProjectButton link={metadata.downloadLink} type="download" />
@@ -54,7 +58,7 @@ export default function ProjectTemplate({
             )}
 
             {metadata.liveDemoLink && (
-              <section className="space-y-4">
+              <section className="space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b-2 border-outline-variant pb-2 gap-4">
                   <h2 className="uppercase m-0 text-headline-h2">Live Demo</h2>
                   <ProjectButton link={metadata.liveDemoLink} type="liveDemo" />
@@ -69,7 +73,7 @@ export default function ProjectTemplate({
         )}
 
         {metadata.videoYoutubeId && (
-          <section className="mt-gap-lg space-y-gap-md">
+          <section className="mt-8 space-y-6">
             <h2 className="border-l-4 border-primary pl-4 uppercase">
               Video Demonstration
             </h2>
