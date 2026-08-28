@@ -22,7 +22,9 @@ export default function LegalPage() {
     const data = content[type];
     return (
       <section key={type}>
-        <h1 className="text-4xl font-bold mb-8 text-[#F207A8]">{data.title}</h1>
+        <h1 className="text-headline-h1 font-bold mb-8 text-primary">
+          {data.title}
+        </h1>
         <div className="space-y-8">
           {data.sections.map((section, index) => (
             <LegalSection
@@ -37,7 +39,7 @@ export default function LegalPage() {
                   {section.content.map((item, i) => (
                     <li
                       key={i}
-                      className={`${section.isDataProcessor ? "border-l-4 border-[#F207A8] pl-4" : ""}`}
+                      className={`${section.isDataProcessor ? "border-l-4 border-primary pl-4" : ""}`}
                     >
                       {item}
                     </li>
@@ -49,7 +51,7 @@ export default function LegalPage() {
               {section.hasResetButton && (
                 <button
                   onClick={resetConsent}
-                  className="mt-4 border-2 border-[#F207A8] px-6 py-2 rounded-full text-lg hover:bg-[#F207A8] hover:text-black transition-colors"
+                  className="mt-4 border-2 border-primary px-6 py-2 rounded-pill text-label-mono font-bold hover:bg-primary hover:text-on-primary transition-all duration-200 ease-out-quart"
                 >
                   {lang === "DE"
                     ? "Cookie-Einstellungen zurücksetzen"

@@ -102,17 +102,15 @@ export default function CookieConsent() {
     <BannerOverlay activeLang={lang} onLanguageChange={setLang}>
       {!showSettings ? (
         <>
-          <h2 className="text-headline-h2 font-bold mb-4 uppercase">
-            {t.title}
-          </h2>
-          <p className="text-body-md mb-6 leading-relaxed text-text-secondary">
+          <h2 className="text-2xl font-bold mb-3 uppercase">{t.title}</h2>
+          <p className="text-body-md mb-4 leading-relaxed text-text-secondary">
             {t.description}
           </p>
-          <p className="text-label-mono mb-8 text-text-secondary/70">
+          <p className="text-label-mono text-xs mb-6 text-text-secondary/70">
             {t.moreInfo}{" "}
             <Link
               href="/legal"
-              className="text-primary underline hover:text-primary-container"
+              className="text-primary underline hover:text-white"
             >
               {t.legalNotice}
             </Link>
@@ -127,10 +125,10 @@ export default function CookieConsent() {
         </>
       ) : (
         <>
-          <h2 className="text-headline-h2 font-bold mb-6 uppercase">
+          <h2 className="text-2xl font-bold mb-4 uppercase">
             {t.settingsTitle}
           </h2>
-          <div className="space-y-6 mb-8">
+          <div className="space-y-4 mb-6">
             <PreferenceToggle
               label={t.catNecessary}
               description={t.catNecessaryDesc}
@@ -154,16 +152,16 @@ export default function CookieConsent() {
               }
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mt-6 pt-4 border-t border-outline-variant">
             <button
               onClick={() => setShowSettings(false)}
-              className="text-label-mono font-bold text-text-secondary hover:text-primary transition-colors"
+              className="text-label-mono text-xs uppercase font-bold text-text-secondary hover:text-primary transition-colors"
             >
               {t.btnBack}
             </button>
             <button
               onClick={handleSaveSettings}
-              className="bg-primary text-on-primary px-8 py-2 rounded-pill text-label-mono uppercase font-bold active:scale-95 transition-transform hover:brightness-110 w-full sm:w-auto"
+              className="bg-primary text-black border-2 border-primary px-8 py-2.5 text-label-mono text-xs uppercase font-bold active:scale-95 transition-all hover:bg-white hover:border-white w-full sm:w-auto"
             >
               {t.btnSave}
             </button>

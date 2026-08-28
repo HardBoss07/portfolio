@@ -16,22 +16,22 @@ export function BannerActionButtons({
   labels,
 }: BannerActionButtonsProps) {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 justify-end mt-4">
+    <div className="flex flex-col sm:flex-row gap-3 justify-end mt-6 pt-4 border-t border-outline-variant">
       <button
         onClick={onShowSettings}
-        className="border-2 border-outline-variant px-6 py-2 rounded-pill text-label-mono font-bold transition-all hover:border-primary hover:text-primary active:scale-95"
+        className="border-2 border-outline-variant px-5 py-2.5 text-label-mono text-xs uppercase font-bold transition-all hover:border-primary hover:text-primary hover:bg-surface-bright active:scale-95 text-text-secondary"
       >
         {labels.settings}
       </button>
       <button
         onClick={onRejectAll}
-        className="border-2 border-outline-variant px-6 py-2 rounded-pill text-label-mono font-bold transition-all hover:border-primary hover:text-primary active:scale-95"
+        className="border-2 border-outline-variant px-5 py-2.5 text-label-mono text-xs uppercase font-bold transition-all hover:border-primary hover:text-primary hover:bg-surface-bright active:scale-95 text-text-secondary"
       >
         {labels.reject}
       </button>
       <button
         onClick={onAcceptAll}
-        className="bg-primary text-on-primary px-8 py-2 rounded-pill text-label-mono uppercase font-bold active:scale-95 transition-transform hover:brightness-110"
+        className="bg-primary text-black border-2 border-primary px-7 py-2.5 text-label-mono text-xs uppercase font-bold active:scale-95 transition-all hover:bg-white hover:border-white"
       >
         {labels.accept}
       </button>
