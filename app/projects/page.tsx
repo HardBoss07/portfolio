@@ -24,16 +24,15 @@ export default async function Projects() {
   return (
     <main>
       <section className="section-padding">
-        <div className="inline-block border-b-4 border-primary pb-2 mb-gap-md">
-          <h1 className="uppercase">MY PROJECTS</h1>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b-2 border-primary pb-6 mb-8 gap-4">
+          <div>
+            <h1 className="uppercase font-headline font-extrabold text-[clamp(2.5rem,7vw,4.5rem)] leading-none m-0 text-white">
+              PROJECTS
+            </h1>
+          </div>
         </div>
-        <p className="text-body-lg max-w-2xl mb-gap-lg">
-          A comprehensive collection of my technical explorations, academic
-          assignments, and personal tools. Each project represents a milestone
-          in my journey as a developer.
-        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-gap-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index: number) => (
             <ProjectCard
               key={project.slug}
@@ -41,7 +40,6 @@ export default async function Projects() {
               description={project.description}
               lang={project.techStack || "Unknown"}
               link={project.slug}
-              index={index + 1}
             />
           ))}
         </div>

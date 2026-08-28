@@ -14,18 +14,23 @@ export default function ContactItem({ url, label, icon }: ContactItemProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex justify-between items-center p-6 bg-surface-variant/20 border-2 border-outline-variant hover:border-primary transition-colors group w-full"
+      className="flex justify-between items-center px-6 py-5 bg-surface-container border-2 border-outline-variant hover:border-primary hover:bg-surface-bright transition-all duration-200 group w-full active:scale-[0.99]"
     >
       <div className="flex items-center gap-4">
         <ContactIcon
           name={icon}
-          size={24}
+          size={20}
           strokeWidth={2}
-          className="text-primary"
+          className="text-text-secondary group-hover:text-primary transition-colors duration-200"
         />
-        <span className="text-label-mono font-bold">{label}</span>
+        <span className="text-label-mono text-xs md:text-sm font-bold text-white group-hover:text-primary transition-colors duration-200">
+          {label}
+        </span>
       </div>
-      <ArrowRight className="text-primary group-hover:translate-x-2 transition-transform duration-300" />
+      <ArrowRight
+        className="text-text-secondary group-hover:text-primary group-hover:translate-x-1 transition-all duration-200"
+        size={18}
+      />
     </Link>
   );
 }

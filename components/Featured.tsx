@@ -19,10 +19,14 @@ export default async function Featured() {
 
   return (
     <section className="section-padding" id="work">
-      <h2 className="border-l-4 border-primary pl-4 uppercase mb-gap-md">
-        Selected Works
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-gap-md">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b-2 border-outline-variant pb-6 gap-4">
+        <div>
+          <h2 className="uppercase text-headline-h2 font-extrabold m-0">
+            Selected Works
+          </h2>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {featuredProjects.map((project, index) => {
           if (!project) return null;
 
@@ -33,7 +37,6 @@ export default async function Featured() {
               description={project.description}
               lang={project.techStack || "Unknown"}
               link={project.slug}
-              index={index + 1}
             />
           );
         })}

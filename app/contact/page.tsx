@@ -23,28 +23,22 @@ export default function Contact() {
   return (
     <main>
       <section className="section-padding">
-        <section className="flex flex-col lg:flex-row gap-gap-lg animate-entry">
-          <div className="flex-1 lg:sticky lg:top-48 h-fit stagger-1">
-            <div className="inline-block border-b-4 border-primary pb-2 mb-gap-md">
-              <h1 className="uppercase text-[clamp(2.5rem,8vw,4.5rem)] leading-tight">
-                READY TO <br />
-                <span className="text-primary">BUILD?</span>
-              </h1>
-            </div>
-            <p className="text-body-lg max-w-lg text-text-secondary text-wrap-balance">
-              Pushing the boundaries of the open web one pixel at a time. If
-              you&apos;re interested, shoot me a message with your inquiry on
-              one of the chosen methods. I will try to respond as quickly as
-              possible.
-            </p>
+        <section className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start animate-entry">
+          <div className="flex-1 lg:sticky lg:top-32 h-fit">
+            <h1 className="uppercase font-headline font-extrabold text-[clamp(2.8rem,7vw,4.5rem)] leading-[0.95] tracking-tight mb-4">
+              LET&apos;S <br />
+              <span className="text-primary">CONNECT.</span>
+            </h1>
           </div>
 
-          <div className="flex-[1.5] space-y-gap-lg stagger-2">
-            <section className="space-y-gap-md">
-              <h2 className="border-l-4 border-primary pl-4 uppercase text-headline-h2">
-                Social Media
-              </h2>
-              <div className="grid grid-cols-1 gap-4">
+          <div className="flex-[1.4] w-full space-y-8">
+            <section className="space-y-3">
+              <div className="flex items-center justify-between border-b-2 border-outline-variant pb-2">
+                <h2 className="uppercase text-lg md:text-xl font-extrabold text-white m-0">
+                  Social & Direct
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-3">
                 <ContactItem
                   url="https://github.com/HardBoss07"
                   label="@HardBoss07"
@@ -68,11 +62,13 @@ export default function Contact() {
               </div>
             </section>
 
-            <section className="space-y-gap-md stagger-3">
-              <h2 className="border-l-4 border-primary pl-4 uppercase text-headline-h2">
-                Email Channels
-              </h2>
-              <div className="grid grid-cols-1 gap-4">
+            <section className="space-y-3">
+              <div className="flex items-center justify-between border-b-2 border-outline-variant pb-2">
+                <h2 className="uppercase text-lg md:text-xl font-extrabold text-white m-0">
+                  Email Inboxes
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-3">
                 <ContactItem
                   url="mailto:matteobosshard@gmail.com"
                   label="PERSONAL EMAIL"

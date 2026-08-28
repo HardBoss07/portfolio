@@ -1,12 +1,7 @@
 import React from "react";
 
 export type IconName =
-  | "github"
-  | "instagram"
-  | "linkedin"
-  | "mail"
-  | "discord"
-  | "steam";
+  "github" | "instagram" | "linkedin" | "mail" | "discord" | "steam";
 
 interface ContactIconProps {
   name: IconName;
