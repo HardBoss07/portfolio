@@ -1,0 +1,92 @@
+---
+title: Shape Recognizer
+description: "A lightweight neural network engine built from scratch in Rust, featuring parallel batch training with Rayon and compressed binary weight persistence."
+intro: "I built this shape-recognizing neural network from scratch in Rust to gain a deep, foundational understanding of machine learning algorithms without relying on external deep learning frameworks. The project features a custom forward and backpropagation pipeline, parallelized batch training using Rayon to maximize multi-core execution, and Gzip-compressed binary serialization for ultra-fast model loading and compact storage."
+repoLink: rust-neural-network
+techStack: Rust
+downloadLink: rust-neural-network/releases/latest
+downloadText: If you want to try this app out for yourself, click on the download button and install rust-neural-network.rar from GitHub, extract the .rar file and run the rust-neural-network executable. It comes pretrained on a generated 6 Million shapes. If you want to train it yourself, delete the weights1_v6.bin.gz and weights2_v6.bin.gz files.
+videoYoutubeId: SzkiV0GJtIs
+---
+
+## Parallel Batch Training with Rayon
+
+To achieve high throughput when training across millions of samples, I implemented a parallel mini-batch architecture powered by **Rayon**. The **train_batch** method delegates sample gradient calculations across available CPU threads using **par_iter()**. The partial gradients are synthesized concurrently with a custom map-reduce pattern using **zero_gradients** and **accumulate_gradients**, eliminating data races before applying the batch adjustments to the primary weights.
+
+```rust
+pub fn train_batch(&mut self, batch: &[(&[f32], usize)], learning_rate: f32) {
+    if batch.is_empty() {
+        return;
+    }
+
+    let batch_size = batch.len() as f32;
+    let accum = batch
+        .par_iter()
+        .map(|&(input, target_class)| self.compute_sample_gradients(input, target_class))
+        .reduce(|| self.zero_gradients(), Self::accumulate_gradients);
+
+    self.apply_batch_gradients(accum, batch_size, learning_rate);
+}
+```
+
+## Manual Backpropagation & Gradient Descent
+
+Rather than relying on automatic differentiation libraries, I manually implemented backpropagation to directly update layer weights and biases. The **train** function executes a full forward pass, calculates output deltas against target classes, and propagates error signals backward through the hidden layer. It computes the activation derivative using **ReLU** and scales updates by the defined learning rate, maintaining complete mathematical transparency throughout the network.
+
+```rust
+pub fn train(&mut self, input: &[f32], target_class: usize, learning_rate: f32) {
+    let (output, hidden_raw, hidden_activated) = self.forward_pass_internal(input);
+    let d_output = self.compute_output_gradient(&output, target_class);
+
+    let mut d_hidden = vec![0.0; self.hidden_size];
+    for o in 0..self.output_size {
+        for h in 0..self.hidden_size {
+            d_hidden[h] += d_output[o] * self.weight2[o][h];
+            self.weight2[o][h] -= learning_rate * d_output[o] * hidden_activated[h];
+        }
+        self.bias2[o] -= learning_rate * d_output[o];
+    }
+
+    for h in 0..self.hidden_size {
+        let d_h_activated = d_hidden[h] * Self::relu_derivative(hidden_raw[h]);
+        for i in 0..self.input_size {
+            self.weight1[h][i] -= learning_rate * d_h_activated * input[i];
+        }
+        self.bias1[h] -= learning_rate * d_h_activated;
+    }
+}
+```
+
+## Compressed Binary Model Persistence
+
+To maintain a minimal disk footprint and eliminate slow textual parsing (such as JSON or CSV), I built a custom binary serialization format using **flate2**. Floating-point weight matrices are converted to little-endian byte arrays (**to_le_bytes**) and streamed into a Gzip encoder. Upon initialization, **load_weights_compressed** decodes the stream directly back into **f32** primitives using slice conversions, ensuring rapid boot times even with large weight matrices.
+
+```rust
+fn load_weights_compressed(path: &str, rows: usize, cols: usize) -> Vec<Vec<f32>> {
+    let file = File::open(path).expect("Failed to open compressed weight file");
+    let mut decoder = GzDecoder::new(file);
+    let mut buffer = Vec::new();
+    decoder
+        .read_to_end(&mut buffer)
+        .expect("Failed to decompress file");
+
+    let mut matrix = vec![vec![0.0; cols]; rows];
+    let mut offset = 0;
+
+    for r in 0..rows {
+        for c in 0..cols {
+            let bytes: [u8; 4] = buffer[offset..offset + 4]
+                .try_into()
+                .expect("Corrupted binary slice");
+            matrix[r][c] = f32::from_le_bytes(bytes);
+            offset += 4;
+        }
+    }
+
+    matrix
+}
+```
+
+## Technical Architecture & Performance
+
+By eliminating heavy machine learning frameworks, this implementation delivers exceptional efficiency, consuming negligible memory overhead during execution. Training on generated shape datasets demonstrates how low-level memory control in Rust—paired with parallel CPU concurrency—enables high-performance AI training loops directly on standard hardware.
