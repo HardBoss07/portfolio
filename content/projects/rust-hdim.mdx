@@ -1,0 +1,135 @@
+---
+title: High Definition Image Manipulator
+description: "A modular TUI image manipulator built in Rust, featuring TrueColor half-block rendering and non-destructive editing."
+intro: "I built HDIM (High Definition Image Manipulator) to bring a modern, non-destructive image editing experience directly to the terminal. Built in Rust using Ratatui, the application leverages 24-bit TrueColor half-block rendering to display high-detail image previews in terminal viewports while supporting real-time perceptual color adjustments, EXIF metadata extraction, and a complete undo/redo history stack."
+repoLink: hdim
+techStack: Rust
+downloadLink: hdim/releases/latest
+downloadText: If you want to try this app out for yourself, click on the download button and install hdim.rar from GitHub, extract the .rar file and run the hdim executable. Alternatively you can use "cargo install hdim".
+videoYoutubeId: dNTGbeN_rj0
+---
+
+## Half-Block Viewport Mapping & Color Sampling
+
+To render detailed images within standard terminal constraints, HDIM maps each terminal character cell to two vertically stacked pixels using half-block characters (**▀** / **▄**). The **View** struct calculates scale ratios between source image pixels and terminal rows, while **map_to_source** locates the top and bottom half-block regions. The **get_average_rgb** function then calculates the mean RGB color for each region to deliver smooth downscaling across dynamic terminal grid sizes.
+
+```rust
+pub fn map_to_source(&self, x: u32, y: u32, x_ratio: f32, y_ratio: f32) -> (u32, u32, u32) {
+    let source_pixel_x = self.source_x + (x as f32 * x_ratio) as u32;
+    let source_pixel_y_top = self.source_y + (y as f32 * y_ratio) as u32;
+    let source_pixel_y_bottom = source_pixel_y_top + (y_ratio / 2.0).round().max(1.0) as u32;
+    (source_pixel_x, source_pixel_y_top, source_pixel_y_bottom)
+}
+
+pub fn get_average_rgb(
+    image: &DynamicImage,
+    start_x: u32,
+    start_y: u32,
+    width: u32,
+    height: u32,
+) -> [u8; 3] {
+    let (image_width, image_height) = image.dimensions();
+    let mut r_total: u64 = 0;
+    let mut g_total: u64 = 0;
+    let mut b_total: u64 = 0;
+    let mut count: u64 = 0;
+
+    let end_y = (start_y + height).min(image_height);
+    let end_x = (start_x + width).min(image_width);
+
+    for pixel_y in start_y..end_y {
+        for pixel_x in start_x..end_x {
+            let pixel = image.get_pixel(pixel_x, pixel_y);
+            r_total += pixel[0] as u64;
+            g_total += pixel[1] as u64;
+            b_total += pixel[2] as u64;
+            count += 1;
+        }
+    }
+
+    if count == 0 {
+        return [0, 0, 0];
+    }
+
+    [
+        (r_total / count) as u8,
+        (g_total / count) as u8,
+        (b_total / count) as u8,
+    ]
+}
+```
+
+## Perceptually Uniform Color Adjustments
+
+Instead of performing naive RGB arithmetic which can cause color clipping, image processing functions convert pixels into perceptual color spaces like **Lch** using the **palette** crate. The **apply_brightness** function transforms RGB channels into Lch representations, modifies the lightness (**l**) channel uniformly within valid bounds **[0, 100]**, and converts the result back to sRGB to ensure natural contrast shifts during editing.
+
+```rust
+pub fn apply_brightness(image: &DynamicImage, value: f32) -> DynamicImage {
+    let mut cloned_image = image.clone();
+    let factor = value * 0.5; // Map -100..100 to -50..50 (Lch 'l' is 0-100)
+
+    for (x, y, pixel) in cloned_image.to_rgba8().enumerate_pixels() {
+        let srgb = Srgb::new(
+            pixel[0] as f32 / 255.0,
+            pixel[1] as f32 / 255.0,
+            pixel[2] as f32 / 255.0,
+        );
+
+        let mut lch: Lch = Lch::from_color(srgb);
+        lch.l += factor;
+        lch.l = lch.l.clamp(0.0, 100.0); // Clamp L to its valid range
+
+        let new_srgb = Srgb::from_color(lch);
+
+        let r = (new_srgb.red * 255.0).round().clamp(0.0, 255.0) as u8;
+        let g = (new_srgb.green * 255.0).round().clamp(0.0, 255.0) as u8;
+        let b = (new_srgb.blue * 255.0).round().clamp(0.0, 255.0) as u8;
+
+        cloned_image.put_pixel(x, y, Rgba([r, g, b, pixel[3]]));
+    }
+
+    cloned_image
+}
+```
+
+## Non-Destructive Undo/Redo State Stack
+
+To support full non-destructive editing, HDIM encapsulates image transformations inside a **History** state manager. Image data is wrapped in atomic reference-counted smart pointers using DynamicImage to eliminate unnecessary deep copying during state pushes. When a user records a new adjustment after undoing, the stack automatically truncates future states before appending the new state.
+
+```rust
+impl History {
+    pub fn record_state(&mut self, image: Arc<DynamicImage>, adjustments: Adjustments) {
+        // If we are not at the end of the history, truncate the future states
+        if self.current_index < self.states.len() - 1 {
+            self.states.truncate(self.current_index + 1);
+        }
+        self.states.push(HistoryState {
+            data: image,
+            adjustments,
+        });
+        self.current_index = self.states.len() - 1;
+    }
+
+    pub fn undo(&mut self) -> Option<HistoryState> {
+        if self.current_index > 0 {
+            self.current_index -= 1;
+            Some(self.states[self.current_index].clone())
+        } else {
+            None
+        }
+    }
+
+    pub fn redo(&mut self) -> Option<HistoryState> {
+        if self.current_index < self.states.len() - 1 {
+            self.current_index += 1;
+            Some(self.states[self.current_index].clone())
+        } else {
+            None
+        }
+    }
+}
+```
+
+## Modular Crate Architecture
+
+By decoupling core image mathematics (**hdim-core**), rendering math (**hdim-render**), and terminal UI layout (**hdim-tui**), HDIM achieves clear separation of concerns across a multi-crate workspace. The design ensures high terminal responsiveness while giving users granular control over metadata, image spatial transformations, and non-destructive image adjustments directly from their terminal.
