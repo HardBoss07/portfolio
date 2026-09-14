@@ -7,10 +7,12 @@ const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
 
 const PROJECT_ORDER = [
   "serverless-runner",
+  "shape-recognizer",
   "wordle-bot",
   "ts-client-portfolio",
   "cord-path",
   "tauri-resource-monitor",
+  "rust-hdim",
   "auto-ocr",
   "rust-snake",
   "java-to-do-list",

@@ -3,9 +3,9 @@ import ProjectCard from "./project/ProjectCard";
 
 const FEATURED_SLUGS = [
   "serverless-runner",
+  "shape-recognizer",
   "wordle-bot",
   "ts-client-portfolio",
-  "auto-ocr",
 ];
 
 export default async function Featured() {
