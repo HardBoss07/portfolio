@@ -27,7 +27,7 @@ export default function Contact() {
           <div className="flex-1 lg:sticky lg:top-32 h-fit">
             <h1 className="uppercase font-headline font-extrabold text-[clamp(2.8rem,7vw,4.5rem)] leading-[0.95] tracking-tight mb-4">
               LET&apos;S <br />
-              <span className="text-primary">CONNECT.</span>
+              <span className="text-primary">CONNECT</span>
             </h1>
           </div>
 
@@ -71,17 +71,17 @@ export default function Contact() {
               <div className="grid grid-cols-1 gap-3">
                 <ContactItem
                   url="mailto:matteobosshard@gmail.com"
-                  label="PERSONAL EMAIL"
+                  label="matteobosshard@gmail.com"
                   icon="mail"
                 />
                 <ContactItem
                   url="mailto:matteo@bosshard.net"
-                  label="BUSINESS EMAIL"
+                  label="matteo@bosshard.net"
                   icon="mail"
                 />
                 <ContactItem
                   url="mailto:matteo.bosshard@wiss-edu.ch"
-                  label="ACADEMIC EMAIL"
+                  label="matteo.bosshard@wiss-edu.ch"
                   icon="mail"
                 />
               </div>
