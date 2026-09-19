@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import ContactItem from "@/components/contact/ContactItem";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact | Matteo Bosshard",

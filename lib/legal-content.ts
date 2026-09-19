@@ -1,4 +1,4 @@
-import { PUBLISHER_DATA } from "./consts";
+import { PUBLISHER_DATA } from "@/lib/consts";
 
 export type LegalSectionData = {
   title: string;

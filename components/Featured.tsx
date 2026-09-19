@@ -1,5 +1,5 @@
 import { getAllProjects } from "@/lib/projects";
-import ProjectCard from "./project/ProjectCard";
+import ProjectCard from "@/components/project/ProjectCard";
 
 const FEATURED_SLUGS = [
   "serverless-runner",
