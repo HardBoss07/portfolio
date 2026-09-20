@@ -6,7 +6,7 @@
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "biome check .",
     "fix-line-endings": "find . \\( -path \"./node_modules\" -o -path \"./.next\" -o -path \"./.git\" \\) -prune -o -type f -exec unix2dos {} +",
     "format": "npx prettier . --write && npm run fix-line-endings"
   },
@@ -21,6 +21,7 @@
     "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.14",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "19.2.14",
