@@ -9,7 +9,7 @@ export default function Technologies() {
         <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
           {technologies.map(({ label }, index) => (
             <span
-              key={`${label}-${index}-1`}
+              key={`${label}-row1`}
               className={`font-headline shrink-0 px-8 text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight uppercase ${
                 index % 2 === 0 ? 'text-primary' : 'text-white'
               }`}
@@ -21,7 +21,7 @@ export default function Technologies() {
         <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
           {technologies.map(({ label }, index) => (
             <span
-              key={`${label}-${index}-2`}
+              key={`${label}-row2`}
               className={`font-headline shrink-0 px-8 text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight uppercase ${
                 index % 2 === 0 ? 'text-primary' : 'text-white'
               }`}

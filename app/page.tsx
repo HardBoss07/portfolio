@@ -4,7 +4,7 @@ import Experience from '@/components/Experience';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Terminal } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Home | Matteo Bosshard Portfolio',

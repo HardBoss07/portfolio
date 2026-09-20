@@ -71,6 +71,7 @@ export const ContactIcon: React.FC<ContactIconProps> = ({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
+      aria-hidden="true"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       {ICON_MAP[name]}

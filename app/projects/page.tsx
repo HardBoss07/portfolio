@@ -33,7 +33,7 @@ export default async function Projects() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {projects.map((project, index: number) => (
+          {projects.map((project) => (
             <ProjectCard
               key={project.slug}
               title={project.title}

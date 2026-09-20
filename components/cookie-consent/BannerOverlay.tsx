@@ -14,6 +14,7 @@ export function BannerOverlay({ children, onLanguageChange, activeLang }: Banner
           <div className="flex gap-4">
             {(['DE', 'EN'] as const).map((lang) => (
               <button
+                type="button"
                 key={lang}
                 onClick={() => onLanguageChange(lang)}
                 className={`text-label-mono text-xs font-bold transition-all ${

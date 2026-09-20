@@ -142,12 +142,14 @@ export default function CookieConsent() {
           </div>
           <div className="border-outline-variant mt-6 flex flex-col items-center justify-between gap-4 border-t pt-4 sm:flex-row">
             <button
+              type="button"
               onClick={() => setShowSettings(false)}
               className="text-label-mono text-text-secondary hover:text-primary text-xs font-bold uppercase transition-colors"
             >
               {t.btnBack}
             </button>
             <button
+              type="button"
               onClick={handleSaveSettings}
               className="bg-primary border-primary text-label-mono w-full border-2 px-8 py-2.5 text-xs font-bold text-black uppercase transition-all hover:border-white hover:bg-white active:scale-95 sm:w-auto"
             >

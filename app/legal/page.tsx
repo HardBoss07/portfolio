@@ -24,13 +24,13 @@ export default function LegalPage() {
       <section key={type}>
         <h1 className="text-headline-h1 text-primary mb-8 font-bold">{data.title}</h1>
         <div className="space-y-8">
-          {data.sections.map((section, index) => (
-            <LegalSection key={index} title={section.title} isNotice={section.isNotice}>
+          {data.sections.map((section) => (
+            <LegalSection key={section.title} title={section.title} isNotice={section.isNotice}>
               {Array.isArray(section.content) ? (
                 <ul className={`${section.isDataProcessor ? 'mt-2 space-y-4' : ''}`}>
-                  {section.content.map((item, i) => (
+                  {section.content.map((item) => (
                     <li
-                      key={i}
+                      key={item}
                       className={`${section.isDataProcessor ? 'border-primary border-l-4 pl-4' : ''}`}
                     >
                       {item}
@@ -42,6 +42,7 @@ export default function LegalPage() {
               )}
               {section.hasResetButton && (
                 <button
+                  type="button"
                   onClick={resetConsent}
                   className="border-primary rounded-pill text-label-mono hover:bg-primary hover:text-on-primary ease-out-quart mt-4 border-2 px-6 py-2 font-bold transition-all duration-200"
                 >

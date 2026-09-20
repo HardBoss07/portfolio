@@ -25,7 +25,7 @@ export default async function Featured() {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {featuredProjects.map((project, index) => {
+        {featuredProjects.map((project) => {
           if (!project) return null;
 
           return (

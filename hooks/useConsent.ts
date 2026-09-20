@@ -29,7 +29,7 @@ export function useConsent() {
         if (typeof parsed === 'object' && parsed !== null) {
           setConsent({ ...DEFAULT_CONSENT, ...parsed, necessary: true });
         }
-      } catch (e) {
+      } catch {
         if (saved === 'all') {
           setConsent({ necessary: true, analytics: true, externalMedia: true });
         }

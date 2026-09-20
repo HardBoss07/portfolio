@@ -17,6 +17,7 @@ export default function YouTubeWrapper({ children }: { children: React.ReactNode
       </p>
 
       <button
+        type="button"
         className="bg-primary text-on-primary rounded-pill text-label-mono px-8 py-3 font-bold uppercase transition-all hover:brightness-110 active:scale-95"
         onClick={() => updateConsent({ externalMedia: true })}
       >

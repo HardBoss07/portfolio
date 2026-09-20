@@ -17,6 +17,7 @@ export default function Header() {
           {/* Mobile: Hamburger (Left) */}
           <div className="flex items-center md:hidden">
             <button
+              type="button"
               onClick={toggleMenu}
               className="text-primary ease-out-quart -ml-2 p-2 transition-transform duration-150 active:scale-95"
               aria-label="Toggle Menu"
@@ -90,6 +91,7 @@ export default function Header() {
         <div className="flex h-full flex-col p-[4vw]">
           <div className="border-primary mb-12 flex items-center justify-between border-b-2 py-4">
             <button
+              type="button"
               onClick={closeMenu}
               className="text-primary -ml-2 p-2 transition-all duration-150 active:scale-95"
               aria-label="Close Menu"
