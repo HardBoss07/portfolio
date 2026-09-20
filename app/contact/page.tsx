@@ -1,19 +1,18 @@
-import { Metadata } from "next";
-import ContactItem from "@/components/contact/ContactItem";
+import { Metadata } from 'next';
+import ContactItem from '@/components/contact/ContactItem';
 
 export const metadata: Metadata = {
-  title: "Contact | Matteo Bosshard",
+  title: 'Contact | Matteo Bosshard',
   description:
-    "Get in touch with Matteo Bosshard, a Swiss-based Fullstack Developer, for collaborations or inquiries regarding software development projects.",
+    'Get in touch with Matteo Bosshard, a Swiss-based Fullstack Developer, for collaborations or inquiries regarding software development projects.',
   alternates: {
-    canonical: "https://m4tt3o.dev/contact",
+    canonical: 'https://m4tt3o.dev/contact',
   },
   openGraph: {
-    title: "Contact | Matteo Bosshard Portfolio",
-    description:
-      "Contact Matteo Bosshard for software development projects and collaborations.",
-    url: "https://m4tt3o.dev/contact",
-    type: "website",
+    title: 'Contact | Matteo Bosshard Portfolio',
+    description: 'Contact Matteo Bosshard for software development projects and collaborations.',
+    url: 'https://m4tt3o.dev/contact',
+    type: 'website',
   },
 };
 
@@ -21,18 +20,18 @@ export default function Contact() {
   return (
     <main>
       <section className="section-padding">
-        <section className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start animate-entry">
-          <div className="flex-1 lg:sticky lg:top-32 h-fit">
-            <h1 className="uppercase font-headline font-extrabold text-[clamp(2.8rem,7vw,4.5rem)] leading-[0.95] tracking-tight mb-4">
+        <section className="animate-entry flex flex-col items-start gap-8 lg:flex-row lg:gap-12">
+          <div className="h-fit flex-1 lg:sticky lg:top-32">
+            <h1 className="font-headline mb-4 text-[clamp(2.8rem,7vw,4.5rem)] leading-[0.95] font-extrabold tracking-tight uppercase">
               LET&apos;S <br />
               <span className="text-primary">CONNECT</span>
             </h1>
           </div>
 
-          <div className="flex-[1.4] w-full space-y-8">
+          <div className="w-full flex-[1.4] space-y-8">
             <section className="space-y-3">
-              <div className="flex items-center justify-between border-b-2 border-outline-variant pb-2">
-                <h2 className="uppercase text-lg md:text-xl font-extrabold text-white m-0">
+              <div className="border-outline-variant flex items-center justify-between border-b-2 pb-2">
+                <h2 className="m-0 text-lg font-extrabold text-white uppercase md:text-xl">
                   Social & Direct
                 </h2>
               </div>
@@ -42,27 +41,19 @@ export default function Contact() {
                   label="@HardBoss07"
                   icon="github"
                 />
-                <ContactItem
-                  url="https://linkedin.com/in/m4tt3o"
-                  label="@m4tt3o"
-                  icon="linkedin"
-                />
+                <ContactItem url="https://linkedin.com/in/m4tt3o" label="@m4tt3o" icon="linkedin" />
                 <ContactItem
                   url="https://instagram.com/matteoluca07"
                   label="@matteoluca07"
                   icon="instagram"
                 />
-                <ContactItem
-                  url="https://discord.com"
-                  label="@m4tt3o"
-                  icon="discord"
-                />
+                <ContactItem url="https://discord.com" label="@m4tt3o" icon="discord" />
               </div>
             </section>
 
             <section className="space-y-3">
-              <div className="flex items-center justify-between border-b-2 border-outline-variant pb-2">
-                <h2 className="uppercase text-lg md:text-xl font-extrabold text-white m-0">
+              <div className="border-outline-variant flex items-center justify-between border-b-2 pb-2">
+                <h2 className="m-0 text-lg font-extrabold text-white uppercase md:text-xl">
                   Email Inboxes
                 </h2>
               </div>

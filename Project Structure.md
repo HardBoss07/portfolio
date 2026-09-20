@@ -53,8 +53,10 @@ portfolio/
 │       ├── java-jokemon.mdx
 │       ├── java-to-do-list.mdx
 │       ├── project-structure.mdx
+│       ├── rust-hdim.mdx
 │       ├── rust-snake.mdx
 │       ├── serverless-runner.mdx
+│       ├── shape-recognizer.mdx
 │       ├── tauri-resource-monitor.mdx
 │       ├── ts-barcode.mdx
 │       ├── ts-client-portfolio.mdx
@@ -70,7 +72,7 @@ portfolio/
 ├── public/
 │   └── assets/
 │       └── images/
-│           ├── headshot.png
+│           ├── headshot.jpeg
 │           └── java-jokemon.png
 ├── styles/
 │   ├── components.css
@@ -82,6 +84,7 @@ portfolio/
 ├── LICENSE
 ├── Project Structure.md
 ├── README.md
+├── biome.json
 ├── next.config.ts
 ├── package-lock.json
 ├── package.json

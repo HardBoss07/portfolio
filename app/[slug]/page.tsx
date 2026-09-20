@@ -1,17 +1,17 @@
-import ProjectTemplate from "@/components/project/ProjectTemplate";
-import { getProjectBySlug } from "@/lib/projects";
-import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { Metadata } from "next";
-import dynamic from "next/dynamic";
+import ProjectTemplate from '@/components/project/ProjectTemplate';
+import { getProjectBySlug } from '@/lib/projects';
+import { notFound } from 'next/navigation';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const Code = dynamic(() => import("@/components/project/Code"), {
+const Code = dynamic(() => import('@/components/project/Code'), {
   loading: () => (
-    <pre className="my-4 p-4 bg-[#1E1F22] rounded-lg border border-gray-500 animate-pulse h-32" />
+    <pre className="my-4 h-32 animate-pulse rounded-lg border border-gray-500 bg-[#1E1F22] p-4" />
   ),
 });
 
@@ -19,15 +19,13 @@ const mdxComponents = {
   code: Code,
 };
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
   if (!project) {
     return {
-      title: "Project Not Found | Matteo Bosshard",
+      title: 'Project Not Found | Matteo Bosshard',
     };
   }
 
@@ -44,12 +42,12 @@ export async function generateMetadata({
       title: `${title} | Matteo Bosshard`,
       description,
       url,
-      type: "article",
+      type: 'article',
       images: [
         {
           url: project.metadata.hasImage
             ? `https://m4tt3o.dev/assets/images/${slug}.png`
-            : "https://m4tt3o.dev/favicon.ico",
+            : 'https://m4tt3o.dev/favicon.ico',
           width: 1200,
           height: 630,
           alt: title,
@@ -57,13 +55,13 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       images: [
         project.metadata.hasImage
           ? `https://m4tt3o.dev/assets/images/${slug}.png`
-          : "https://m4tt3o.dev/favicon.ico",
+          : 'https://m4tt3o.dev/favicon.ico',
       ],
     },
   };
@@ -78,19 +76,19 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
     name: project.metadata.title,
     description: project.metadata.description,
     author: {
-      "@type": "Person",
-      name: "Matteo Bosshard",
+      '@type': 'Person',
+      name: 'Matteo Bosshard',
     },
     url: `https://m4tt3o.dev/${slug}`,
     keywords: Array.isArray(project.metadata.techStack)
-      ? project.metadata.techStack.join(", ")
+      ? project.metadata.techStack.join(', ')
       : project.metadata.techStack,
-    inLanguage: ["de-CH", "en-CH"],
+    inLanguage: ['de-CH', 'en-CH'],
   };
 
   return (

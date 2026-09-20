@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const cspHeader = `
     default-src 'self';
@@ -13,7 +13,7 @@ const cspHeader = `
     frame-ancestors 'none';
     upgrade-insecure-requests;
 `
-  .replace(/\s{2,}/g, " ")
+  .replace(/\s{2,}/g, ' ')
   .trim();
 
 const nextConfig: NextConfig = {
@@ -23,23 +23,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: '/(.*)',
         headers: [
           {
-            key: "Content-Security-Policy",
+            key: 'Content-Security-Policy',
             value: cspHeader,
           },
           {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
           },
           {
-            key: "X-Frame-Options",
-            value: "DENY",
+            key: 'X-Frame-Options',
+            value: 'DENY',
           },
           {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
           },
         ],
       },
@@ -47,9 +47,9 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     rules: {
-      "*.txt": {
-        loaders: ["raw-loader"],
-        as: "*.js",
+      '*.txt': {
+        loaders: ['raw-loader'],
+        as: '*.js',
       },
     },
   },

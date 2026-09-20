@@ -1,10 +1,10 @@
 @layer components {
   main {
-    @apply w-container-width max-w-container-max mx-auto min-h-screen pt-24 md:pt-32 pb-12;
+    @apply w-container-width max-w-container-max mx-auto min-h-screen pt-24 pb-12 md:pt-32;
   }
 
   footer {
-    @apply w-full py-6 px-[4vw] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-dim border-t-2 border-primary mt-12;
+    @apply bg-surface-dim border-primary mt-12 flex w-full flex-col items-center justify-between gap-4 border-t-2 px-[4vw] py-6 md:flex-row;
   }
 }
 

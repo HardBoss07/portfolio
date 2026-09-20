@@ -4,34 +4,34 @@ interface Technology {
 
 export const technologies: Technology[] = [
   // --- Languages & Runtimes ---
-  { label: "Node.js" },
-  { label: "WASM" },
-  { label: "Java" },
-  { label: "TypeScript" },
-  { label: "Rust" },
+  { label: 'Node.js' },
+  { label: 'WASM' },
+  { label: 'Java' },
+  { label: 'TypeScript' },
+  { label: 'Rust' },
 
   // --- Frameworks & Libraries ---
-  { label: "Next.js" },
-  { label: "Spring" },
-  { label: "Tailwind" },
-  { label: "Tauri" },
-  { label: "Astro" },
+  { label: 'Next.js' },
+  { label: 'Spring' },
+  { label: 'Tailwind' },
+  { label: 'Tauri' },
+  { label: 'Astro' },
 
   // --- Databases & Backend ---
-  { label: "MySQL" },
-  { label: "PostgreSQL" },
+  { label: 'MySQL' },
+  { label: 'PostgreSQL' },
 
   // --- Infrastructure & DevOps ---
-  { label: "Docker" },
-  { label: "Vercel" },
-  { label: "Cloudflare" },
-  { label: "GitHub Actions" },
+  { label: 'Docker' },
+  { label: 'Vercel' },
+  { label: 'Cloudflare' },
+  { label: 'GitHub Actions' },
 
   // --- Tools & Workflow ---
-  { label: "GitHub" },
+  { label: 'GitHub' },
 
   // --- Creative & IDEs ---
-  { label: "Blender" },
-  { label: "VS Code" },
-  { label: "IntelliJ" },
+  { label: 'Blender' },
+  { label: 'VS Code' },
+  { label: 'IntelliJ' },
 ];

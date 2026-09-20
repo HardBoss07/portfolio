@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { technologies } from "@/lib/technologies";
+import { technologies } from '@/lib/technologies';
 
 export default function Technologies() {
   return (
-    <div className="w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-container py-3 border-y-2 border-outline-variant my-8 md:my-12 animate-entry">
+    <div className="bg-surface-container border-outline-variant animate-entry relative right-[50%] left-[50%] my-8 -mr-[50vw] -ml-[50vw] w-screen overflow-hidden border-y-2 py-3 md:my-12">
       <div className="flex w-max">
-        <div className="animate-marquee whitespace-nowrap flex items-center shrink-0">
+        <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
           {technologies.map(({ label }, index) => (
             <span
               key={`${label}-${index}-1`}
-              className={`font-headline text-[clamp(1.75rem,5vw,3rem)] font-extrabold px-8 uppercase shrink-0 tracking-tight ${
-                index % 2 === 0 ? "text-primary" : "text-white"
+              className={`font-headline shrink-0 px-8 text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight uppercase ${
+                index % 2 === 0 ? 'text-primary' : 'text-white'
               }`}
             >
               {label.toUpperCase()}
             </span>
           ))}
         </div>
-        <div className="animate-marquee whitespace-nowrap flex items-center shrink-0">
+        <div className="animate-marquee flex shrink-0 items-center whitespace-nowrap">
           {technologies.map(({ label }, index) => (
             <span
               key={`${label}-${index}-2`}
-              className={`font-headline text-[clamp(1.75rem,5vw,3rem)] font-extrabold px-8 uppercase shrink-0 tracking-tight ${
-                index % 2 === 0 ? "text-primary" : "text-white"
+              className={`font-headline shrink-0 px-8 text-[clamp(1.75rem,5vw,3rem)] font-extrabold tracking-tight uppercase ${
+                index % 2 === 0 ? 'text-primary' : 'text-white'
               }`}
             >
               {label.toUpperCase()}

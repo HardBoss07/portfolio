@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Copyright } from "lucide-react";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Copyright } from 'lucide-react';
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState<number | null>(null);
@@ -12,15 +12,13 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full py-gap-md px-[4vw] flex flex-col md:flex-row justify-between items-center gap-gap-sm bg-surface-dim border-t-2 border-primary mt-gap-lg">
-      <div className="text-text-primary font-bold text-label-mono">
-        M4TT3O.DEV
-      </div>
+    <footer className="py-gap-md gap-gap-sm bg-surface-dim border-primary mt-gap-lg flex w-full flex-col items-center justify-between border-t-2 px-[4vw] md:flex-row">
+      <div className="text-text-primary text-label-mono font-bold">M4TT3O.DEV</div>
       <div className="text-label-mono text-text-secondary flex items-center gap-2 text-center">
         <Copyright size={14} className="inline-block" />
         <span>{currentYear} ALL RIGHTS RESERVED.</span>
       </div>
-      <div className="flex gap-gap-md">
+      <div className="gap-gap-md flex">
         <Link
           href="/legal"
           className="text-label-mono text-text-secondary hover:text-primary transition-colors"

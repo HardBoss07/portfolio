@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface ExperienceProps {
   startYear: number;
@@ -22,5 +22,5 @@ export default function Experience({ startYear }: ExperienceProps) {
     setYears(calculatedYears);
   }, [startYear]);
 
-  return <>{years ?? "..."}</>;
+  return <>{years ?? '...'}</>;
 }

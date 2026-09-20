@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export type IconName =
-  "github" | "instagram" | "linkedin" | "mail" | "discord" | "steam";
+export type IconName = 'github' | 'instagram' | 'linkedin' | 'mail' | 'discord' | 'steam';
 
 interface ContactIconProps {
   name: IconName;
@@ -56,9 +55,9 @@ const ICON_MAP: Record<IconName, React.ReactNode> = {
 export const ContactIcon: React.FC<ContactIconProps> = ({
   name,
   size = 24,
-  color = "currentColor",
+  color = 'currentColor',
   strokeWidth = 2,
-  className = "",
+  className = '',
 }) => {
   return (
     <svg

@@ -14,7 +14,7 @@
 
   /* Card Styles */
   .card-brutalist {
-    @apply bg-surface-container border-2 border-outline-variant p-8 transition-all duration-200 ease-out-expo;
+    @apply bg-surface-container border-outline-variant ease-out-expo border-2 p-8 transition-all duration-200;
     @apply hover:border-primary hover:bg-surface-bright;
 
     /* Hardware acceleration */
@@ -23,16 +23,16 @@
 
   /* Marquee Styles */
   .marquee-container {
-    @apply w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden bg-surface-bright;
+    @apply bg-surface-bright relative right-[50%] left-[50%] -mr-[50vw] -ml-[50vw] w-screen overflow-hidden;
   }
 
   /* Video Wrapper */
   .video-wrapper {
-    @apply w-full aspect-video mb-gap-lg border-2 border-primary overflow-hidden bg-black;
+    @apply mb-gap-lg border-primary aspect-video w-full overflow-hidden border-2 bg-black;
   }
 
   .video-wrapper iframe {
-    @apply w-full h-full border-0;
+    @apply h-full w-full border-0;
   }
 
   /* Page Entry Animation */

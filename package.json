@@ -27,10 +27,11 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^4",
-    "typescript": "^5",
-        "prettier": "^3.9.6"
+    "typescript": "^5"
   },
   "overrides": {
     "@types/react": "19.2.14",

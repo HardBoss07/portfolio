@@ -1,44 +1,42 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { ProjectMetadata, ProjectData } from "@/types/project";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { ProjectMetadata, ProjectData } from '@/types/project';
 
-const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
+const PROJECTS_DIRECTORY = path.join(process.cwd(), 'content/projects');
 
 const PROJECT_ORDER = [
-  "serverless-runner",
-  "shape-recognizer",
-  "wordle-bot",
-  "ts-client-portfolio",
-  "cord-path",
-  "tauri-resource-monitor",
-  "rust-hdim",
-  "auto-ocr",
-  "rust-snake",
-  "java-to-do-list",
-  "asm-tic-tac-toe",
-  "project-structure",
-  "java-calculator",
-  "ts-barcode",
-  "java-jokemon",
-  "css-valentines-card",
+  'serverless-runner',
+  'shape-recognizer',
+  'wordle-bot',
+  'ts-client-portfolio',
+  'cord-path',
+  'tauri-resource-monitor',
+  'rust-hdim',
+  'auto-ocr',
+  'rust-snake',
+  'java-to-do-list',
+  'asm-tic-tac-toe',
+  'project-structure',
+  'java-calculator',
+  'ts-barcode',
+  'java-jokemon',
+  'css-valentines-card',
 ];
 
-export async function getProjectBySlug(
-  slug: string,
-): Promise<ProjectData | null> {
+export async function getProjectBySlug(slug: string): Promise<ProjectData | null> {
   try {
     const filePath = path.join(PROJECTS_DIRECTORY, `${slug}.mdx`);
     if (!fs.existsSync(filePath)) {
       return null;
     }
-    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
 
     return {
       metadata: {
         slug,
-        ...(data as Omit<ProjectMetadata, "slug">),
+        ...(data as Omit<ProjectMetadata, 'slug'>),
       },
       content,
     };
@@ -55,15 +53,15 @@ export async function getAllProjects(): Promise<ProjectMetadata[]> {
 
   const fileNames = fs.readdirSync(PROJECTS_DIRECTORY);
   const projects = fileNames
-    .filter((fileName) => fileName.endsWith(".mdx"))
+    .filter((fileName) => fileName.endsWith('.mdx'))
     .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, "");
+      const slug = fileName.replace(/\.mdx$/, '');
       const filePath = path.join(PROJECTS_DIRECTORY, fileName);
-      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data } = matter(fileContent);
       return {
         slug,
-        ...(data as Omit<ProjectMetadata, "slug">),
+        ...(data as Omit<ProjectMetadata, 'slug'>),
       };
     })
     .sort((a, b) => {

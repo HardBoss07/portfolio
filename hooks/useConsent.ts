@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
 export type ConsentState = {
   necessary: boolean;
@@ -14,8 +14,8 @@ export const DEFAULT_CONSENT: ConsentState = {
   externalMedia: false,
 };
 
-const CONSENT_KEY = "cookie-consent";
-const CONSENT_EVENT = "cookie-consent-updated";
+const CONSENT_KEY = 'cookie-consent';
+const CONSENT_EVENT = 'cookie-consent-updated';
 
 export function useConsent() {
   const [consent, setConsent] = useState<ConsentState>(DEFAULT_CONSENT);
@@ -26,11 +26,11 @@ export function useConsent() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (typeof parsed === "object" && parsed !== null) {
+        if (typeof parsed === 'object' && parsed !== null) {
           setConsent({ ...DEFAULT_CONSENT, ...parsed, necessary: true });
         }
       } catch (e) {
-        if (saved === "all") {
+        if (saved === 'all') {
           setConsent({ necessary: true, analytics: true, externalMedia: true });
         }
       }

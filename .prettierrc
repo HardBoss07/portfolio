@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "quoteProps": "as-needed",
   "jsxSingleQuote": false,
   "trailingComma": "es5",
@@ -11,16 +11,8 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "crlf",
-  "plugins": ["prettier-plugin-java", "prettier-plugin-tailwindcss"],
+  "plugins": ["prettier-plugin-tailwindcss"],
   "overrides": [
-    {
-      "files": ["*.java"],
-      "options": {
-        "tabWidth": 4,
-        "printWidth": 120,
-        "useTabs": false
-      }
-    },
     {
       "files": ["*.ts", "*.tsx"],
       "options": {
