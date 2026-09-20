@@ -6,9 +6,9 @@
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
-    "lint": "biome check .",
-    "fix-line-endings": "find . \\( -path \"./node_modules\" -o -path \"./.next\" -o -path \"./.git\" \\) -prune -o -type f -exec unix2dos {} +",
-    "format": "npx prettier . --write && npm run fix-line-endings"
+    "format": "prettier --write .",
+    "lint": "biome lint .",
+    "check": "npm run format && npm run lint"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -29,7 +29,8 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+        "prettier": "^3.9.6"
   },
   "overrides": {
     "@types/react": "19.2.14",

@@ -1,0 +1,14 @@
+# Build outputs & dependencies
+**/target/
+**/dist/
+**/node_modules/
+**/.mvn/
+**/.next/
+
+# Binary / Executables
+*.pdf
+*.png
+*.svg
+
+# Package locks (handled by npm)
+package-lock.json

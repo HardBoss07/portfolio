@@ -1,0 +1,55 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "endOfLine": "crlf",
+  "plugins": ["prettier-plugin-java", "prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": ["*.java"],
+      "options": {
+        "tabWidth": 4,
+        "printWidth": 120,
+        "useTabs": false
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": {
+        "tabWidth": 2,
+        "singleQuote": true,
+        "jsxSingleQuote": false,
+        "trailingComma": "all"
+      }
+    },
+    {
+      "files": ["*.sql"],
+      "options": {
+        "tabWidth": 4,
+        "useTabs": false,
+        "keywords": "uppercase"
+      }
+    },
+    {
+      "files": ["*.xml", "*.properties", "*.yml", "*.yaml"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "preserve",
+        "tabWidth": 2
+      }
+    }
+  ]
+}
