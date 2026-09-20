@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useConsent, ConsentState } from '@/hooks/useConsent';
+import { useConsent, type ConsentState } from '@/hooks/useConsent';
 import { BannerOverlay } from '@/components/cookie-consent/BannerOverlay';
 import { BannerActionButtons } from '@/components/cookie-consent/BannerActionButtons';
 import { PreferenceToggle } from '@/components/cookie-consent/PreferenceToggle';

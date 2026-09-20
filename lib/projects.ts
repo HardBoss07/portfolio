@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { ProjectMetadata, ProjectData } from '@/types/project';
+import type { ProjectMetadata, ProjectData } from '@/types/project';
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), 'content/projects');
 

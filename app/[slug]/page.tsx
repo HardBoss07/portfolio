@@ -2,7 +2,7 @@ import ProjectTemplate from '@/components/project/ProjectTemplate';
 import { getProjectBySlug } from '@/lib/projects';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
 interface PageProps {

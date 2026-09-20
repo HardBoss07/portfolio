@@ -1,6 +1,6 @@
 import ProjectCard from '@/components/project/ProjectCard';
 import { getAllProjects } from '@/lib/projects';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Projects | Software Development Portfolio',
