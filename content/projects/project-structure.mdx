@@ -8,7 +8,7 @@ techStack: Rust
 
 ## Modular CLI Architecture
 
-The tool is built with a highly modular architecture, separating the concerns of directory walking, tree building, and output rendering. I used the **clap** crate to implement a robust command-line interface with support for diverse flags—including hidden file visibility, depth limits, and custom sorting options. This design allows for easy extension, such as adding new output formats or filtering logic, without modifying the core recursive walker.
+The tool is built with a highly modular architecture, separating the concerns of directory walking, tree building, and output rendering. I used the **clap** crate to implement a robust command-line interface with support for diverse flags, including hidden file visibility, depth limits, and custom sorting options. This design allows for easy extension, such as adding new output formats or filtering logic, without modifying the core recursive walker.
 
 ```rust
 #[derive(Parser, Clone)]
@@ -35,7 +35,7 @@ pub struct Cli {
 
 To ensure the generated trees are free of "bloat" like **target/** or **node_modules/**, the tool implements a git-aware directory walker. It parses **.gitignore** files in the root directory and applies these patterns in real-time as it traverses the file system. This logic is decoupled from the rendering stage, ensuring that the internal representation of the directory tree is accurate and concise before any ASCII characters are generated.
 
-````rust
+```rust
 fn main() -> Result<()> {
     let cli = Cli::parse();
     let config = Config::from(cli.clone());
@@ -59,7 +59,7 @@ fn main() -> Result<()> {
     }
     Ok(())
 }
-````
+```
 
 ## Custom Rendering Engine
 
@@ -68,3 +68,4 @@ The ASCII rendering engine was custom-built to support different tree styles and
 ## High-Performance Execution
 
 By choosing Rust, the tool achieves exceptional execution speed. Even when processing large repositories with tens of thousands of files, **Project Structure** can generate and render the tree in under **50ms**. The project taught me the importance of efficient file system access and the power of building small, focused utilities that do one thing exceptionally well.
+s

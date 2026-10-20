@@ -9,7 +9,7 @@ hasImage: true
 
 ## Persistent Game State Serialization
 
-To allow players to save and resume their progress, I implemented a comprehensive **GameState** serialization system. By implementing the **Serializable** interface, I could capture the entire world state—including player position, inventory, level, and the individual stats of all Jokemons—into a single binary file. This system ensures that complex object graphs are preserved accurately across different sessions, providing a seamless "Save/Load" experience in a traditionally stateless console environment.
+To allow players to save and resume their progress, I implemented a comprehensive **GameState** serialization system. By implementing the **Serializable** interface, I could capture the entire world state, including player position, inventory, level, and the individual stats of all Jokemons, into a single binary file. This system ensures that complex object graphs are preserved accurately across different sessions, providing a seamless "Save/Load" experience in a traditionally stateless console environment.
 
 ```java
 public class GameState implements Serializable {
@@ -38,7 +38,7 @@ public class GameState implements Serializable {
 
 ## Abstract Building Architecture
 
-The world is populated with various interactable structures, all derived from a central **Building** abstract class. This architecture uses polymorphism to manage different building types—such as Medical facilities, Shops, and Houses—while sharing common properties like grid coordinates and ASCII-based design templates. This modular approach makes it trivial to expand the world with new building types by simply extending the base class and overriding the interaction logic.
+The world is populated with various interactable structures, all derived from a central **Building** abstract class. This architecture uses polymorphism to manage different building types, such as Medical facilities, Shops, and Houses, while sharing common properties like grid coordinates and ASCII-based design templates. This modular approach makes it trivial to expand the world with new building types by simply extending the base class and overriding the interaction logic.
 
 ```java
 public abstract class Building {

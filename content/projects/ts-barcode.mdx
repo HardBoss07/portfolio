@@ -1,7 +1,7 @@
 ---
 title: 1D & 2D Barcodes
 description: "A Next.js web application for generating and scanning various 1D and 2D barcode types."
-intro: "I developed this comprehensive barcode utility to master advanced Next.js features and browser-based hardware integration. The project allows users to generate a wide array of 1D and 2D codes—including QR, EAN-13, and Data Matrix—while providing a robust scanning interface that leverages the device's camera. It served as a practical exploration of modern TypeScript development and real-time image processing in the browser."
+intro: "I developed this comprehensive barcode utility to master advanced Next.js features and browser-based hardware integration. The project allows users to generate a wide array of 1D and 2D codes, including QR, EAN-13, and Data Matrix, while providing a robust scanning interface that leverages the device's camera. It served as a practical exploration of modern TypeScript development and real-time image processing in the browser."
 repoLink: barcode-reader
 techStack: TypeScript
 liveDemoLink: qr
@@ -11,7 +11,7 @@ videoYoutubeId: TzrhP36xslU
 
 ## Dynamic Barcode Generation
 
-The generation engine uses the **bwip-js** library to render professional-grade barcodes directly onto a HTML5 **canvas**. I implemented a modular **BarCode** component that dynamically adjusts its rendering parameters based on the selected code type (**bcid**) and input value. This approach ensures that every generated code—whether it's a simple QR code or a complex Code 128—is perfectly scaled and follows international symbology standards.
+The generation engine uses the **bwip-js** library to render professional-grade barcodes directly onto a HTML5 **canvas**. I implemented a modular **BarCode** component that dynamically adjusts its rendering parameters based on the selected code type (**bcid**) and input value. This approach ensures that every generated code, whether it's a simple QR code or a complex Code 128, is perfectly scaled and follows international symbology standards.
 
 ```typescript
 export default function BarCode({chosenOption, value, onRendered}: BarCodeProps) {

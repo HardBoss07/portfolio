@@ -42,7 +42,7 @@ impl ResourceMonitor {
 
 ## Cross-Process Command Bridge
 
-Tauri's security-first architecture requires a clear bridge between the frontend and backend. I implemented a series of **tauri::command** handlers that expose the **ResourceMonitor's** functionality to the TypeScript environment. By utilizing Tauri's **State** management system and **Mutex** locking, I ensured that data access is thread-safe and that the frontend can request specific data streams—such as just CPU or GPU metrics—to minimize unnecessary processing.
+Tauri's security-first architecture requires a clear bridge between the frontend and backend. I implemented a series of **tauri::command** handlers that expose the **ResourceMonitor's** functionality to the TypeScript environment. By utilizing Tauri's **State** management system and **Mutex** locking, I ensured that data access is thread-safe and that the frontend can request specific data streams, such as just CPU or GPU metrics, to minimize unnecessary processing.
 
 ```rust
 #[tauri::command]

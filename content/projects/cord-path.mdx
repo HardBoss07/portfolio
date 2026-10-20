@@ -69,7 +69,7 @@ fn nearest_neighbor_tsp(dist_matrix: &[f32], n: usize, start: usize) -> Vec<usiz
 
 ## 2-opt Local Optimization
 
-To further improve the initial path, I implemented the **2-opt** algorithm—a local search heuristic that removes edge crossings. The algorithm iteratively swaps pairs of edges if the swap results in a shorter total path length. This optimization pass typically reduces the path distance by 4-10%, transforming a rough greedy route into a highly efficient trajectory. The implementation uses Rust's **mutable slices** and **iterators** to achieve high performance during the search.
+To further improve the initial path, I implemented the **2-opt** algorithm, a local search heuristic that removes edge crossings. The algorithm iteratively swaps pairs of edges if the swap results in a shorter total path length. This optimization pass typically reduces the path distance by 4-10%, transforming a rough greedy route into a highly efficient trajectory. The implementation uses Rust's **mutable slices** and **iterators** to achieve high performance during the search.
 
 ```rust
 // 2-opt local optimization refinement
@@ -100,4 +100,4 @@ fn two_opt(dist_matrix: &[f32], n: usize, path: &mut Vec<usize>) {
 
 ## Performance Results
 
-The combination of CUDA and Rust yields exceptional performance. In a benchmark with 5,000 coordinates, the distance matrix was computed in under **5ms** on an NVIDIA RTX 30-series GPU—a task that takes significantly longer on a single CPU core. The final tool is not only accurate but also highly scalable, making it suitable for industrial pathfinding applications where coordinate sets are large and complex.
+The combination of CUDA and Rust yields exceptional performance. In a benchmark with 5,000 coordinates, the distance matrix was computed in under **5ms** on an NVIDIA RTX 30-series GPU, a task that takes significantly longer on a single CPU core. The final tool is not only accurate but also highly scalable, making it suitable for industrial pathfinding applications where coordinate sets are large and complex.

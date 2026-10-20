@@ -69,7 +69,7 @@ async fn flush_batch(pool: &PgPool, batch: &mut Vec<DbMessage>) {
 
 ## Module Caching
 
-To eliminate the "Cold Start" problem common in serverless platforms, I implemented a global module cache using **DashMap**. Instead of re-compiling Wasm binaries for every request—which can take 50ms or more—the compiled **wasmtime::Module** is stored in memory. This reduces the instantiation overhead to less than 1ms, transforming a CPU-intensive compilation step into a simple hash map lookup.
+To eliminate the "Cold Start" problem common in serverless platforms, I implemented a global module cache using **DashMap**. Instead of re-compiling Wasm binaries for every request, which can take 50ms or more, the compiled **wasmtime::Module** is stored in memory. This reduces the instantiation overhead to less than 1ms, transforming a CPU-intensive compilation step into a simple hash map lookup.
 
 ```rust
 pub struct AppState {

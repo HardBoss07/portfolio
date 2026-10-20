@@ -1,7 +1,7 @@
 ---
 title: To-Do List
 description: "A Java desktop application for task management with JSON-based persistence and custom UI."
-intro: "I developed this To-Do List application to manage daily tasks with a focus on ease of use and data persistence. The project features a custom JavaFX interface, a flexible task categorization system, and a robust JSON-based save mechanism. By implementing a full application lifecycle—from user input to persistent storage—I explored the challenges of state management and UI responsiveness in a desktop environment."
+intro: "I developed this To-Do List application to manage daily tasks with a focus on ease of use and data persistence. The project features a custom JavaFX interface, a flexible task categorization system, and a robust JSON-based save mechanism. By implementing a full application lifecycle from user input to persistent storage, I explored the challenges of state management and UI responsiveness in a desktop environment."
 repoLink: To-Do-List-Application
 techStack: ["Java", "CSS"]
 videoYoutubeId: MIE_N4qAD_s
@@ -44,7 +44,7 @@ public void start(Stage mainStage) {
 
 ## JSON-Based Persistence Layer
 
-To ensure user data is preserved between sessions, I implemented a robust save system using the **org.json** library. This layer serializes the entire **ToDoList** object graph—including task names, statuses, and categories—into a formatted JSON file. This approach provides a lightweight, human-readable data format that is easy to debug and extend, while also demonstrating the use of file I/O and JSON parsing in Java.
+To ensure user data is preserved between sessions, I implemented a robust save system using the **org.json** library. This layer serializes the entire **ToDoList** object graph, including task names, statuses, and categories, into a formatted JSON file. This approach provides a lightweight, human-readable data format that is easy to debug and extend, while also demonstrating the use of file I/O and JSON parsing in Java.
 
 ```java
 public void saveData(List<ToDoList> list) {

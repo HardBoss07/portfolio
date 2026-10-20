@@ -10,7 +10,7 @@ liveDemoText: You can explore the live portfolio to see her professional photogr
 
 ## Dynamic Project Engine
 
-The portfolio uses a strongly typed project engine to generate interactive project cards. By centralizing the project metadata in a **projects** array, the frontend can dynamically render diverse categories—from **Graphic Design** to **Photography**—using a unified **ProjectCard** component. This architecture allows for effortless updates and ensures that new work can be added to the portfolio by simply updating a single configuration file.
+The portfolio uses a strongly typed project engine to generate interactive project cards. By centralizing the project metadata in a **projects** array, the frontend can dynamically render diverse categories, ranging from **Graphic Design** to **Photography**, using a unified **ProjectCard** component. This architecture allows for effortless updates and ensures that new work can be added to the portfolio by simply updating a single configuration file.
 
 ```typescript
 // Centralized project metadata
@@ -77,7 +77,7 @@ const Headshot = ({ topLeft, topRight, bottomLeft, bottomRight, className }: Pro
         topRight ? "rounded-tr-full" : "rounded-tr-xl",
         className // Merged with component defaults
       )}>
-      <Image src="/images/headshot.avif" alt="Leonie Bosshard" fill priority className="object-cover" />
+      <Image alt="Leonie Bosshard" className="object-cover" fill priority src="/images/headshot.avif"/>
     </div>
   );
 };

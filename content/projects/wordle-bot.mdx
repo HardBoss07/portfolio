@@ -10,7 +10,7 @@ downloadText: "To run the bot from your terminal (Command Prompt or PowerShell),
 
 ## Iterative Solver Loop
 
-The heart of the solver is a state-driven loop that guides the user through the elimination process. It captures the user's guess and the corresponding feedback pattern—where **c** represents a correct position, **m** a misplaced letter, and **w** a wrong letter. By using **io::stdin** and **io::stdout**, I created a seamless interactive experience that updates the word pool in real-time based on the provided constraints.
+The heart of the solver is a state-driven loop that guides the user through the elimination process. It captures the user's guess and the corresponding feedback pattern, where **c** represents a correct position, **m** a misplaced letter, and **w** a wrong letter. By using **io::stdin** and **io::stdout**, I created a seamless interactive experience that updates the word pool in real-time based on the provided constraints.
 
 ```rust
 // Step 1: Capture user guess
@@ -72,7 +72,7 @@ fn respects_misplaced_constraints(&self, chars: &[char]) -> bool {
 
 ## Terminal Rendering and ANSI Colors
 
-To provide a visual experience consistent with the original game, I implemented a terminal renderer that uses **ANSI escape codes**. The **print_summary** function displays the board with color-coded backgrounds—green for correct, yellow for misplaced, and gray for incorrect letters. This ensures that the CLI version of the game is not only functional but also visually intuitive, complete with a dynamically updated virtual keyboard.
+To provide a visual experience consistent with the original game, I implemented a terminal renderer that uses **ANSI escape codes**. The **print_summary** function displays the board with color-coded backgrounds, using green for correct, yellow for misplaced, and gray for incorrect letters. This ensures that the CLI version of the game is not only functional but also visually intuitive, complete with a dynamically updated virtual keyboard.
 
 ```rust
 fn print_summary(&self) {
