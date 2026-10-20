@@ -35,7 +35,7 @@ pub struct Cli {
 
 To ensure the generated trees are free of "bloat" like **target/** or **node_modules/**, the tool implements a git-aware directory walker. It parses **.gitignore** files in the root directory and applies these patterns in real-time as it traverses the file system. This logic is decoupled from the rendering stage, ensuring that the internal representation of the directory tree is accurate and concise before any ASCII characters are generated.
 
-```rust
+````rust
 fn main() -> Result<()> {
     let cli = Cli::parse();
     let config = Config::from(cli.clone());
@@ -59,7 +59,7 @@ fn main() -> Result<()> {
     }
     Ok(())
 }
-```
+````
 
 ## Custom Rendering Engine
 
