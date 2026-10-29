@@ -4,6 +4,7 @@ export interface ProjectMetadata {
   description: string;
   intro: string;
   repoLink: string;
+  date: string;
   downloadLink?: string;
   downloadText?: string;
   liveDemoLink?: string;

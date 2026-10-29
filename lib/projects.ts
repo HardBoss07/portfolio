@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import type { MetadataRoute } from 'next';
 import type { ProjectMetadata, ProjectData } from '@/types/project';
 
 const PROJECTS_DIRECTORY = path.join(process.cwd(), 'content/projects');
@@ -62,7 +63,7 @@ export async function getAllProjects(): Promise<ProjectMetadata[]> {
       return {
         slug,
         ...(data as Omit<ProjectMetadata, 'slug'>),
-      };
+      } as ProjectMetadata;
     })
     .sort((a, b) => {
       const indexA = PROJECT_ORDER.indexOf(a.slug);
@@ -79,4 +80,15 @@ export async function getAllProjects(): Promise<ProjectMetadata[]> {
     });
 
   return projects;
+}
+
+export async function getProjectsForSitemap(baseUrl: string): Promise<MetadataRoute.Sitemap> {
+  const projects = await getAllProjects();
+
+  return projects.map((project) => ({
+    url: `${baseUrl}/${project.slug}`,
+    lastModified: new Date(project.date),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
 }
